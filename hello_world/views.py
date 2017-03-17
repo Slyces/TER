@@ -7,3 +7,6 @@ from hello_world.models import Messages
 
 class IndexView(generic.ListView):
     template_name = 'hello_world/index.html'
+
+    def get_queryset(self, *args, **kwargs):
+        pass
