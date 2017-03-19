@@ -1,8 +1,17 @@
-.chapter {
+.chapter.segment {
     left:  10%;
     width: 80%;
 }
 
-.chapter-title {
-    font-family: "Times New Roman";
+.chapter.content {
+    margin-left: 1em;
 }
+
+.ui.header.segment {
+    margin-top: 1em;
+    margin-left: -1em;
+}
+
+/*.ui.fixed.sticky + p {*/
+  /*margin-top: 39px;*/
+/*}*/

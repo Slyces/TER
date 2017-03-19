@@ -27,6 +27,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'hello_world/Semantic-UI/components/icon.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'hello_world/Semantic-UI/components/transition.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'hello_world/Semantic-UI/components/rail.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'hello_world/Semantic-UI/components/sticky.min.css' %}">
 
     <link rel="stylesheet" type="text/css" href="{% static 'hello_world/style.css' %}">
 
@@ -34,11 +35,17 @@
     <script src="{% static 'hello_world/Semantic-UI/components/transition.js' %}"></script>
     <script src="{% static 'hello_world/Semantic-UI/components/dropdown.js' %}"></script>
     <script src="{% static 'hello_world/Semantic-UI/components/visibility.js' %}"></script>
+<script src="{% static 'hello_world/Semantic-UI/components/sticky.js' %}"></script>
     <script>
         $(document)
             .ready(function () {
 
-                // fix main menu to page on passing
+                // fix segment to page on passing
+                $('.header.sticky')
+                    .sticky({
+                        context: '#chapter1'
+                    })
+                ;
 
             })
         ;
