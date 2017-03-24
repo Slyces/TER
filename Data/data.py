@@ -59,4 +59,19 @@ if __name__ == '__main__':
         start = datetime(*[int(x) for x in args.start_date.split('-')])
     assert start < end
 
-    download(args.index, args.filename, start, end)
+    # download(args.index, args.filename, start, end)
+    import yahoo_finance
+    index = yahoo_finance.Share(args.index)
+    # print(index.get_historical('2014-04-25', '2014-04-29'))
+    # for year in range(1990, 2016):
+    #     print('{}-01-01'.format(year))
+    #     try:
+    #         index.get_historical('2014-04-25', '2014-04-29')
+    #         print('{}-01-01'.format(year))
+    #         break
+    #     except:
+    #         pass
+    # print('finished')
+    import pandas
+    frame = pandas.DataFrame(columns=['Nasdaq', 'Dowjones', 'S&P500', 'Rates'])
+    print(len(frame))
