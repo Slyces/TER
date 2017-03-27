@@ -27,6 +27,22 @@
                     ctor eget lacus vel faucibus. Mauris rhoncus laoreet aliquam. Sed a porttitor
                     quam. Nulla facilisi. Maecenas lobortis ac purus at cursus. Cras feugiat tris
                     tique consequat. </p>
+                <div class="ui segment raised">
+                    <code class="">
+                        def system(self, v: float, w: float, n: int = 1, h: float = None):
+                            h = self['h'] if h is None else h
+                            if n == 1:
+                                return np.array((
+                                    v + h * (-(1 / 3) * pow(v, 3) + v - w + self['I']),
+                                    w + h * 0.08 * (v - 0.8 * w + 0.7)
+                                ))
+                            elif n > 1:
+                                points = [self.system(v, w)]
+                                for i in range(n - 1):
+                                    points.append(self.system(*points[-1]))
+                                return np.array(points)
+                    </code>
+                </div>
                 <p>Fusce ac ipsum id felis tempor aliquet. Nam et porttitor velit. Curabitur accu
                     msan arcu leo, ut scelerisque enim aliquet ut. Donec accumsan scelerisque eui
                     smod. Aliquam viverra tellus ac lectus ullamcorper, eu tincidunt diam cursus.
