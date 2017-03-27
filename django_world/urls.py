@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from hello_world import views
 
 urlpatterns = [
     url(r'^hello_world/', include('hello_world.urls', namespace='hello_world')),  # this line added
     url(r'^admin/', admin.site.urls),
+    url(r'^simple_chart/$', views.IndexView.as_view(), name="simple_chart"),
 ]
