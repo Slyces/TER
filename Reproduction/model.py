@@ -33,14 +33,14 @@ def model(X, w_h1, w_h2, w_o, p_keep_input=1., p_keep_hidden=1.):
     h2 = tf.nn.tanh(tf.matmul(h1, w_h2))
     h2 = tf.nn.dropout(h2, p_keep_hidden)
 
-    return tf.matmul(h2, w_o)
+    return tf.matmul(h1, w_o)
 
 X = tf.placeholder("float", [None, 40])
 Y = tf.placeholder("float", [None, 4])
 
-w_h = init_weights([40, 41])
-w_h2 = init_weights([41, 41])
-w_o = init_weights([41, 4])
+w_h = init_weights([40, 20])
+w_h2 = init_weights([20, 20])
+w_o = init_weights([20, 4])
 
 p_keep_input = tf.placeholder("float")   # La probabilité qui peut changer
 p_keep_hidden = tf.placeholder("float")  # La probabilité qui peut changer
@@ -83,13 +83,15 @@ tf.global_variables_initializer().run(session=sess)
 
 print("Begin of training")
 # Training
-for i in range(6000):
+print(len(trX))
+for i in range(4000):
     for start, end in zip(range(0, len(trX), 50), range(50, len(trX)+1, 50)):
         # batches of 10
         sess.run(train_op, feed_dict={X: trX[start:end], Y: trY[start:end],
                                         p_keep_input: 1.0, p_keep_hidden: 1.0})
-    print(i, sess.run(cost, feed_dict={X: trX[start:end], Y: trY[start:end],
-                                        p_keep_input: 1.0, p_keep_hidden: 1.0}))
+    if i % 500 == 0:
+        print(i, sess.run(cost, feed_dict={X: trX[start:end], Y: trY[start:end],
+                                            p_keep_input: 1.0, p_keep_hidden: 1.0}))
 # =============================================================================
 
 
@@ -119,16 +121,16 @@ from matplotlib import pyplot as plt
 from matplotlib import dates as dt
 from datetime import datetime
 
-dates = np.array([datetime.strptime(x, '%Y-%m-%d') for x in processed.loc[11:,'Date']])
+dates = np.array([datetime.strptime(x, '%Y-%m-%d') for x in processed.loc[11:, 'Date']])
 dates = dt.date2num(dates)
 
 subs = [None for i in range(4)]
 for i in range(4):
     subs[i] = plt.subplot(221 + i)
 
-    subs[i].plot_date(dates, Ps[:, i], xdate=True, ls='-', label='Prediction',
+    subs[i].plot_date(dates[:], Ps[:, i], xdate=True, ls='-', label='Prediction',
                       lw=.4, ms=.1)
-    subs[i].plot_date(dates, Ys[:, i], xdate=True, ls='-', label='Historic Data',
+    subs[i].plot_date(dates[:], Ys[:, i], xdate=True, ls='-', label='Historic Data',
                       lw=.4, ms=.1)
     subs[i].set_title("Subplot {}".format(i))
     handles, labels = subs[i].get_legend_handles_labels()
