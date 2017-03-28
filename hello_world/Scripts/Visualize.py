@@ -7,8 +7,7 @@ from bokeh.models.layouts import Column
 from math import pi
 
 import os
-
-module_dir = os.path.dirname(__file__)
+from django_world.settings import FILES_DIR
 
 def load_data(path=""):
     # loading processed datas
@@ -50,7 +49,7 @@ def predict(Xs, Ys, Ds, path=""):
 
 
 def plot_feedforward(height=350, width=800, path=""):
-    Ps, Ys, Ds = predict(*load_data(module_dir), path=module_dir)
+    Ps, Ys, Ds = predict(*load_data(FILES_DIR), path=FILES_DIR)
 
     axes = [None for i in range(4)]
     indexes = 'Nasdaq DowJones S&P500 Rates'.split()
