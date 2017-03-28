@@ -10,7 +10,7 @@ import os
 
 def load_data(path=""):
     # loading processed datas
-    processed = pandas.read_csv(os.path.join(path, "processed.csv"), sep=",")
+    processed = pandas.read_csv("processed.csv", sep=",")
     # Creating base computational datas and obtained values
     Xs = np.array([
                       np.concatenate([processed.loc[i:i + 9, ('Nasdaq', 'Dow',
