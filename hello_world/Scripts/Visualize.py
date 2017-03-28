@@ -53,8 +53,8 @@ def plot_feedforward(height=350, width=800, path="Model"):
     indexes = 'Nasdaq DowJones S&P500 Rates'.split()
     for i in range(4):
         axes[i] = figure(width=width, height=height, x_axis_type="datetime")
-        axes[i].line(Ds, Ps[:, i], color='navy', alpha=0.8)
-        axes[i].line(Ds, Ys[:, i], color='red', alpha=0.9)
+        axes[i].line(Ds, Ps[:, i], legend="Predictions", color='navy', alpha=0.8)
+        axes[i].line(Ds, Ys[:, i], legend="Historic Data", color='red', alpha=0.9)
         axes[i].xaxis.formatter = DatetimeTickFormatter(
             days=["%d %B %Y"],
             months=["%d %B %Y"],
