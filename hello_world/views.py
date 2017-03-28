@@ -1,6 +1,7 @@
 # from django.shortcuts import get_object_or_404, render
 # from django.http import HttpResponseRedirect
 # from django.urls import reverse
+import os
 
 # Django
 from django.views import generic
@@ -35,7 +36,7 @@ class IndexView(generic.base.TemplateView):
         context = super(IndexView, self).get_context_data(**kwargs)
 
         indexes = 'Nasdaq DowJones S&P500 Rates'.split()
-        plots = Visualize.plot_feedforward(path="hello_world/static/hello_world/")
+        plots = Visualize.plot_feedforward(path='hello_world/Scripts/')
 
         for index in indexes:
             script, div = components(plots[index], CDN)
