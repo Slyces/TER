@@ -49,7 +49,7 @@ def predict(Xs, Ys, Ds, path=""):
     return np.array(Ps), Ys, Ds
 
 
-def plot_feedforward(height=350, width=800):
+def plot_feedforward(height=350, width=800, path=""):
     Ps, Ys, Ds = predict(*load_data(module_dir), path=module_dir)
 
     axes = [None for i in range(4)]
