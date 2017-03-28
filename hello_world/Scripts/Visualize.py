@@ -11,6 +11,7 @@ from django_world.settings import FILES_DIR
 
 def load_data(path=""):
     # loading processed datas
+    print(os.listdir(path))
     processed = pandas.read_csv(os.path.join(path, "processed.csv"), sep=",")
     # Creating base computational datas and obtained values
     Xs = np.array([
