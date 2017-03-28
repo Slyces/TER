@@ -12,7 +12,7 @@ module_dir = os.path.dirname(__file__)
 
 def load_data(path=""):
     # loading processed datas
-    processed = pandas.read_csv(path + "processed.csv", sep=",")
+    processed = pandas.read_csv(os.path.join(path, "processed.csv"), sep=",")
     # Creating base computational datas and obtained values
     Xs = np.array([
                       np.concatenate([processed.loc[i:i + 9, ('Nasdaq', 'Dow',
@@ -31,8 +31,8 @@ def load_data(path=""):
 def restore_model(path=""):
     sess = tf.Session()
 
-    saver = tf.train.import_meta_graph(path + 'Model/my-model.meta')
-    saver.restore(sess, tf.train.latest_checkpoint(path + 'Model/./'))
+    saver = tf.train.import_meta_graph(os.path.join(path, 'Model/my-model.meta'))
+    saver.restore(sess, tf.train.latest_checkpoint(os.path.join(path, 'Model/./')))
     return sess, tf.get_collection('model'), \
            tf.get_collection('placeholders')
 
