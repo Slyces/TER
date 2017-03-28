@@ -6,6 +6,9 @@ from bokeh.models import DatetimeTickFormatter
 from bokeh.models.layouts import Column
 from math import pi
 
+import os
+
+module_dir = os.path.dirname(__file__)
 
 def load_data(path=""):
     # loading processed datas
@@ -46,8 +49,8 @@ def predict(Xs, Ys, Ds, path=""):
     return np.array(Ps), Ys, Ds
 
 
-def plot_feedforward(height=350, width=800, path="Model"):
-    Ps, Ys, Ds = predict(*load_data(path), path=path)
+def plot_feedforward(height=350, width=800):
+    Ps, Ys, Ds = predict(*load_data(module_dir), path=module_dir)
 
     axes = [None for i in range(4)]
     indexes = 'Nasdaq DowJones S&P500 Rates'.split()
