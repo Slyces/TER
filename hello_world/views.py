@@ -35,7 +35,7 @@ class IndexView(generic.base.TemplateView):
     def get_context_data(self, *args, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
 
-        indexes = 'Nasdaq DowJones S&P500 Rates'.split()
+        indexes = 'Nasdaq DowJones SnP500 Rates'.split()
         plots = Visualize.plot_feedforward(path='hello_world/Scripts/')
 
         for index in indexes:

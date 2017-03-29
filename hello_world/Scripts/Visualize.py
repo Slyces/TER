@@ -8,9 +8,11 @@ from math import pi
 
 import os
 
+module_dir = os.path.dirname(__file__)
+
 def load_data(path=""):
     # loading processed datas
-    processed = pandas.read_csv(path, sep=",")
+    processed = pandas.read_csv(path + "processed.csv", sep=",")
     # Creating base computational datas and obtained values
     Xs = np.array([
                       np.concatenate([processed.loc[i:i + 9, ('Nasdaq', 'Dow',
@@ -26,16 +28,17 @@ def load_data(path=""):
     return Xs, Ys, dates
 
 
-def restore_model(directory=""):
+def restore_model(path=""):
     sess = tf.Session()
-    saver = tf.train.import_meta_graph(os.path.join(directory, 'Model/my-model.meta'))
-    saver.restore(sess, tf.train.latest_checkpoint(os.path.join(directory, 'Model/./')))
+
+    saver = tf.train.import_meta_graph(path + 'my-model.meta')
+    saver.restore(sess, tf.train.latest_checkpoint(path + './'))
     return sess, tf.get_collection('model'), \
            tf.get_collection('placeholders')
 
 
-def predict(Xs, Ys, Ds, directory=""):
-    sess, model, (X, Y, p_ki, p_kh) = restore_model(directory=path)
+def predict(Xs, Ys, Ds, path=""):
+    sess, model, (X, Y, p_ki, p_kh) = restore_model(path=path)
 
     Ps = []
     for i in range(len(Xs)):
@@ -46,12 +49,12 @@ def predict(Xs, Ys, Ds, directory=""):
     return np.array(Ps), Ys, Ds
 
 
-def plot_feedforward(height=350, width=800,
-                     processed_path="", model_dir=""):
-    Ps, Ys, Ds = predict(*load_data(path=processed_path), directory=model_dir)
+def plot_feedforward(height=350, width=800, path=""):
+    directory = os.path.join(module_dir, "Model/")
+    Ps, Ys, Ds = predict(*load_data(directory), path=directory)
 
     axes = [None for i in range(4)]
-    indexes = 'Nasdaq DowJones S&P500 Rates'.split()
+    indexes = 'Nasdaq DowJones SnP500 Rates'.split()
     for i in range(4):
         axes[i] = figure(width=width, height=height, x_axis_type="datetime")
         axes[i].line(Ds, Ps[:, i], legend="Predictions", color='navy', alpha=0.8)

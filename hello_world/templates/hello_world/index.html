@@ -20,32 +20,33 @@
                 <div class="ui segment inverted header">
                     <h3 class="chapter header">I -- Introduction</h3>
                 </div>
-                <p>Lol mdr !! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac lorem elit.
-                    Proin in vestibulum ipsum. Nulla eget velit vulputate felis luctus consequat.
-                    Aliquam dolor eros, rutrum sed felis sit amet, suscipit laoreet dui. Nulla fa
-                    cilisi. Sed porttitor commodo leo, non pharetra ipsum condimentum a. Fusce au
-                    ctor eget lacus vel faucibus. Mauris rhoncus laoreet aliquam. Sed a porttitor
-                    quam. Nulla facilisi. Maecenas lobortis ac purus at cursus. Cras feugiat tris
-                    tique consequat. </p>
-                <div class="ui segment raised">
-                    <code class="">
-                        def system(self, v: float, w: float, n: int = 1, h: float = None):
-                            h = self['h'] if h is None else h
-                            if n == 1:
-                                return np.array((
-                                    v + h * (-(1 / 3) * pow(v, 3) + v - w + self['I']),
-                                    w + h * 0.08 * (v - 0.8 * w + 0.7)
-                                ))
-                            elif n > 1:
-                                points = [self.system(v, w)]
-                                for i in range(n - 1):
-                                    points.append(self.system(*points[-1]))
-                                return np.array(points)
-                    </code>
+                <p>
+                    Ce qui suit est basé sur l'article suivant : <a href="https://www.codeproject.com/articles/175777/financial-predictor-via-neural-network">
+                    Financial predictor via Neural Network
+                </a></p>
+                <p>
+                    L'article n'est pas vraiment clair sur toutes ses méthodes, et rédigé dans un langage de programmation que nous ne connaissons pas. En conséquence, les résultats que vous voyez ci-dessous sont issus des données trouvées dans son code source, reformatées car elles n'étaient pas homogènes. Nous avons ensuite suivi sa méthode de transformation des données dans [0, 1]. La forme du réseau était au départ celle qu'il a choisi, c'est à dire 40 neuronnes d'inputs, deux couches profondes de 41 neuronnes, et 4 neuronnes de sortie. Cependant, une seule couche à 20 neuronnes donne de meilleurs résultats, nous l'avons donc préconisée pour la vitesse de calcul. Ensuite, nous avons utilisé la même fonction d'activation que lui. Pour l'algorithme d'optimisation, les librairies python disponnibles n'implémentent pas celui qu'il a utilisé, à savoir une variante de la descente du Gradient, nous avons donc utilisé une descente du Gradient. Il ne précise pas sa fonction de coût, nous avons donc pris la fonction classique de la somme des écarts au carré. Celà nous donne une erreur finale de 0.023 environ là où il dit atteindre 0.008.
+                </p>
+                <div class="ui inverted center segment raised">
+                    <h4 class="ui center aligned header">
+                        Prédictions du DowJones, Nasdaq, S&P500 et des Intêrets banquiers
+                    </h4>
                 </div>
                 <div class="ui segment raised center aligned">
                     <h3 class="ui center aligned header">Dow Jones</h3>
                     {{ DowJones_div|safe }}
+                </div>
+                <div class="ui segment raised center aligned">
+                    <h3 class="ui center aligned header">Nasdaq</h3>
+                    {{ Nasdaq_div|safe }}
+                </div>
+                <div class="ui segment raised center aligned">
+                    <h3 class="ui center aligned header">S&P500</h3>
+                    {{ SnP500_div|safe }}
+                </div>
+                <div class="ui segment raised center aligned">
+                    <h3 class="ui center aligned header">Rates</h3>
+                    {{ Rates_div|safe }}
                 </div>
                 <p>Fusce ac ipsum id felis tempor aliquet. Nam et porttitor velit. Curabitur accu
                     msan arcu leo, ut scelerisque enim aliquet ut. Donec accumsan scelerisque eui
@@ -124,4 +125,7 @@
         </div>
     </div>
     {{ DowJones_script|safe }}
+    {{ Nasdaq_script|safe }}
+    {{ SnP500_script|safe }}
+    {{ Rates_script|safe }}
 {% endblock %}
