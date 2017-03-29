@@ -56,15 +56,35 @@ def plot_feedforward(height=350, width=800, path=""):
     axes = [None for i in range(4)]
     indexes = 'Nasdaq DowJones SnP500 Rates'.split()
     for i in range(4):
-        axes[i] = figure(width=width, height=height, x_axis_type="datetime")
-        axes[i].line(Ds, Ps[:, i], legend="Predictions", color='navy', alpha=0.8)
-        axes[i].line(Ds, Ys[:, i], legend="Historic Data", color='red', alpha=0.9)
+        TOOLS = 'pan,wheel_zoom,box_zoom,resize,reset'
+
+        if i == 0:
+            axes[i] = figure(width=width, height=height, x_axis_type="datetime", tools=TOOLS)
+        else:
+            axes[i] = figure(width=width, height=height, x_axis_type="datetime", tools=TOOLS,
+                             x_range=axes[0].x_range, y_range=axes[0].y_range)
+
+        options = {
+            'line_join' : 'round'
+        }
+
+        axes[i].line(Ds, Ps[:, i], legend="Predictions", line_color='navy', **options)
+        axes[i].line(Ds, Ys[:, i], legend="Historic Data", color='red', **options)
+
+
+
         axes[i].xaxis.formatter = DatetimeTickFormatter(
             days=["%d %B %Y"],
             months=["%d %B %Y"],
             years=["%d %B %Y"],
         )
         axes[i].xaxis.major_label_orientation = pi / 4
+        axes[i].xaxis.bounds = (Ds[0], Ds[-1])
+        axes[i].yaxis.bounds = (0, 1)
+
+        axes[i].legend.border_line_width = 1
+        axes[i].legend.border_line_color = "black"
+        axes[i].legend.border_line_alpha = 0.5
 
     return dict([(indexes[i], axes[i]) for i in range(4)])
 
