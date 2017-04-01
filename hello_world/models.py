@@ -11,17 +11,13 @@ from django.utils import timezone
 # Feel free to rename the models, but don't rename db_table values or field names.
 
 
-class Messages(models.Model):
+class HistoricIndexes(models.Model):
     id = models.IntegerField(db_column='Id', primary_key=True, blank=True)
-    origin = models.TextField(db_column='Origin', blank=True, null=True)
     datetime = models.DateTimeField(db_column='DateTime', blank=True, null=True)
-    user = models.CharField(max_length=200, db_column='User', blank=True, null=True)
-    content = models.TextField(db_column='Content', blank=True, null=True)
-    block = models.IntegerField(db_column='Block', blank=True)
+    nasqad = models.DecimalField(db_column='Nasdaq', max_digits=20, decimal_places=19)
+    dowjones = models.DecimalField(db_column='Dowjones', max_digits=20, decimal_places=19)
+    snp500 = models.DecimalField(db_column='SnP500', max_digits=20, decimal_places=19)
+    rates = models.DecimalField(db_column='Rates', max_digits=20, decimal_places=19)
 
     class Meta:
-        db_table = 'Messages'
-
-    def __str__(self):
-        return '[{date}] {user} : {message}'.format(date=self.datetime,
-                                                    user=self.user, message=self.content)
+        db_table = 'HistoricIndexes'

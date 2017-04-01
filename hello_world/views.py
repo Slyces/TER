@@ -5,7 +5,7 @@ import os
 
 # Django
 from django.views import generic
-from hello_world.models import Messages
+from hello_world.models import HistoricIndexes
 from django.shortcuts import render
 
 # Bokeh
@@ -30,17 +30,16 @@ def simple_chart(request):
 class IndexView(generic.base.TemplateView):
     template_name = 'hello_world/index.html'
     context_object_name = 'context'
-    model = Messages
 
     def get_context_data(self, *args, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
 
-        indexes = 'Nasdaq DowJones SnP500 Rates'.split()
-        plots = Visualize.plot_feedforward(path='hello_world/Scripts/')
-
-        for index in indexes:
-            script, div = components(plots[index], CDN)
-            context[index + '_script'] = script
-            context[index + '_div'] = div
+        # indexes = 'Nasdaq DowJones SnP500 Rates'.split()
+        # plots = Visualize.plot_feedforward(path='hello_world/Scripts/')
+        #
+        # for index in indexes:
+        #     script, div = components(plots[index], CDN)
+        #     context[index + '_script'] = script
+        #     context[index + '_div'] = div
 
         return context
