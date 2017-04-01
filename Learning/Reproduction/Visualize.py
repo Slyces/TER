@@ -7,7 +7,7 @@ from bokeh.models.layouts import Column
 from math import pi
 
 
-def load_data(path="Model"):
+def load_data(path="Model/"):
     # loading processed datas
     processed = pandas.read_csv(path + "processed.csv", sep=",")
     # Creating base computational datas and obtained values
@@ -25,11 +25,11 @@ def load_data(path="Model"):
     return Xs, Ys, dates
 
 
-def restore_model():
+def restore_model(path="Model/"):
     sess = tf.Session()
 
-    saver = tf.train.import_meta_graph('my-model.meta')
-    saver.restore(sess, tf.train.latest_checkpoint('./'))
+    saver = tf.train.import_meta_graph(path + 'my-model.meta')
+    saver.restore(sess, tf.train.latest_checkpoint(path + './'))
     return sess, tf.get_collection('model'), \
            tf.get_collection('placeholders')
 
@@ -46,7 +46,7 @@ def predict(Xs, Ys, Ds):
     return np.array(Ps), Ys, Ds
 
 
-def plot_feedforward(height=350, width=800, path="Model"):
+def plot_feedforward(height=350, width=800, path="Model/"):
     Ps, Ys, Ds = predict(*load_data(path))
 
     axes = [None for i in range(4)]
@@ -68,5 +68,5 @@ def plot_feedforward(height=350, width=800, path="Model"):
 
 if __name__ == '__main__':
     output_file("datetime.html")
-    p = plot_feedforward()
+    p = plot_feedforward(path="")
     show(p)
