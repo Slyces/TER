@@ -11,46 +11,44 @@ class FeedForward(Model.NeuralNetwork):
         """
         assert len(w_h) >= 2
         for i in range(len(w_h) - 1):
-            print(i)
-            last_layer = self.vars['h%s' % (i - 1)] if i > 0 else X
+            last_layer = self.ops['h%s' % (i - 1)] if i > 0 else X
             if w_b:
-                self.vars['h%s' % i] = tf.add(
+                self.ops['h%s' % i] = tf.add(
                     tf.matmul(last_layer, w_h[i]), w_b[i])
             else:
-                self.vars['h%s' % i] = tf.matmul(last_layer, w_h[i])
+                self.ops['h%s' % i] = tf.matmul(last_layer, w_h[i])
         if w_b:
-            self.vars['model'] = tf.add(
-                tf.matmul(self.vars['h%s' % (len(w_h) - 2)], w_h[-1]), w_b[-1])
+            self.ops['model'] = tf.add(
+                tf.matmul(self.ops['h%s' % (len(w_h) - 2)], w_h[-1]), w_b[-1])
         else:
-            self.vars['model'] = tf.matmul(self.vars['h%s' % (len(w_h) - 2)], w_h[-1])
+            self.ops['model'] = tf.matmul(self.ops['h%s' % (len(w_h) - 2)], w_h[-1])
 
     def build_model(self):
 
-        self.vars['X'] = tf.placeholder("float", [None, 40], name="X")
-        self.vars['Y'] = tf.placeholder("float", [None, 4], name="Y")
+        self.placeholders['X'] = tf.placeholder("float", [None, 40], name="X")
+        self.placeholders['Y'] = tf.placeholder("float", [None, 4], name="Y")
 
-        w_h = [
-            self.init_weights([40, 20]),
-            self.init_weights([20, 4])
-        ]
+        self.vars['w_0'] = self.init_weights([40, 20])
+        self.vars['w_o'] = self.init_weights([20, 4])
 
-        w_b = [
-            tf.Variable(tf.zeros([20])),
-            tf.Variable(tf.zeros([4]))
-        ]
+        self.vars['b_0'] = tf.Variable(tf.zeros([20]))
+        self.vars['b_o'] = tf.Variable(tf.zeros([4]))
 
-        self.create_model(self.vars['X'], w_h, w_b)
+        w_h = [self.vars['w_0'], self.vars['w_o']]
+        w_b = [self.vars['b_0'], self.vars['b_o']]
 
-        self.vars['cost'] = tf.reduce_sum(tf.square(self.vars['model'] - self.vars['Y']))
-        self.vars['train'] = tf.train.GradientDescentOptimizer(0.001).minimize(self.vars['cost'])
+        self.create_model(self.placeholders['X'], w_h, w_b)
+
+        self.ops['cost'] = tf.reduce_sum(tf.square(self.ops['model'] - self.placeholders['Y']))
+        self.ops['train'] = tf.train.GradientDescentOptimizer(0.001).minimize(self.ops['cost'])
 
     def performance(self):
-        return str(self.sess.run(self.vars['cost'], feed_dict={self.vars['X']: self.data['teX'],
-                                                               self.vars['Y']: self.data['teY']}))
+        return str(self.sess.run(self.ops['cost'], feed_dict={self.placeholders['X']: self.data['teX'],
+                                                               self.placeholders['Y']: self.data['teY']}))
 
     def train_batch(self, start, end):
-        self.sess.run(self.vars['train'], feed_dict={self.vars['X']: self.data['TrX'][start:end],
-                                                     self.vars['Y']: self.data['TrY'][start:end]})
+        self.sess.run(self.ops['train'], feed_dict={self.placeholders['X']: self.data['trX'][start:end],
+                                                     self.placeholders['Y']: self.data['trY'][start:end]})
 
     def gather_data(self):
         processed = pandas.read_csv("processed.csv", sep=",")
@@ -71,3 +69,4 @@ class FeedForward(Model.NeuralNetwork):
 
 if __name__ == '__main__':
     feed = FeedForward('memorry/my-model')
+    print(feed.train(10000, 10, perf_freq=100, new=False))

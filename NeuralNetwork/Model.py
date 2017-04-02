@@ -12,11 +12,12 @@ class NeuralNetwork(object):
         self.path = save_path
         self.sess = tf.Session()
         self.vars = {}  # dict to store inner variables of the model
+        self.ops = {}
+        self.placeholders = {}
         self.data = {}
-        self.build_model()
-        print(self.vars)
-        self.saver = tf.train.Saver(self.vars)
         self.split_data(*self.gather_data())
+        self.build_model()
+        self.saver = tf.train.Saver(self.vars)
 
     def create_model(self, *args):
         """
@@ -49,7 +50,7 @@ class NeuralNetwork(object):
         """ Implements the training of one batch """
         raise NotImplementedError
 
-    def train(self, n: int, train_len, batches: int = 1,
+    def train(self, n: int, batches: int = 1,
               save_freq: int = 0, perf_freq: int= 0,new=True):
         """
         Method for training the network
@@ -61,7 +62,8 @@ class NeuralNetwork(object):
         else:
             self.load_model()
         for i in range(n):
-            for start, end in zip(range(0, train_len, batches), range(batches, train_len + 1, batches)):
+            for start, end in zip(range(0, len(self.data['trX']), batches),
+                                  range(batches, len(self.data['trX']) + 1, batches)):
                 self.train_batch(start, end)
             if save_freq and i % save_freq == 0:
                 self.save_model()
