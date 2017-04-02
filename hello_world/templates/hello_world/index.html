@@ -29,6 +29,7 @@
                 <div class="ui segment inverted header">
                     <h3 class="chapter header" align="center">I - Problématique</h3>
                 </div>
+                <br />
                 <p>
                     Est-ce que les réseaux de neurones permettent une prédiction des dynamiques financières? <br />
                     Si oui avec quelle efficacité. <br />
@@ -38,29 +39,89 @@
                     <br />
                     Quelle structure adopter pour le réseau de neuronne?
                 </p>
+                <br />
 
 
                 <div class="ui segment inverted header">
-                    <h3 class="chapter header" align="center">II - Méthodologie :  </h3>
+                    <h3 class="chapter header" align="center">II - Méthodologie : </h3>
                 </div>
+                <br />
                 <p>
-                    Dans un premier temps nous avons parcouru plusieurs articles financiers et scientifiques relatif à la dynamique financière et aux réseaux de neurones afin d’avoir une meilleure compréhension globale du sujet et de ses implications.
-                    Par la suite avons suivi des tutoriels pour nous former sur certaines librairies pythons (tel que TensorFlow) car leurs usages facilitent grandement la création et modification de réseau de neurones.
+                    Dans un premier temps nous avons parcouru plusieurs articles financiers et scientifiques relatif à la dynamique financière et aux réseaux de neurones, afin d’avoir une meilleure compréhension globale du sujet et de ses implications. <br />
+                    Par la suite avons suivi des tutoriels pour nous former sur certaines librairies pythons (tel que TensorFlow) car leur usage facilite grandement la création et modification de réseau de neurones. <br />
                     Nous avons effectué des tests sur les réseaux de neurones en nous basant sur des systèmes minimalistes afin d’en maitriser l’usage.
-                    Une fois la partie technique acquise, nous avons pu concevoir une première ébauche d’un vrai réseau de neurone basique utilisant des données boursières (récupéré sur Google finance). Mais celui-ci n’était qu’une simple prévision basée sur une analyse statistique des valeurs passées.
+                    Une fois la partie technique acquise, nous avons pu concevoir une première ébauche d’un vrai réseau de neurone basique utilisant des données boursières (récupéré sur Google finance). <br />
+                    Mais celui-ci n’était qu’une simple prévision basée sur une analyse statistique des valeurs passées.
+                    <br />
+                    <br />
                 </p>
 
                 <div class="ui segment inverted header">
                     <h3 class="chapter header" align="center">III - Généralité sur les réseaux de neuronnes :  </h3>
                 </div>
+                <br />
                 <p>
+                    Les réseaux de neuronnes artificiels sont des ensembles d'algorithmes dont le fonctionnement général s'inspire d'un modèle simplifié du fonctionnement des neuronnes. <br />
+                    De ce fait, ils permetent de reproduire certaines fonctions du cerveau, comme la mémorisation associative ou l'apprentissage par l'exemple. <br />
+                    <br />
                     Utilité des réseaux de neurones artificiels : <br />
                     A partir d’observations limitées, tirer des généralisations plausibles via un procédé inductif. <br />
                     <br />
                     Un réseau de neurone est composé de plusieurs couches, chacune composées d’un ou plusieurs nœuds (neurones). <br />
                     Le nombre de ces couches varient suivant le modèle adopté, mais il existe 3 couches principales.
+                    <ol>
+                        <li> Les données en entré (input layer)</li>
+                        <br />
+                        <li> Les couches cachés (hidden layer x) </li>
+                        <br />
+                        <li> Les données de sortie (output layer)</li>
+                        <br />
+                    </ol>
+                    <img src="{% static 'hello_world/images/neural.jpg' %}" alt="Picture of neural network" style="width:750px; height:250px;" />
+                </p>
+                <br />
+                <br />
+
+                <p> <ul>
+                        <li>La première couche reçoit les données. <br />
+                        Il est très important de bien les choisirs au préalable car elles régissent la qualité de l’apprentissage et donc de la pertinence des résultats que l’on obtiendra en sortie.</li>
+                        <br />
+                        <li>Les couches internes effectuent des traitements sur les informations.<br />
+                            Leurs buts est d'apprendre à trier les données, afin de parvenir à un filtrage pour ne sélectionner que les meilleures données qui se retrouveront en sortie.</li>
+                            <br />
+                        <li>La couche de sortie. <br />
+                            Elle contient tout simplement les données attendues, par exemple la prédiction d'une valeur.
+                        </li>
+                        <br />
+                        <br />
+                    </ul>
                 </p>
 
+                <div class="ui segment inverted header">
+                    <h3 class="chapter header" align="center">IV - Fonctionnement des réseaux de neuronnes :  </h3>
+                </div>
+
+                <p>
+                    <img src="{% static 'hello_world/images/neuroModel.png' %}" alt="Picture of neural network" style="width:750px; height:250px;" /> <br />
+                    <br />
+                    Chaque nœud contient une valeur, qui sera multipliée par un poids lors du passage au nœud suivant. <br />
+                    Un poid reflète la plasticité synaptique présente dans notre cerveau. Lorsque l'action effectuée à permit de progresser par rapport à un but, <br />
+                    cette plasticité se renforce (le poid augmente), si elle fait regrésser, la plasticité s'affaiblie (le poid diminue). <br />
+                    La valeur des nœuds internes seront ainsi constitués de la somme des valeurs des nœuds précédents multipliés par les poids associés.
+                    <br />
+                    <br />
+                    Les valeurs peuvent être représentées par l’équation suivante : <br />
+                    <img src="{% static 'hello_world/images/Function.png' %}" alt="Picture of neural network" style="width:125px; height:75px;" /> <br />
+                    Où G() est la fonction d’agrégation, Wi sont les poids, et Xi les valeurs initiales. <br />
+                    <br />
+                    Une fois les nouvelles valeurs calculées, une fonction d’activation est lancée afin de vérifier la qualité des informations. <br />
+                    Cette fonction doit renvoyer un entier proche de 1 si l’information semble correcte, et proche de zéro dans le cas inverse (intervalle [0,1]). <br />
+                    Par exemple, si les fonctions d'activations sont linéaires, le réseau est alors l'équivalent d'une régression multilinéaire.
+                    <br />
+
+
+
+                </p>
         </div>
     </div>
     {{ DowJones_script|safe }}
