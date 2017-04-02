@@ -5,7 +5,6 @@ from django.shortcuts import render
 
 # Bokeh
 from bokeh.plotting import figure
-from bokeh.resources import CDN
 from bokeh.embed import components
 from hello_world.Scripts import plotting
 
@@ -14,7 +13,7 @@ def simple_chart(request):
     plot = figure()
     plot.circle([1, 2], [3, 4])
 
-    script, div = components(plot, CDN)
+    script, div = components(plot)
 
     print(script, div)
 
@@ -29,12 +28,12 @@ class IndexView(generic.base.TemplateView):
     def get_context_data(self, *args, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
 
-        indexes = 'Nasdaq DowJones SnP500 Rates'.split()
         plots = plotting.plot_feedforward('1')
 
-        for index in indexes:
-            script, div = components(plots[index], CDN)
-            context[index + '_script'] = script
-            context[index + '_div'] = div
+        script, divs = components(plots)
+        context['script_bokeh'] = script
+
+        for index in divs:
+            context[index + '_div'] = divs[index]
 
         return context
