@@ -1,8 +1,3 @@
-# from django.shortcuts import get_object_or_404, render
-# from django.http import HttpResponseRedirect
-# from django.urls import reverse
-import os
-
 # Django
 from django.views import generic
 from hello_world.models import HistoricIndexes
@@ -12,7 +7,7 @@ from django.shortcuts import render
 from bokeh.plotting import figure
 from bokeh.resources import CDN
 from bokeh.embed import components
-from hello_world.Scripts import Visualize
+from hello_world.Scripts import plotting
 
 
 def simple_chart(request):
@@ -34,12 +29,12 @@ class IndexView(generic.base.TemplateView):
     def get_context_data(self, *args, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
 
-        # indexes = 'Nasdaq DowJones SnP500 Rates'.split()
-        # plots = Visualize.plot_feedforward(path='hello_world/Scripts/')
-        #
-        # for index in indexes:
-        #     script, div = components(plots[index], CDN)
-        #     context[index + '_script'] = script
-        #     context[index + '_div'] = div
+        indexes = 'Nasdaq DowJones SnP500 Rates'.split()
+        plots = plotting.plot_feedforward('1')
+
+        for index in indexes:
+            script, div = components(plots[index], CDN)
+            context[index + '_script'] = script
+            context[index + '_div'] = div
 
         return context
