@@ -30,10 +30,6 @@ class IndexView(generic.base.TemplateView):
 
         plots = plotting.plot_feedforward('1')
 
-        script, divs = components(plots)
-        context['script_bokeh'] = script
-
-        for index in divs:
-            context[index + '_div'] = divs[index]
+        context['script_bokeh'], context['divs'] = components(plots)
 
         return context
