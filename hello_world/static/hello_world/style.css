@@ -1,4 +1,3 @@
-/* Divers */
 .chapter.segment {
     left: 10%;
     width: 80%;
@@ -45,6 +44,20 @@ body {
 .ui.footer.segment {
     margin: 5em 0em 0em;
     padding: 5em 0em;
+}
+
+h5{
+    font-family: Impact;
+    color: indigo;
+    font-weight: normal;
+    font-size: x-large;
+}
+
+h4{
+    font-family:Impact;
+    color: white;
+    font-weight: normal;
+    font-size:xx-large;
 }
 
 /* Menu */
