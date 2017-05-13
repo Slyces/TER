@@ -45,3 +45,17 @@ body {
     margin: 5em 0em 0em;
     padding: 5em 0em;
 }
+
+h5{
+    font-family: Impact;
+    color: indigo;
+    font-weight: normal;
+    font-size: x-large;
+}
+
+h4{
+    font-family:Impact;
+    color: white;
+    font-weight: normal;
+    font-size:xx-large;
+}
