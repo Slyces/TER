@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="dbSrc:///b7ec5d8e/82152f5b-1adb-4db7-b4dc-be2ca78115e7" dialect="SQLite" />
-    <file url="dbSrc:///b7ec5d8e/a1ec81f7-fe80-4ed7-a39a-9202fafa8805" dialect="SQLite" />
+    <file url="file://$PROJECT_DIR$/hello_world/Scripts/AIC.py" dialect="SQLite" />
   </component>
 </project>

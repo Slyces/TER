@@ -35,3 +35,11 @@ class PredictedIndexes(models.Model):
 
     class Meta:
         db_table = 'predicted_indexes'
+
+class Snp500(models.Model):
+    id = models.IntegerField(db_column='Id', primary_key=True, blank=True)
+    datetime = models.DateTimeField(db_column='DateTime')
+    closing = models.DecimalField(db_column='Closing', max_digits=30, decimal_places=25)
+
+    class Meta:
+        db_table = 'snp500'
