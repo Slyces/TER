@@ -8,18 +8,10 @@ from bokeh.plotting import figure
 from bokeh.embed import components
 from hello_world.Scripts import plotting
 
-
-def simple_chart(request):
-    plot = figure()
-    plot.circle([1, 2], [3, 4])
-
-    script, div = components(plot)
-
-    print(script, div)
-
-    return render(request, "hello_world/simple_chart.html",
-                  {"script": script, "div": div})
-
+def MetaChapter(file):
+    class Chapter(generic.base.TemplateView):
+        template_name = 'hello_world/' + file + '.html'
+    return Chapter
 
 class IndexView(generic.base.TemplateView):
     template_name = 'hello_world/index.html'
@@ -33,3 +25,5 @@ class IndexView(generic.base.TemplateView):
         context['script_bokeh'], context['divs'] = components(plots)
 
         return context
+
+concepts = MetaChapter('concepts')
