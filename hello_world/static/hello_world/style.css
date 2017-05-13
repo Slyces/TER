@@ -79,3 +79,18 @@ h4{
     transition: box-shadow 0.5s ease,
     padding 0.5s ease;
 }
+
+/* Fonts */
+h1 {
+    color: #5a5a5a;
+	text-align : center;
+	margin-top: 30px;
+	margin-bottom: -30px;
+	font: small-caps 280%/280% fantasy;
+}
+
+h2 {
+	color: #5a5a5a;
+	text-align : left;
+    font: small-caps 240%/240% fantasy;
+}
