@@ -143,13 +143,13 @@
                 <h3 class="chapter header" align="center">V - Prédictions d'index financiers </h3>
             </div>
 
-            {% for index in divs %}
-                <div class="ui segment raised">
-                    <h3 class="header" align="center">{{ index }}</h3>
-                    {{ divs|key:index|safe }}
-                </div>
-            {% endfor %}
+{#            {% for index in divs %}#}
+{#                <div class="ui segment raised">#}
+{#                    <h3 class="header" align="center">{{ index }}</h3>#}
+{#                    {{ divs|key:index|safe }}#}
+{#                </div>#}
+{#            {% endfor %}#}
         </div>
     </div>
-    {{ script_bokeh|safe }}
+{#    {{ script_bokeh|safe }}#}
 {% endblock %}

@@ -33,13 +33,12 @@
     <link rel="stylesheet" type="text/css" href="{% static 'hello_world/Semantic-UI/components/sticky.min.css' %}">
 
     <link rel="stylesheet" type="text/css" href="{% static 'hello_world/style.css' %}">
-    <script src="{% static 'hello_world/myscript.js' %}"></script>
 
     <script src="{% static 'hello_world/Semantic-UI/jquery.min.js' %}"></script>
-    <script src="{% static 'hello_world/Semantic-UI/components/transition.js' %}"></script>
-    <script src="{% static 'hello_world/Semantic-UI/components/dropdown.js' %}"></script>
-    <script src="{% static 'hello_world/Semantic-UI/components/visibility.js' %}"></script>
-    <script src="{% static 'hello_world/Semantic-UI/components/sticky.js' %}"></script>
+    <script src="{% static 'hello_world/Semantic-UI/components/transition.min.js' %}"></script>
+    <script src="{% static 'hello_world/Semantic-UI/components/dropdown.min.js' %}"></script>
+    <script src="{% static 'hello_world/Semantic-UI/components/visibility.min.js' %}"></script>
+    <script src="{% static 'hello_world/Semantic-UI/components/sticky.min.js' %}"></script>
 
     {# Bokeh script #}
     <script src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.4.min.js"></script>
@@ -50,34 +49,25 @@
 </head>
 
 <header>
-    <div class="ui borderless main menu" style="">
+    <div class="ui borderless main menu fixed top">
         <div class="ui text container">
-            <div href="#" class="header item">
+            <div id="titre_menu" class="header item left floated">
                 <img class="logo" src="{% static 'hello_world/images/icon.png' %}">
             </div>
-            <div href="#" class="header item">
-                Prédiction des dynamiques financières
+            <div class="header item left floated">
+                <a href="{% url 'hello_world:index' %}" id="titre_menu">
+                    Prédiction des dynamiques financières
+                </a>
             </div>
-            <a href="#" class="item">Blog</a>
-            <a href="#" class="item">Articles</a>
-            <a href="#" class="ui right floated dropdown item" tabindex="0">
-                Dropdown <i class="dropdown icon"></i>
-                <div class="menu" tabindex="-1">
-                    <div class="item">Link Item</div>
-                    <div class="item">Link Item</div>
-                    <div class="divider"></div>
-                    <div class="header">Header Item</div>
-                    <div class="item">
-                        <i class="dropdown icon"></i>
-                        Sub Menu
-                        <div class="menu">
-                            <div class="item">Link Item</div>
-                            <div class="item">Link Item</div>
-                        </div>
-                    </div>
-                    <div class="item">Link Item</div>
+            <div class="ui dropdown item">
+                Naviguer <i class="dropdown icon"></i>
+                <div class="menu">
+                    <a class="item" href="{% url 'hello_world:Concepts' %}">
+                        <img src="{% static 'hello_world/images/test_dropdown.jpg.png' %}">
+                        Introduction aux réseaux de neurones
+                    </a>
                 </div>
-            </a>
+            </div>
         </div>
     </div>
 </header>
@@ -85,6 +75,8 @@
 <body>
 
 {% block content %}{% endblock %}
+
+<script src="{% static 'hello_world/myscript.js' %}"></script>
 
 </body>
 </html>

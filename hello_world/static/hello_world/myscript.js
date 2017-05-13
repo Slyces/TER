@@ -1,12 +1,8 @@
-$(document)
-    .ready(function () {
+// $(document)
+//     .ready(function () {
+//         // pass
+//     })
+// ;
 
-        // fix segment to page on passing
-        $('.header.sticky')
-            .sticky({
-                context: '#chapter1'
-            })
-        ;
-
-    })
-;
+$('.ui.dropdown')
+  .dropdown();
