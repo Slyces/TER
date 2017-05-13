@@ -48,6 +48,40 @@
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 
 </head>
+
+<header>
+    <div class="ui borderless main menu" style="">
+        <div class="ui text container">
+            <div href="#" class="header item">
+                <img class="logo" src="{% static 'hello_world/images/icon.png' %}">
+            </div>
+            <div href="#" class="header item">
+                Prédiction des dynamiques financières
+            </div>
+            <a href="#" class="item">Blog</a>
+            <a href="#" class="item">Articles</a>
+            <a href="#" class="ui right floated dropdown item" tabindex="0">
+                Dropdown <i class="dropdown icon"></i>
+                <div class="menu" tabindex="-1">
+                    <div class="item">Link Item</div>
+                    <div class="item">Link Item</div>
+                    <div class="divider"></div>
+                    <div class="header">Header Item</div>
+                    <div class="item">
+                        <i class="dropdown icon"></i>
+                        Sub Menu
+                        <div class="menu">
+                            <div class="item">Link Item</div>
+                            <div class="item">Link Item</div>
+                        </div>
+                    </div>
+                    <div class="item">Link Item</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</header>
+
 <body>
 
 {% block content %}{% endblock %}
