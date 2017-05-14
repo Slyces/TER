@@ -60,14 +60,6 @@
             </ul>
             </p>
 
-
-
-
-
-
-
-
-
              <div class="ui segment inverted header">
                 <h3 class="chapter header" align="center">II - Transition des données inter-neurones : </h3>
              </div>
@@ -202,11 +194,46 @@
                     <li>La fonction d'activation utilisé. </li>
                     <li>L'algorithme d'apprentissage.</li>
                 </ol>
+            <br />
+            Parmis tous les types de réseaux de neurones, on peut en distinguer trois qui sont le plus couramment utilisé. <br />
+            <ol>
+                <li>Le perceptron : <br />
+                    Il peut-être vu comme le type de réseau de neurone le plus simple, mais le plus utilisé car performant dans beaucoup de domaine. <br />
+                    La taille de ce réseau est fixe. En entrée sont présentes les données servant de base à l'apprentissage. <br/>
+                    Les données vont transitées à travers les mêmes couches de neurones à chaque itération. <br />
+                     Ce type de réseau est souvent utilisé pour la rconnaissance d'image. <br/>
+                     <br/>
+                    <img src="{% static 'hello_world/images/perceptron.png' %}" alt="Picture of a perceptron neural network"
+                     style="width:300px; height:200px;"/>
+                </li>
+                <br/>
+                <li>Le réseau Kohonen : <br />
+                    Ce réseau, aussi appelé carte auto adaptative, est un type de réseau basé sur des méthodes d'apprentissages non-supervisées. <br/>
+                    C'est un type de réseau considéré comme dynamique, car la taille du réseau varie en fonction des itérations, <br/>
+                    des neurones peuvent être créés ou suprimés. <br />
+                    Il est souvent représenté comme une grille rectangulaire allant de 1 à 4 dimmensions. <br/>
+                    Ce type de réseau est principalement utilisé pour cartographier un espace réel (pour étudier la répartition de donnée dans un espace à grande dimmension <br/>
+                    <br/>
+                    <img src="{% static 'hello_world/images/kohonen.gif' %}" alt="Picture of a Kohonen neural network"
+                     style="width:300px; height:200px;"/>
+                </li>
+                <br/>
+                <li>Le réseau de Hopfield : <br/>
+                    Le réseau de neurone de Hopfield représente un réseau de neurone sans structure de couche ni sens de propagation. <br />
+                    De ce fait, il se rapproche plus du fonctionenement du cerveau humain. <br />
+                    Ce genre de réseau est particulièrement adapté pour des problèmes d'associativité (exemple determiner le meilleur couple poids/taille). <br/>
+                    <br />
+                    <img src="{% static 'hello_world/images/hopfield.png' %}" alt="Picture of a Hopfield neural network"
+                     style="width:300px; height:200px;"/>
+                </li>
+                <br/>
+                </li>
+            </ol>
             </p>
 
 
              <div class="ui segment inverted header">
-                <h3 class="chapter header" align="center">X - Les limites des réseaux de neurones : </h3>
+                <h3 class="chapter header" align="center">VI - Les limites des réseaux de neurones : </h3>
             </div>
             <br/>
             <p>
@@ -228,6 +255,8 @@
                 et un but très simple (avancer jusqu'à finir le niveau), prend déjà des dizaines d'heures.<br/>
                 Ainsi, la résolution de problème en temps réèl est exclu.<br/>
             </p>
+            <br />
+            <br/>
 
 
         </div>
