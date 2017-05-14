@@ -1,12 +1,16 @@
 $(document)
     .ready(function () {
+        // Dropdown
+        $('.ui.dropdown')
+            .dropdown();
 
-        // fix segment to page on passing
-        $('.header.sticky')
-            .sticky({
-                context: '#chapter1'
-            })
-        ;
+        // Sticky menu
+        $('.main.menu')
+            .visibility({
+                type: 'fixed'
+            });
 
+        // Scroll up
+        // $('#lol').click($('#menu').animatescroll());
     })
 ;

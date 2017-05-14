@@ -7,19 +7,6 @@
 {% endblock %}
 
 {% block content %}
-    <div class="ui inverted vertical masthead center aligned segment"></div>
-    <div class="ui inverted vertical masthead center aligned segment">
-        <h2 class="ui center aligned header"><br/>Tavaux d'Etudes et de Recherche <br/>
-            <br/>
-            Peut-on prévoir efficacement les dynamiques financières en utilisant les réseaux de neurones artificiels ?
-            <br/>
-            <br/>
-        </h2>
-        <h3 align="center">
-            Par Kalla Nayil, Lassourreuille Simon et Seze Thomas <br/><br/>
-        </h3>
-
-    </div>
 
     <div class="main ui container">
         <div class="chapter content" id="chapter1">
@@ -143,13 +130,13 @@
                 <h3 class="chapter header" align="center">V - Prédictions d'index financiers </h3>
             </div>
 
-            {% for index in divs %}
-                <div class="ui segment raised">
-                    <h3 class="header" align="center">{{ index }}</h3>
-                    {{ divs|key:index|safe }}
-                </div>
-            {% endfor %}
+{#            {% for index in divs %}#}
+{#                <div class="ui segment raised">#}
+{#                    <h3 class="header" align="center">{{ index }}</h3>#}
+{#                    {{ divs|key:index|safe }}#}
+{#                </div>#}
+{#            {% endfor %}#}
         </div>
     </div>
-    {{ script_bokeh|safe }}
+{#    {{ script_bokeh|safe }}#}
 {% endblock %}

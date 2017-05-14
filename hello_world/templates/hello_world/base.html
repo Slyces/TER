@@ -33,24 +33,64 @@
     <link rel="stylesheet" type="text/css" href="{% static 'hello_world/Semantic-UI/components/sticky.min.css' %}">
 
     <link rel="stylesheet" type="text/css" href="{% static 'hello_world/style.css' %}">
-    <script src="{% static 'hello_world/myscript.js' %}"></script>
 
     <script src="{% static 'hello_world/Semantic-UI/jquery.min.js' %}"></script>
-    <script src="{% static 'hello_world/Semantic-UI/components/transition.js' %}"></script>
-    <script src="{% static 'hello_world/Semantic-UI/components/dropdown.js' %}"></script>
-    <script src="{% static 'hello_world/Semantic-UI/components/visibility.js' %}"></script>
-    <script src="{% static 'hello_world/Semantic-UI/components/sticky.js' %}"></script>
+    <script src="{% static 'hello_world/Semantic-UI/components/transition.min.js' %}"></script>
+    <script src="{% static 'hello_world/Semantic-UI/components/dropdown.min.js' %}"></script>
+    <script src="{% static 'hello_world/Semantic-UI/components/visibility.min.js' %}"></script>
+    <script src="{% static 'hello_world/Semantic-UI/components/sticky.min.js' %}"></script>
+
+    {# Latex equations #}
+    <link rel="stylesheet" href="{% static 'hello_world/jqmath.css' %}">
+    <script src="{% static 'hello_world/jqmath.min.js' %}" charset="utf-8"></script>
 
     {# Bokeh script #}
     <script src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.4.min.js"></script>
+
+    {# Animated scrolls #}
+    <script src="{% static 'hello_world/animatescroll.min.js' %}"></script>
 
     {# Google code prettyfier #}
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 
 </head>
+
+<header>
+    <div>
+        <img class="image center main" src="{% static 'hello_world/images/drawing2.svg' %}" style="width: 1000px;">
+    </div>
+    <div class="ui borderless main menu top" id="menu">
+        <div class="ui text container">
+            <div id="titre_menu" class="header item left floated">
+                <img class="logo" src="{% static 'hello_world/images/icon.png' %}">
+            </div>
+            <div class="header item left floated">
+                <a href="{% url 'hello_world:index' %}" id="titre_menu">
+                    Prédiction des dynamiques financières
+                </a>
+            </div>
+            <div class="ui dropdown item">
+                Naviguer <i class="dropdown icon"></i>
+                <div class="menu">
+                    <a class="item" href="{% url 'hello_world:Concepts' %}/#menu">
+                        <img src="{% static 'hello_world/images/concepts_icon.png' %}">
+                        Introduction aux réseaux de neurones
+                    </a>
+                    <a class="item" href="{% url 'hello_world:Finance' %}/#menu">
+                        <img src="{% static 'hello_world/images/finance_icon.png' %}">
+                        Etat de l'art dans la Finance
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
 <body>
 
 {% block content %}{% endblock %}
+
+<script src="{% static 'hello_world/myscript.js' %}"></script>
 
 </body>
 </html>
