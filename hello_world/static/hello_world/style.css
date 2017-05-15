@@ -112,3 +112,9 @@ h3 {
 	text-align : left;
     font: small-caps 170%/170% fantasy;
 }
+
+h4 {
+	color: #5a5a5a;
+	text-align : left;
+    font: small-caps 120%/120% fantasy;
+}
