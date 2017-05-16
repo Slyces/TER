@@ -46,20 +46,6 @@ body {
     padding: 5em 0em;
 }
 
-h5{
-    font-family: Impact;
-    color: indigo;
-    font-weight: normal;
-    font-size: x-large;
-}
-
-h4{
-    font-family:Impact;
-    color: white;
-    font-weight: normal;
-    font-size:xx-large;
-}
-
 /* Menu */
 #titre_menu {
     color: black;
@@ -111,4 +97,10 @@ h3 {
 	color: #5a5a5a;
 	text-align : left;
     font: small-caps 170%/170% fantasy;
+}
+
+h4 {
+	color: #5a5a5a;
+	text-align : left;
+    font: small-caps 140%/140% fantasy;
 }

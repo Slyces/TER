@@ -28,4 +28,5 @@ class IndexView(generic.base.TemplateView):
 
 concepts = MetaChapter('concepts')
 finance = MetaChapter('finance')
+application = MetaChapter('application')
 test = MetaChapter('test')

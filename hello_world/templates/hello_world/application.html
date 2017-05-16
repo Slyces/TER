@@ -1,0 +1,253 @@
+{% extends 'hello_world/base.html' %}
+{% load extras %}
+{% load staticfiles %}
+
+{% block title %}
+    <title>TER Version 2!</title>
+{% endblock %}
+
+{% block content %}
+    <div class="main ui container">
+        <div class="chapter content" id="fi">
+
+            {# Grand titre #}
+            <h1 class="chapter header">
+                ▫ Applications pratiques ▫
+            </h1>
+
+            <h2 class="chapter header">Introduction</h2>
+            <p>
+                Dans le cadre de notre TER, nous avons dans un premier temps cherché à nous approprier les concepts
+                fondamentaux concernant les réseaux de neurones artificiels, leurs applications en finance, et les
+                limites auxquelles ils restent confrontés.
+            </p>
+            <p>
+                Puis, nous avons décidé de coder nos propre réseaux de neurones artificiels afin de répondre
+                expérimentalement à la problématique suivante: « Peut-on prévoir efficacement les dynamiques financières
+                en utilisant les réseaux de neurones artificiels ?».
+
+            </p>
+            <p>
+                Dans cette partie, nous présenterons dans un premier temps notre stratégie empirique concernant la mise
+                en place de nos réseaux, puis nous discuterons des résultats que nous avons obtenus.
+            </p>
+
+            <h2 class="chapter header">Stratégie empirique</h2>
+
+            <p>
+                Dans cette sous-partie, nous allons présenter nos choix des indices à prédire puis détailler le codage
+                de nos réseaux de neurones artificiels.
+            </p>
+
+            <h3> 1 - Choix des indices à prédire </h3>
+            <p>
+                Avant de nous attaquer à la programmation des réseaux de neurones artificiels à proprement parler, nous
+                avons du effectuer un choix concernant les produits financiers dont nous allions cherché à prédire les
+                dynamiques. Après une consultation avec notre tuteur, Olivier Brandouy, nous avons décidé de nous
+                intéresser à 3 indices boursiers : le S&P 500, le NASDAQ Composite et le Dow Jones Industrial Average.
+                En effet, ces indices disposent tous d'une notoriété internationale, ce qui facilite grandement la
+                collecte des données, et dont la prédiction s'avère par conséquent intéressante pour les investisseurs.
+            </p>
+
+            <h4> a) S&P 500</h4>
+            <p>
+                Le Standard & Poor's 500, connu sous l'abréviation S&P 500, est un indice boursier américain possédé par
+                l'agence de notation Standard & Poor's. Il se base sur la capitalisation boursière, soit la valeur de
+                marché de l'ensemble des actions d'une société, de 500 grandes entreprises américaines. Par ailleurs,
+                le S&P 500 est un indice boursier relativement ancien, étant apparu en 1923. Il est alors connu sous le
+                nom de Composite Index et ne regroupe qu'un faible nombre d'actions. L'indice boursier se développe
+                graduellement et atteint son apogée en 1957, où il regroupe les actions de 500 grandes entreprises : il
+                prend alors le nom de  S&P 500.
+            </p>
+            <p>
+                Le S&P 500 se calcule selon la formule suivante:
+            </p>
+            <img src="{% static 'hello_world/images/sp500.gif' %}" alt="S&P 500"
+                 style="width:128px;height:50px;"/>
+            <p>
+                Où Pi représente le prix de l'action de l'entreprise i, Qi le nombre d'actions disponibles publiquement,
+                et Divisor une constante fixé par Standard & Poor's, approximativement égale à 8,9 milliards USD.
+            </p>
+
+            <h4> b) NASDAQ Composite</h4>
+            <p>
+                Le National Association of Securities Dealers Automated Quotations ou NASDAQ est le second plus grand
+                marché d'actions des Etats-Unis, derrière le New York Stock Exchange. Ouvert en 1971, il est le premier
+                marché boursier électronique à être apparu et gardera ce statut pendant 15 ans. De plus, en terme de
+                volume, il cote à l'heure actuelle plus de 3200 valeurs, liées surtout aux entreprises de nouvelles et
+                hautes technologies.
+            </p>
+            <p>
+                Son indice boursier, le NASDAQ Composite, est un des acteurs majeurs du marché d'action des Etats-Unis.
+                Ce dernier est lancé en 1971, et cote alors les actions de 50 compagnies. Il connait une croissance
+                rapide, qui s'accélère dans les années 90 avec la bulle internet. En effet, le NASDAQ Composite regroupe
+                de nombreuses entreprises liées à l'informatique, ce qui lui permet de bénéficier pleinement de l'essor
+                des nouvelles technologies. L'indice atteint son apogée en mars 2000, avant de connaître un déclin en
+                2002, suite à l'explosion de la bulle internet. Toutefois, il parvient à se redresser graduellement et
+                atteint un nouveau record en 2015.
+            </p>
+            <p>
+                Contrairement au S&P  500 qui se limite à un nombre fixe d'entreprises cotées, le NASDAQ Composite cote
+                l'ensemble des sociétés du NASDAQ, environ 3200. Chacune d'entre elles est affectées d'un poids
+                proportionnel à sa valeur de marché.
+            </p>
+            <p>
+                Le NASDAQ Composite se calcule selon la formule suivante :
+            </p>
+            <img src="{% static 'hello_world/images/nasdaq.gif' %}" alt="NASDAQ"
+                 style="width:128px;height:50px;"/>
+            <p>
+                Où Vi est la valeur de marché de l'entreprise i pondérée, Divisor une constante déterminée par le NASDAQ
+            </p>
+
+            <h4> c) Dow Jones Industrial Average</h4>
+            <p>
+                Le Dow Jones Industrial Average est un des plus vieil indice boursier américain, établi pour la première
+                fois en 1896, par Charles Dow. Ce dernier est le fondateur du Wall Street Journal, ainsi que de la firme
+                éponyme  Dow Jones & Company,  avec son associé Edward Jones. Le Dow Jones Industrial Average est un
+                indice regroupant à l'origine les 30 plus grandes sociétés publiques américaines. En effet, nous y
+                trouvons alors des compagnies publiques appartenant au secteur industriel, telles que American Sugar
+                Company ou North American Company. Graduellement, avec le déclin de l'industrie et l'avénnement du
+                secteur tertiaire, les entreprises cotées au Dow Jones Industrial Average ont évolué.  Ainsi, à l'heure
+                actuelle, y figurent des compagnies telles que Apple, Coca-Cola, Microsoft, Nike ou McDonald's.
+            </p>
+            <p>
+                L'indice du Dow Jones Industrial Average se calcule selon la formule suivante :
+            </p>
+            <img src="{% static 'hello_world/images/dow.gif' %}" alt="Dow Jones"
+                 style="width:128px;height:50px;"/>
+            <p>
+                Où Pi est le prix de l'action de l'entreprise i et Dow Divisor une constante déterminée par le Dow Jone
+                Industrial Average.
+            </p>
+
+            <h3> 2 - Programmation des réseaux de neurones artificiels </h3>
+
+            <h4> a) Choix des plateformes de programmation</h4>
+            <p>
+                Après avoir déterminé les 3 indices boursiers à prédire, nous avons débuté la programmation de nos
+                réseaux de neurones artificiels. Nous avons opté pour une double approche qui consiste à programmer,
+                dans un premier temps, un réseau de neurones artificiels en utilisant les librairies disponibles sur le
+                logiciel R, puis à élaborer notre propre réseau, en utilisant le langage python et les librairies
+                dédiées aux machines learning. Cette double approche se justifie par notre volonté d'expérimenter la
+                conception des réseaux de neurones sur plusieurs plateformes, afin d'établir une analyse comparative.
+            </p>
+
+            <h4> b) Programmation des réseaux de neurones artificiels sur R</h4>
+            <p>
+                Notre objectif principal lors de cette première étape est de programmer un réseau de neurones
+                artificiels sur R, de le visualiser, et d'établir des prédictions quant aux variations d'un indice
+                boursier,le S&P 500, que nous comparons ensuite aux prédictions obtenus grâce à un modèle ARIMA.
+            </p>
+            <p>
+                La programmation de notre réseau sur le logiciel R s'est faite grâce à l'interface graphique RStudio.
+            </p>
+            <img src="{% static 'hello_world/images/R1.jpg' %}" alt="Importation des librairies"/>
+            <p>
+                Dans un premier temps, nous avons importé les 4 librairies nécessaires à notre entreprise : tseries,
+                forecast, neuralnet, et Hmisc. Tseries est une librairies permettant entre autres de modéliser une série
+                chronologique par un modèle ARIMA, forecast permet d'établir des prédictions sur ce modèle, neuralnet de
+                construire notre réseau de neurones artificiels et Hmisc de classer les données d'un tableau avec un
+                cran de retard ou lag. Ces librairies disposent de nombreuses autres fonctionnalités que nous n'avons
+                pas utilisées.
+            </p>
+            <p>
+                Après avoir importé les librairies, nous nous sommes attaché à la récupération et au traitement  des
+                données de nos indices boursiers. Dans un premier temps, nous avons téléchargé les données relatives à
+                l'indice S&P 500, entre le 1er janvier 2013 et le 30 décembre 2016, sous format csv, depuis le site
+                https://fr.finance.yahoo.com/. Nous obtenons alors le tableau partiellement représenté ci-dessous :
+            </p>
+            <img src="{% static 'hello_world/images/R6.jpg' %}" alt="S&P 500"/>
+            <p>
+                Nous y trouvons 1008 observations caractérisées par 7 variables : la date, le cours d'ouverture, le cours
+                maximal atteint dans la journée, le cours minimal atteint dans la journée, les cours de fermeture, et le
+                volume échangé. Seules la variable cours d'ouverture, Open, nous intéresse. En effet, nous avons
+                arbitrairement décidé de nous baser sur celui-ci lors de nos calculs et de nos prédictions.
+            </p>
+            <img src="{% static 'hello_world/images/R2.jpg' %}" alt="Traitement des données"/>
+            <p>
+                Une fois les données importées, nous stockons les 1000 premières observations des cours d'ouverture dans
+                une variable nommée X, puis nous les convertissons en type numeric. Nous utilisons ensuite la fonction
+                tsclean afin de compléter les données manquantes. Nous stockons ensuite les 1001 à 1008 ème observations
+                dans la variable true.pred.X, à laquelle nous appliquons le même traitement que X. Cette variable
+                représente les données réelles que nous chercherons à prédire grâce au modèle ARIMA et à notre réseau de
+                neurones artificiels.
+            </p>
+            <img src="{% static 'hello_world/images/R3.jpg' %}" alt="Auto.arima"/>
+            <p>
+                Par la suite, après le traitement de  nos données, nous les modélisons grâce à la fonction auto.arima et
+                nous obtenons nos prédictions grâce à la fonction predict.
+            </p>
+            <img src="{% static 'hello_world/images/R4.jpg' %}" alt="Normalisation"/>
+            <p>
+                Nous nous attaquons ensuite à la conception de notre réseau de neurones artificiels. Premièrement, il
+                nous faut procéder à la normalisation de nos données. Pour se faire, nous enlevons à chaque observation
+                le minimum de X et nous le divisons par le maximum moins le minimum. Nous stockons les observations
+                normalisées dans le vecteur Xnorm. Nous séparons ensuite ce vecteur en deux : train, qui représente
+                l'échantillon sur lequel nous allons entrainé le réseau, et test, qui représente l'échantillon sur
+                lequel nous allons le tester.
+            </p>
+            <p>
+                Par la suite, train et test sont convertits en objets ts (time series) et nous créons 2 tableaux
+                datatrain et datatest. Ces tableaux contiennent à la première colonne les vecteurs tests, respectivement
+                train, à la seconde colonne les valeurs de test, respectivement train, au jour précédent (t-1), et à la
+                troisième colonne les valeurs de test, respectivement train, au jour d'avant (t-2). En effet, nous avons
+                choisi 2 paramètres d'entrée, x1 et x2 pour notre réseau de neurones artitificiels : le cours de l'indice
+                au jour précédent, l'instant t-1, et le cours au jour d'avant, l'instant t-2. De manière intuitive, ce
+                choix s'explique par la volonté d'imiter un modèle ARIMA, en supposant que le cours d'un indice boursier
+                au jour j dépend en partie de sa valeur d'hier, j-1, et d'avant hier, j-2, d'où la nécessité de
+                regrouper ces trois variables dans un même tableau.
+            </p>
+            <p>
+                Nous établissons ensuite la formule sur laquelle va travailler notre réseau de neurone : Xnorm~x1+x2.
+                Le réseau va donc chercher à expliquer la valeur de Xnorm à l'instant t en fonction de Xnorm à l'instant
+                t-1 (x1) et Xnorm à l'instant t-2 (x2). Cette formule est stockée dans la variable f.
+            </p>
+            <p>
+                Par la suite, nous procédons à la création du réseau, noté rn, grâce à la fonction neuralnet qui permet
+                de créer un réseau de neurones artificiels et de l'entrainer. Cette fonction prend comme paramètres la
+                formule f, notre échantillon d'entrainement, datatrain, et le nombre de couches cachées, ici une couche
+                de 50 neurones.
+            </p>
+            <p>
+                Nous procédons ensuite à la phase de prédiction, grâce à la fonction compute, qui prend en entrée notre réseau de
+                neurones entrainé, rn, ainsi que les colonnes x1 et x2 de notre echantillon test, datatest. Les données
+                prédites sont stockées dans le vecteur Xpred que nous dénormalisons pour finalement obtenir le vecteur
+                Xpreddenorm.
+            </p>
+            <img src="{% static 'hello_world/images/R5.jpg' %}" alt="Traitement des données"/>
+            <p>
+                Finalement, pour comparer notre réseau au modèle ARIMA, nous effectuons une prédiction sur les 8
+                prochains jours, à partir du 1000ème jour, en alimentant les x1 et les x2 du réseau non plus par  les
+                valeurs réelles de x1 et x2, mais par les valeurs prédites par le réseau aux instants t-1 et t-2. Les
+                raisons de cette démarche seront expliquées dans la partie résultat.
+            </p>
+
+            <h4> c) Programmation des réseaux de neurones artificiels sur Python</h4>
+            <p>
+                A faire
+            </p>
+
+            <h2 class="chapter header">Résutats Obtenus</h2>
+
+            <h3> 1 - Résultats obtenus par les réseaux de neurones artificiels programmés sur R</h3>
+            <p>
+                 <img src="{% static 'hello_world/images/resultr1.jpg' %}" alt="Résultat" style="width:800px;height:600px;"/>
+            </p>
+            <p>
+                 <img src="{% static 'hello_world/images/resultr2.jpg' %}" alt="Résultat" style="width:800px;height:600px;"/>
+            </p>
+            <p>
+                 <img src="{% static 'hello_world/images/resultr3.jpg' %}" alt="Résultat" style="width:800px;height:600px;"/>
+            </p>
+            <p>
+                 <img src="{% static 'hello_world/images/resultr4.jpg' %}" alt="Résultat"/>
+            </p>
+
+            <h3> 2 - Résultats obtenus par les réseaux de neurones artificiels programmés sur Python</h3>
+            <p>
+                A faire
+            </p>
+        </div>
+    </div>
+{% endblock %}
