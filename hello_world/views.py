@@ -26,6 +26,7 @@ class IndexView(generic.base.TemplateView):
 
         return context
 
+introduction = MetaChapter('introduction')
 concepts = MetaChapter('concepts')
 finance = MetaChapter('finance')
 application = MetaChapter('application')

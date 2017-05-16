@@ -72,6 +72,10 @@
             <div class="ui dropdown item">
                 Naviguer <i class="dropdown icon"></i>
                 <div class="menu">
+                    <a class="item" href="{% url 'hello_world:Introduction' %}/#menu">
+                        <img src="{% static 'hello_world/images/icon.png' %}">
+                        Introduction générale
+                    </a>
                     <a class="item" href="{% url 'hello_world:Concepts' %}/#menu">
                         <img src="{% static 'hello_world/images/introduction_icon.png' %}">
                         Introduction aux réseaux de neurones

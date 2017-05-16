@@ -1,0 +1,210 @@
+{% extends 'hello_world/base.html' %}
+{% load extras %}
+{% load staticfiles %}
+
+{% block title %}
+    <title>TER Version 2!</title>
+{% endblock %}
+
+{% block content %}
+
+    <div class="main ui container">
+        <div class="chapter content" id="chapter1">
+
+            <div class="ui segment inverted header">
+                <h3 class="chapter header" align="center">I - Introduction</h3>
+            </div>
+            <br/>
+            <p>
+                <h3>Abstract (en) : </h3>
+                Many economists and traders agree to say that the market is unstable and its variations are random. <br/>
+                Therefore, even if its prediction would be possible, it would be too complex because of the number of variables that should be considered. <br/>
+                However, some banks or trading agencies have developed algorithms that allow them to predict the market variation well enough to get profit out of it. <br/>
+                The purpose of this project was to determinate if it was possible to predict the market variations using artificial neural networks. <br/>
+                To achieve this goal, we used a model of artificial neural network to generate predicted values, which we then compared to real values. <br/>
+                We found out that the normalized predicted values were relatively close to the normalized real ones, <br/>
+                with some exceptions where real values instantly drop or rise significantly. <br/>
+                These results suggest that we can predict at least the direction in which the financial products are going to vary. <br/>
+                However, these predictions are not completely reliable and must be considered with caution.  <br/>
+                <br />
+
+                <h3>La problématique : </h3>
+                La problématique initialement posée est la suivante : <br/>
+                "Peut-on prévoir efficacement les dynamiques financières à l'aide de réseaux de neurones artificiels?" <br />
+                <br />
+
+                Afin de répondre à cette problématique il nous faut donc nous intéresser à ses deux composantes. <br/>
+                La première étant les dynamiques financières, et la seconde les réseaux de neurones. <br />
+                Une décomposition en deux parties de cette problématique permet de mieux dicerner les possibilités et limites de chacune. <br/>
+                <br/>
+
+                <h3>Les dynamiques financières : </h3><br/>
+                Ce terme étant assez vaste, et nos travaux ayant besoin d'une base pratique, nous avons donc convenu de réduire ce terme <br/>
+                à l'analyse de l'évolution d'indice boursier. <br/>
+                Ainsi, la question qui se pose est la suivante : "Peut-on prévoir l'évolution de la bourse?". <br/>
+                Pour pouvoir y répondre, nous devons déterminer les élements qui font varier son cours. <br/>
+                Françoise Giroud, ministre française, disait : <span name="citation">"Les Bourses ne traduisent pas l'état des économies, mais la psychologie des investisseurs."</span> <br/>
+                Nombreux sont les experts qui en pense de même. Cette information nous indique d'ores et déjà qu'il ne suffira pas de se baser sur <br/>
+                des éléments mathématique pour être précis dans l'estimation de la variation du cours de la bourse. <br/>
+                Cependant, la psychologie des investisseurs est régit par deux élements, la première est le potentiel d'un indice à s'améliorer et la seconde <br/>
+                est l'ensemble des nouvelles et idées ratachées à cet indice. <br/>
+                Prenons l'exemple de la variation de l'indice d'Airbus, compagnie produisant des avions. <br/>
+                A chaque crash d'avion, son indice boursier perd instantanément des points lorsque la nouvelle se propage, et ceci indépendament des conséquences <br/>
+                économique réelles (qui son minime au vu de la taille de l'entreprise). <br/>
+                <br/>
+                <span name="souligne">Les potentiels d'améliorations : </span><br/>
+                Le potentiel à s'améliorer est corrélé à son état de santé, personne ne voudrait investir dans une entreprise en faillite, hors <br/>
+                nouvelle favorable liée à celle-ci bien entendu (exemple : rachat par une grande entreprise). <br/>
+                Ainsi, les éléments composants l'état de santé d'un indice boursiersont en partie interessant à prendre en compte. <br/>
+                <br/>
+                <span name="souligne">Les nouvelles : </span><br/>
+                Les nouvelles sont accessibles dans énormément de journaux, il serait donc très intéressant de les inclure dans le système de prédiction, <br/>
+                mais automatiser cette tache n'est pas chose aisée. <br/>
+                <br/>
+                Nous pouvons nous appercevoir qu'analyser la variation d'un indice s'avère extrèmement complexe, non seulement <br/>
+                parce que ses composantes sont elles même complexes, mais surtout parce qu'une grande partie dépend d'évènement aléatoire. <br/>
+                L'économiste américain Burton Malkiel avait déclaré : <br/>
+                <span name="citation">"Un singe aux yeux bandés jetant des fléchettes sur les pages financières d'un journal pourrait choisir un portefeuille qui ferait tout aussi bien que celui choisi par des experts"</span>
+                Il souligne par la le fait que l'évolution de la bourse est tellement aléatoire que personne ne peut réellement prédire comment elle va évoluer. <br />
+                Mais si la bourse est autant versatile, à tel point qu'elle en devient imprévisible, alors pourquoi la "hedge funds" Medaillon <br/>
+                est devenu le fond d'investissement le plus performant de l'histoire, alors qu'il se base sur des prédictions de variation d'indice boursier ? <br/>
+                Avec plus de 75% de retour sur investissement, ce fond d'investissement est reservé à une élite, et il fut créé non par des <br/>
+                banquiers et économistes, mais par des informaticiens et mathématiciens issus du MIT ou de l'entreprise IBM, pour la plusparts. <br/>
+                De quoi se poser des questions sur l'utilité de l'informatique et des techniques mathématiques appliquées à la prédiction du cours de la bourse, <br/>
+                et de frustrer plus d'un économiste par la même occasion. <br/>
+
+
+                <h3>Les réseaux de neurones artificiels: </h3>
+                La conception de réseaux de neurones artificiels fait parti du domaine de l'informatique, plus précisément de la sous-branche de l'intelligence artificielle.<br/>
+                Elle consiste à implémenter un système se basant sur une version simplifié du fonctionnement des neurones biologiques pour <br/>
+                imiter des caractéristiques de l'intelligence tel que l'apprentissage et la reflexion inductive. <br/>
+                Afin de permettre au système d'apprendre, les réseaux de neurones artificiels se basent sur des branches des mathématiques tel que <br/>
+                les techniques statistiques ou les probabilités. <br/>
+                <br />
+                La conception de réseaux de neurones, bien qu'étudié depuis un certain temps, est un domaine encore en évolution, néanmoins, <br/>
+                à l'heure actuelle, ce domaine permet de résoudre des problèmes assez complexe, et de dépasser les techniques de statistiques classiques, <br/>
+                notament dans la prédiction de valeur. <br />
+                <br />
+                Les réseaux de neurones sont très utilisés dans le traitement d'image, le traitement de signal, dans le traitement automatique des langues, <br/>
+                dans les simulations (météorologique par exemple), dans la classifications d'élément, dans l'approximation de fonction inconues complexes, etc... <br/>
+                La plus grande force des réseaux de neurones artificiels est qu'ils permettent de faire émerger des stratégies performantes et ceci <br/>
+                indépendament de l'expertise humaine (dans une certaine mesure, car fortement liée au données en entrées que l'humain a <br/>
+                au préalablement sélectionné). <br/>
+                <br/>
+
+                <h3>Les réseaux de neurones artificiels appliqués à la finance : </h3>
+                Nous avons donc vu que les indices boursiers sont très complexes à analyser, mais que les <br/>
+                réseaux de neurones artificiels permettent justement de nous émanciper de cette contrainte d'analyse, <br/>
+                la seule chose que nous avons à faire est de choisir judicieusement les donées sur lequel le réseau basera son apprentissage. <br/>
+                Dans la théorie (et vérifié en pratique avec certain centre d'investissement tel que Medaillon ou la banque Goldman Sachs), les <br/>
+                réseaux de neurones artificiels devraient nous permettre de prédire un peu mieux qu'au hasard les évolutions d'indices financiers.<br/>
+
+                <h3>La sélection des données : </h3>
+                Il existe plusieurs approches pour le choix des données, parmi toutes, nous en avons isolé deux. <br />
+                La première consiste à se baser uniquement sur les données passées de l'indice. <br/>
+                Les données passées nous indique l'état de santé de l'indice, l'aventage de cette option est <br/>
+                qu'il est très facile de récupérer ces données, de plus, elles sont sous une forme directement exploitables (nombre décimal) <br/>
+                l'inconvenient est qu'elles ne sont pas otpimalement pertinente. <br/>
+                La seconde se réfère aussi à l'état de santé de l'entreprise mais de façon plus complète. <br/>
+                Les données collectées seraient, pour une entreprise par exemple, le chiffre d'affaire, la croissance, <br/>
+                la valeur immobilière, etc ... <br/>
+                L'aventage de cette option est qu'elle est plus complète, mais il est difficile d'automatiser le processus de récupération des <br/>
+                donnnées. Et il est impossible de savoir si les résultats seraient meilleurs qu'en choisissant la première option. <br/>
+                <br/>
+            </p>
+            <br/>
+
+
+            <div class="ui segment inverted header">
+                <h3 class="chapter header" align="center">II - Méthodologie : </h3>
+            </div>
+            <br/>
+            <p>
+                Afin de répondre à la problématique, nous avons vu qu'il était judicieux de la décomposer en deux parties distinctes dans un premier temps, <br/>
+                et d'ensuite réunir les connaissances acquises pour y apporter une réponse pertinente. <br />
+                Nous avons donc commencé par parcourir plusieurs articles financiers relatifs aux dynamiques financières, <br/>
+                pour être en mesure de discerner quelle données pouraient éventuellement être exploitables, et mieux comprendre le fonctionnement de ces dynamiques. <br />
+                <br />
+
+                Par la suite, nous avons exploré plusieurs articles scientifiques expliquants le fonctionnement des réseaux de neurones. <br />
+                Cela nous a permis d'acquérir les bases théoriques nécessaire à une meilleure compréhension globale du sujet. <br/>
+                Une fois la partie théorique relativemetn maitrisé, nous avons suivi des tutoriels pour nous former sur certaines <br />
+                librairies (tel que TensorFlow sur python), car leur usage facilite grandement la création et modification de réseau de neurones. <br/>
+                Lorsque nous avons terminé de suivre ces tutoriels, nous avons effectué des tests sur les réseaux de neurones en nous basant <br />
+                sur des systèmes minimalistes afin d’en maitriser l’usage empiriquement. <br/>
+                <br/>
+
+                Une fois la partie technique acquise, nous avons pu concevoir des réseaux de neurones artificiels en expérimentant différents modèles <br/>
+                pour essayer d'améliorer les résultats obtenus. <br/>
+                Après avoir comparé les résultats constatés et en ayant une meilleure compréhension globale du sujet, <br/>
+                nous avons alors pu être en mesure d'apporter une conclusion à la problématique. <br/>
+            </p>
+
+            <div class="ui segment inverted header">
+                <h3 class="chapter header" align="center">III - Généralité sur les réseaux de neuronnes : </h3>
+            </div>
+            <br/>
+            <p>
+                 Les réseaux de neuronnes artificiels sont des ensembles d'algorithmes dont le fonctionnement général
+                s'inspire d'un modèle simplifié du fonctionnement des neurones, en se basant sur le paradigme biologique du neurone formel. <br/>
+                De ce fait, ils permetent de reproduire certaines fonctions du cerveau, comme l'apprentissage par l'exemple. <br/>
+                <br/>
+                <span name="souligne">Utilité majeur des réseaux de neurones artificiels : </span><br/>
+                A partir d’observations limitées, tirer des généralisations plausibles via un procédé inductif. <br/>
+                <br/>
+                Un réseau de neurone est composé de plusieurs couches, chacune composées d’un ou plusieurs nœuds
+                (neurones). <br/>
+                Le nombre de ces couches varient suivant le modèle adopté, mais il existe 3 couches principales.
+            <ol>
+                <li> Les données en entré (input layer)</li>
+                <br/>
+                <li> Les couches cachés (hidden layer x)</li>
+                <br/>
+                <li> Les données de sortie (output layer)</li>
+                <br/>
+            </ol>
+            <img src="{% static 'hello_world/images/neural.jpg' %}" alt="Picture of neural network"
+                 style="width:750px; height:250px;"/>
+            </p>
+            <br/>
+            <br/>
+
+            <p>
+            <ul>
+                <li>La première couche reçoit les données. <br/>
+                    Il est très important de bien les choisirs au préalable car elles régissent la qualité de
+                    l’apprentissage et donc de la pertinence des résultats que l’on obtiendra en sortie.
+                </li>
+                <br/>
+                <li>Les couches internes effectuent des traitements sur les informations.<br/>
+                    Leurs buts est d'apprendre à trier les données, afin de parvenir à un filtrage pour ne sélectionner
+                    que les meilleures données qui se retrouveront en sortie.
+                </li>
+                <br/>
+                <li>La couche de sortie. <br/>
+                    Elle contient tout simplement les données attendues, par exemple la prédiction d'une valeur.
+                </li>
+                <br/>
+                <br/>
+            </ul>
+            </p>
+
+            <div class="ui segment inverted header">
+                <h3 class="chapter header" align="center">IV - Prédictions d'index financiers </h3>
+            </div>
+
+            <div class="ui segment inverted header">
+                <h3 class="chapter header" align="center">X - Conclusion </h3>
+
+            </div>
+
+{#            {% for index in divs %}#}
+{#                <div class="ui segment raised">#}
+{#                    <h3 class="header" align="center">{{ index }}</h3>#}
+{#                    {{ divs|key:index|safe }}#}
+{#                </div>#}
+{#            {% endfor %}#}
+        </div>
+    </div>
+{#    {{ script_bokeh|safe }}#}
+{% endblock %}
