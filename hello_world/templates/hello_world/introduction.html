@@ -1,0 +1,167 @@
+{% extends 'hello_world/base.html' %}
+{% load extras %}
+{% load staticfiles %}
+
+{% block title %}
+    <title>TER Version 2!</title>
+{% endblock %}
+
+{% block content %}
+
+    <div class="main ui container">
+        <div class="chapter content" id="chapter1">
+
+            <h1 class="chapter header">
+                ▫Introduction générale ▫
+            </h1>
+
+            <h2>La problématique : </h2>
+            <p>
+                La problématique initialement posée est la suivante : "Peut-on prévoir efficacement les dynamiques
+                financières à l'aide des réseaux de neurones artificiels?"
+            </p>
+            <p>
+                Afin de répondre à cette problématique il nous faut donc nous intéresser à ses deux composantes la
+                première étant les dynamiques financières, et la seconde les réseaux de neurones. <br />
+                Une décomposition en deux parties de cette problématique permet de mieux dicerner les possibilités et
+                limites de chacune.
+            </p>
+
+            <h3>Les dynamiques financières : </h3>
+            <p>
+                Comme expliqué par la suite, ce terme est assez vaste, et nos travaux ayant besoin d'une base pratique,
+                nous avons donc convenu de le réduire à l'analyse de l'évolution d'indices boursiers. Ainsi, la question
+                qui se pose est la suivante : "Peut-on prévoir l'évolution d'indices boursiers à l'aide des réseaux de
+                neurones artificiels ?". Pour pouvoir y répondre, nous devons déterminer les élements qui font varier
+                les cours financiers. Françoise Giroud, ministre française, disait : <span name="citation">"Les Bourses
+                ne traduisent pas l'état des économies, mais la psychologie des investisseurs."</span>Nombreux sont les
+                experts qui pensent de même. Cette information nous indique d'ores et déjà qu'il ne suffira pas de se
+                baser uniquement sur des composantes quantitatives pour être précis dans l'estimation de la variation du
+                cours de la bourse. Cependant, la psychologie des investisseurs est régie par 2 élements. le premier est
+                le potentiel d'un indice à s'améliorer et le second est l'ensemble des nouvelles et idées ratachées à
+                cet indice. Prenons l'exemple de la variation de l'indice d'Airbus, compagnie produisant des avions. A
+                chaque crash d'avion, son indice boursier perd instantanément des points lorsque la nouvelle se propage,
+                et ceci indépendament des conséquences économiques réelles, qui son minimes a u vude la taille de
+                l'entreprise.
+            </p>
+            <p>
+                <span name="souligne">Les potentiels d'améliorations : </span><br/>
+                Le potentiel à s'améliorer est corrélé à l'état de santé de la société considérée : personne ne veut
+                investir dans une entreprise en faillite, hors nouvelle favorable liée à celle-ci bien entendu (exemple
+                : rachat par une grande entreprise). Ainsi, les éléments composants l'état de santé d'un indice boursier
+                sont en partie interessant à prendre en compte.
+            </p>
+            <p>
+                <span name="souligne">Les nouvelles : </span><br/>
+                Les nouvelles sont accessibles dans une multitude de plateformes telles que les journaux et les réseaux
+                sociaux, il serait donc très intéressant de les inclure dans le système de prédiction. Toutefois,
+                automatiser cette tache n'est pas chose aisée.
+            </p>
+            <p>
+                Nous pouvons nous appercevoir qu'analyser la variation d'un indice s'avère extrèmement complexe, non
+                seulement parce que ses composantes sont elles même complexes, dépendant de facteurs qualitatifs et
+                quantitatifs, mais surtout parce qu'elles dépendent souvent de facteurs aléatoires. L'économiste
+                américain Burton Malkiel avait ainsi déclaré déclaré : <br/>
+                <span name="citation">"Un singe aux yeux bandés jetant des fléchettes sur les pages financières d'un
+                    journal pourrait choisir un portefeuille qui ferait tout aussi bien que celui choisi par des experts"</span>
+                Il souligne par la le fait que l'évolution de la bourse est tellement aléatoire que personne ne peut
+                réellement prédire comment elle va évoluer. Mais si la bourse est autant versatile, à tel point qu'elle
+                en devient imprévisible, alors pourquoi la "hedge funds" Medaillon est devenu le fond d'investissement
+                le plus performant de l'histoire, alors qu'il se base sur des prédictions de variation d'indice boursier
+                ? Avec plus de 75% de retour sur investissement, ce fond d'investissement est reservé à une élite, et il
+                a été créé non par des banquiers et des économistes, mais par des informaticiens et mathématiciens issus
+                du MIT ou de l'entreprise IBM. <br/>
+                De quoi se poser des questions sur l'utilité de l'informatique et des techniques mathématiques appliquées
+                à la prédiction du cours de la bourse, et de contrarier plus d'un économiste par la même occasion.
+            </p>
+
+
+            <h3>Les réseaux de neurones artificiels: </h3>
+            <p>
+                La conception de réseaux de neurones artificiels fait parti du domaine de l'informatique, plus
+                précisément de la sous-branche de l'intelligence artificielle. Elle consiste à implémenter un système se
+                basant sur une version simplifié du fonctionnement des neurones biologiques pour imiter certaines
+                caractéristiques de l'intelligence telles que l'apprentissage et la reflexion inductive. Afin de
+                permettre au système d'apprendre, les réseaux de neurones artificiels se basent sur des branches des
+                mathématiques telles que les techniques statistiques ou les probabilités.
+            </p>
+            <p>
+                La conception de réseaux de neurones, bien qu'étudiée depuis un certain temps, est un domaine encore en
+                évolution. Néanmoins, à l'heure actuelle, il permet de résoudre des problèmes assez complexe, et de
+                dépasser les techniques de statistiques classiques dans certains cas de figure, notament dans la
+                prédiction de valeurs
+            </p>
+            <p>
+                Les réseaux de neurones sont très utilisés dans le traitement d'images, de signaux, dans le traitement
+                automatique des langues, dans les simulations (météorologiques par exemple), dans la classifications
+                d'élément ou encore dans l'approximation de fonction inconues complexes. La plus grande force des
+                réseaux de neurones artificiels est qu'ils permettent de faire émerger des stratégies performantes et ceci
+                indépendament de l'expertise humaine (dans une certaine mesure, car fortement liés aux données en
+                entrées que l'humain a au préalablement sélectionnées).
+            </p>
+
+            <h3>Les réseaux de neurones artificiels appliqués à la finance : </h3>
+            <p>
+                Nous avons donc vu que les indices boursiers sont très complexes à analyser, mais que les réseaux de
+                neurones artificiels permettent justement de nous émanciper de cette contrainte d'analyse en
+                choisissant judicieusement les données sur lesquelles le réseau basera son apprentissage.
+                Dans la théorie (et vérifié en pratique avec certain centre d'investissement tel que Medaillon ou la
+                banque Goldman Sachs), les réseaux de neurones artificiels devraient nous permettre de prédire un peu
+                mieux qu'au hasard les évolutions d'indices financiers.
+            </p>
+            <h3>La sélection des données : </h3>
+            <p>
+                Il existe plusieurs approches pour le choix des données d'entrée, parmi toutes, nous en avons isolé deux.
+                La première consiste à se baser uniquement sur les données passées de l'indice.
+                En effet, il ne semble pas absurde de supposer que la valeur d'un cours boursier aujourd'hui dépend en
+                partie de sa valeur d'hier. l'aventage de cette approche est qu'il est très facile de récupérer ces
+                données sous une forme directement exploitables (table csv par exemple). L'inconvenient est qu'elles ne
+                sont pas otpimalement pertinentes. La seconde approche se réfère à l'état de santé de l'entreprise en se
+                basant sur des facteurs qualitatifs et quantitatifs. Ainsi, Les données collectées seraient, pour une
+                entreprise par exemple, le chiffre d'affaire, la croissance, la valeur immobilière, l'identité de ses
+                dirigeants, sa stratégie d'entreprise etc. L'aventage de cette option est qu'elle est plus complète,
+                mais il est difficile d'automatiser le processus de récupération des donnnées.
+            </p>
+
+            <h2> Approche méthodologique : </h2>
+            <p>
+                Afin de répondre à la problématique, nous avons vu qu'il était judicieux de la décomposer en 2 parties
+                distinctes dans un premier temps, et d'ensuite réunir les connaissances acquises pour y apporter une
+                réponse pertinente. Nous avons donc commencé par parcourir plusieurs articles financiers relatifs aux
+                dynamiques financières, pour être en mesure de discerner quelle données pouraient éventuellement être
+                exploitables, et mieux comprendre leur fonctionnement.
+            </p>
+            <p>
+                Par la suite, nous avons exploré plusieurs articles scientifiques expliquant le fonctionnement des
+                réseaux de neurones artificiels. Cela nous a permis d'acquérir les bases théoriques nécessaires à une
+                meilleure compréhension globale du sujet.
+            </p>
+            <p>
+                Une fois la partie théorique maitrisés, nous avons suivi des tutoriels pour nous former sur certaines
+                librairies, telles que TensorFlow sur python ou neuralnet sur R, car leur usage facilite grandement la
+                création et la modification de réseaux de neurones. Après avoir suivi ces tutoriels, nous avons effectué
+                des tests sur les réseaux de neurones en nous basant sur des systèmes minimalistes afin d’en maitriser
+                l’usage empiriquement.
+            </p>
+            <p>
+                Une fois la partie technique acquise, nous avons pu concevoir des réseaux de neurones artificiels en
+                expérimentant différents modèles pour essayer d'améliorer les résultats obtenus et apporter une
+                conclusion à la problématique.
+            </p>
+
+            <h2> Plan du site </h2>
+            <p>
+                Dans un premier temps nous dressons les généralités concernant les réseaux de neurones artificiels,
+                puis nous détaillons leur utilité en finance et finalement nous présentant nos réseaux et discutons
+                des résultats que nous avons obtenus.
+            </p>
+{#            {% for index in divs %}#}
+{#                <div class="ui segment raised">#}
+{#                    <h3 class="header" align="center">{{ index }}</h3>#}
+{#                    {{ divs|key:index|safe }}#}
+{#                </div>#}
+{#            {% endfor %}#}
+        </div>
+    </div>
+{#    {{ script_bokeh|safe }}#}
+{% endblock %}
