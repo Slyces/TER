@@ -12,58 +12,68 @@
         <div class="chapter content" id="chapter1">
 
             <h1 class="chapter header">
-                ▫Conclusion générale ▫
+                Conclusion générale
             </h1>
 
-        </br>
-
-            <p>
-                Rappelons que la problématique était la suivante : "Peut-on prévoir efficacement les dynamiques
-                financières à l'aide de réseaux de neurones artificiels?". Nous avons donc décidé, à la façon de
-                Machiavel <span name="citation">"Divide et impera"</span>, de diviser le problème en sous problème afin
-                de le résoudre de façon plus fluide et pertinente.
-            </p>
-            <p>
-                Dans la première partie, nous avons appris, suite à l'étude de plusieurs articles financiers, que
-                l'analyse d'un indice financier était extrêmement complexe. En effet, l'évolution de ces indices
-                boursiers seraient à la fois lié à l'état des finances réelles, mais aussi à la psychologie des
-                investisseurs.
-            </p>
-            <p>
-                Dans la seconde partie, nous nous sommes appropriés les bases tant théoriques que pratiques des réseaux
-                de neurones artificiels. Après avoir implémenté nos réseaux de neurones, et amélioré ceux-ci par à
-                l'aide d'un savoir empirique, nous avons pu comparer les résultats prédits finaux (à l'aide du réseau de
-                neurones le plus performant) avec les valeurs réelles de l'indice boursier.
-            </p>
-            <p>
-                Nous pouvons dire que notre réseau de neurones artificiel ne donnent pas encore des résultats
-                satisfaisant, au vu des écarts trouvés lors de la dénormalisation des données.
-            </p>
-            <p>
-                Si notre modèle ne fournit pas des prédictions satisfaisantes, c'est pour la simple raison qu'il ne
-                contient pas suffisament de variables explicatives. En effet, nous nous basons uniquement sur des
-                données historiques, qui ne permettent pas à elle seules d'expliquer les variations des indices boursier.
-                En effet, elles ne se limitent qu'à l'aspect quantitatif de l'indice boursier, sans prendre en compte
-                les multiples variables qualitatives qui l'influencent. Pour améliorer les performances de notre réseau
-                de neurones artificiels, il serait intéressant de lui fournir d'autre données en entrées, capable de
-                modéliser l'état de santé des entreprises (bilan financier, stratégies) et la psychologique des
-                investisseurs. Les nouvelles impactant fortement la psychologie de ces derniers, il serait surement
-                intéressant de développer un second réseau de neurones, dont le but serait d'analyser les nouvelles liées
-                à un indice, et d'en déterminer l'avis général (positif ou négatif). Les données de ce second réseau
-                seraient envoyées en entrée du premier, permettant ainsi d'avoir un modèle se basant à la fois sur
-                l'état de santé de l'indice et sur la psychologie des investisseurs, améliorant ainsi théoriquement
-                les prédictions du modèle. Cette théorie a été vérifiée par les performances du fond d'investissement
-                Medaillon, qui se base sur la prédiction d'évolution d'indices boursiers, en utilisant des centaines
-                de variables explicatives dans leur modèle, ce qui leur confère le statut de "fond d'investissement  le
-                plus performant de l'histoire".
-            </p>
-{#            {% for index in divs %}#}
-{#                <div class="ui segment raised">#}
-{#                    <h3 class="header" align="center">{{ index }}</h3>#}
-{#                    {{ divs|key:index|safe }}#}
-{#                </div>#}
-{#            {% endfor %}#}
+            </br>
+            <div class="ui segment raised">
+                <p>
+                    Rappelons que la problématique était la suivante : "Peut-on prévoir efficacement les dynamiques
+                    financières à l'aide de réseaux de neurones artificiels?". Nous avons donc décidé, à la façon de
+                    Machiavel <span name="citation">"Divide et impera"</span>, de diviser le problème en sous problème
+                    afin
+                    de le résoudre de façon plus fluide et pertinente.
+                </p>
+                <p>
+                    Dans la première partie, nous avons appris, suite à l'étude de plusieurs articles financiers, que
+                    l'analyse d'un indice financier était extrêmement complexe. En effet, l'évolution de ces indices
+                    boursiers seraient à la fois lié à l'état des finances réelles, mais aussi à la psychologie des
+                    investisseurs.
+                </p>
+                <p>
+                    Dans la seconde partie, nous nous sommes appropriés les bases tant théoriques que pratiques des
+                    réseaux
+                    de neurones artificiels. Après avoir implémenté nos réseaux de neurones, et amélioré ceux-ci par à
+                    l'aide d'un savoir empirique, nous avons pu comparer les résultats prédits finaux (à l'aide du
+                    réseau de
+                    neurones le plus performant) avec les valeurs réelles de l'indice boursier.
+                </p>
+                <p>
+                    Nous pouvons dire que notre réseau de neurones artificiel ne donnent pas encore des résultats
+                    satisfaisant, au vu des écarts trouvés lors de la dénormalisation des données.
+                </p>
+                <p>
+                    Si notre modèle ne fournit pas des prédictions satisfaisantes, c'est pour la simple raison qu'il ne
+                    contient pas suffisament de variables explicatives. En effet, nous nous basons uniquement sur des
+                    données historiques, qui ne permettent pas à elle seules d'expliquer les variations des indices
+                    boursier.
+                    En effet, elles ne se limitent qu'à l'aspect quantitatif de l'indice boursier, sans prendre en
+                    compte
+                    les multiples variables qualitatives qui l'influencent. Pour améliorer les performances de notre
+                    réseau
+                    de neurones artificiels, il serait intéressant de lui fournir d'autre données en entrées, capable de
+                    modéliser l'état de santé des entreprises (bilan financier, stratégies) et la psychologique des
+                    investisseurs. Les nouvelles impactant fortement la psychologie de ces derniers, il serait surement
+                    intéressant de développer un second réseau de neurones, dont le but serait d'analyser les nouvelles
+                    liées
+                    à un indice, et d'en déterminer l'avis général (positif ou négatif). Les données de ce second réseau
+                    seraient envoyées en entrée du premier, permettant ainsi d'avoir un modèle se basant à la fois sur
+                    l'état de santé de l'indice et sur la psychologie des investisseurs, améliorant ainsi théoriquement
+                    les prédictions du modèle. Cette théorie a été vérifiée par les performances du fond
+                    d'investissement
+                    Medaillon, qui se base sur la prédiction d'évolution d'indices boursiers, en utilisant des centaines
+                    de variables explicatives dans leur modèle, ce qui leur confère le statut de "fond d'investissement
+                    le
+                    plus performant de l'histoire".
+                </p>
+            </div>
+            {#            {% for index in divs %}#}
+            {#                <div class="ui segment raised">#}
+            {#                    <h3 class="header" align="center">{{ index }}</h3>#}
+            {#                    {{ divs|key:index|safe }}#}
+            {#                </div>#}
+            {#            {% endfor %}#}
         </div>
     </div>
-{#    {{ script_bokeh|safe }}#}
+    {#    {{ script_bokeh|safe }}#}
 {% endblock %}

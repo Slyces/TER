@@ -5,12 +5,12 @@
 {% block title %}
     <title>TER !</title>
 {% endblock %}
-
+s
 {% block content %}
  <div class="main ui container">
         <div class="chapter content" id="Concepts">
             <h1 class="chapter header" align="center">I - Généralité</h1>
-            <br/>
+            <div class="ui segment raised">
             <p>
                 Les réseaux de neuronnes artificiels sont des ensembles d'algorithmes dont le fonctionnement général
                 s'inspire d'un modèle simplifié du fonctionnement des neurones, en se basant sur le paradigme biologique du neurone formel. <br/>
@@ -30,8 +30,8 @@
                 <li> Les couches cachés (hidden layer x)</li>
                 <li> Les données de sortie (output layer)</li>
             </ol>
-            <img src="{% static 'hello_world/images/neural.jpg' %}" alt="Picture of neural network"
-                 style="width:750px; height:250px;"/>
+            <img src="{% static 'hello_world/images/reseau.svg' %}" alt="Picture of neural network"
+                 style="width:550px; height:300px; align:left"/>
             <ul>
                 <li>La première couche reçoit les données. <br/>
                     Il est très important de bien les choisirs au préalable car elles régissent la qualité de
@@ -46,7 +46,8 @@
                 </li>
             </ul>
             </p>
-
+            </div>
+            <div class="ui segment raised">
             <p>
                 <span class="underlined"> Quelques dates clefs : </span><br/>
                 <ul><li>1890 : W. James propose une loi de fonctionnemment pour l'apprentissage avec le concept de mémoire associative.</li>
@@ -60,11 +61,12 @@
                     <li>1985 : Rumelhart et Y.LeCun livre le premier réseaux de neurones multicouches (avec rétropropagation du gradient)</li>
                 </ul>
             </p>
+            </div>
 
-             <div class="ui segment inverted header">
-                <h3 class="chapter header" align="center">II - Transition des données inter-neurones : </h3>
-             </div>
 
+            <h1 class="chapter header" align="center">II - Transition des données inter-neurones : </h1>
+
+            <div class="ui segment raised">
             <p>
                 Un neurone formel est conçu comme un automate doté d'une fonction de transfert qui transforme ses entrées en sortie selon des règles précises. <br/>
                 Un neurone somme ses entrées, compare la somme résultante à une valeur seuil, et répond en émettant un signal si cette somme est supérieure ou égale à ce seuil,<br />
@@ -103,11 +105,11 @@
                 Par exemple, si les fonctions d'activations sont linéaires, le réseau est alors l'équivalent d'une
                 régression multilinéaire.
             </p>
-
-
-            <div class="ui segment inverted header">
-                <h3 class="chapter header" align="center">III - Les fonctions d'activation : </h3>
             </div>
+
+
+            <h1 class="chapter header" align="center">III - Les fonctions d'activation : </h1>
+            <div class="ui segment raised">
             <p>
                 Les fonctions d'activation, aussi appelées fonctions de seuillage ou fonctions de transfert, servent à introduire une non-linéarité dans le fonctionenement des neurones.<br/>
                 En général, les fonctions d'évaluation présentent trois intervalles:
@@ -135,11 +137,12 @@
             Néanmoins il en existe beaucoup d'autre, chacune étant plus ou moins adapté à un style de problème en particulier. <br/>
             Le choix de la fonction d'activation joue un role très important lors de la phas d'apprentissage, il est donc necessaire de la choisir judicieusement.
             </p>
-
-
-            <div class="ui segment inverted header">
-                <h3 class="chapter header" align="center">IV - L'apprentissage : </h3>
             </div>
+
+
+            <h1 class="chapter header" align="center">IV - L'apprentissage : </h1>
+            <div class="ui segment raised">
+
             <p>
                 Les réseaux de neurones possèdent donc un algorithme spécialisé dans l'entrainement. Le but de celui-ci est de <br/>
                 modifier les poids synaptique en fonction du jeu de donnée en entrée du réseau. <br/>
@@ -171,11 +174,11 @@
                 les erreurs selon l'importance des éléments qui ont justement participé à la réalisation de ces erreurs : les poids synaptiques qui <br />
                 contribuent à engendrer une erreur importante se verront modifiés de manière plus significative que les poids qui ont engendré une erreur marginale.<br/>
             </p>
-
-
-             <div class="ui segment inverted header">
-                <h3 class="chapter header" align="center">V - Les différents types de réseaux de neurones: </h3>
             </div>
+
+
+            <h1 class="chapter header" align="center">V - Les différents types de réseaux de neurones: </h1>
+            <div class="ui segment raised">
             <p>
                 Il existe plusieurs types de réseaux de neurones.<br/>
                 On peut différencier les types de réseaux suivant plusieurs critères, a savoir :
@@ -216,10 +219,10 @@
                 </li>
             </ol>
             </p>
-
-             <div class="ui segment inverted header">
-                <h3 class="chapter header" align="center">VI - Les limites des réseaux de neurones : </h3>
             </div>
+
+            <h1 class="chapter header" align="center">VI - Les limites des réseaux de neurones : </h1>
+            <div class="ui segment raised">
             <p>
                 Les réseaux de neurones artificiels ont besoin de cas réels servant d’exemples pour leur apprentissage. <br/>
                 Plus le problème est complexe, plus les réseaux de neurones auront besoin d'exmple pour pouvoir fournir des résultats satisfaisant. <br/>
@@ -239,6 +242,7 @@
                 et un but très simple (avancer jusqu'à finir le niveau), prend déjà des dizaines d'heures.<br/>
                 Ainsi, la résolution de problème en temps réèl est exclu.<br/>
             </p>
+            </div>
         </div>
  </div>
 

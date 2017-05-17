@@ -12,292 +12,384 @@
 
             {# Grand titre #}
             <h1 class="chapter header">
-                Applications pratiques
+                 Applications pratiques
             </h1>
 
             <h2 class="chapter header">Introduction</h2>
-            <p>
-                Dans le cadre de notre TER, nous avons dans un premier temps cherché à nous approprier les concepts
-                fondamentaux concernant les réseaux de neurones artificiels, leurs applications en finance, et les
-                limites auxquelles ils restent confrontés.
-            </p>
-            <p>
-                Puis, nous avons décidé de coder nos propre réseaux de neurones artificiels afin de répondre
-                expérimentalement à la problématique suivante: « Peut-on prévoir efficacement les dynamiques financières
-                en utilisant les réseaux de neurones artificiels ?».
+            <div class="ui segment raised">
+                <p>
+                    Dans le cadre de notre TER, nous avons dans un premier temps cherché à nous approprier les concepts
+                    fondamentaux concernant les réseaux de neurones artificiels, leurs applications en finance, et les
+                    limites auxquelles ils restent confrontés.
+                </p>
+                <p>
+                    Puis, nous avons décidé de coder nos propre réseaux de neurones artificiels afin de répondre
+                    expérimentalement à la problématique suivante: « Peut-on prévoir efficacement les dynamiques
+                    financières
+                    en utilisant les réseaux de neurones artificiels ?».
 
-            </p>
-            <p>
-                Dans cette partie, nous présenterons dans un premier temps notre stratégie empirique concernant la mise
-                en place de nos réseaux, puis nous discuterons des résultats que nous avons obtenus.
-            </p>
+                </p>
+                <p>
+                    Dans cette partie, nous présenterons dans un premier temps notre stratégie empirique concernant la
+                    mise
+                    en place de nos réseaux, puis nous discuterons des résultats que nous avons obtenus.
+                </p>
+            </div>
 
             <h2 class="chapter header">Stratégie empirique</h2>
+            <div class="ui segment raised">
+                <p>
+                    Dans cette sous-partie, nous allons présenter nos choix des indices à prédire puis détailler le
+                    codage
+                    de nos réseaux de neurones artificiels.
+                </p>
 
-            <p>
-                Dans cette sous-partie, nous allons présenter nos choix des indices à prédire puis détailler le codage
-                de nos réseaux de neurones artificiels.
-            </p>
+                <h3> 1 - Choix des indices à prédire </h3>
+                <p>
+                    Avant de nous attaquer à la programmation des réseaux de neurones artificiels à proprement parler,
+                    nous
+                    avons du effectuer un choix concernant les produits financiers dont nous allions cherché à prédire
+                    les
+                    dynamiques. Après une consultation avec notre tuteur, Olivier Brandouy, nous avons décidé de nous
+                    intéresser à 3 indices boursiers : le S&P 500, le NASDAQ Composite et le Dow Jones Industrial
+                    Average ainsi qu'au Federal Funds Rate.
+                    En effet, ces indices disposent tous d'une notoriété internationale, ce qui facilite grandement la
+                    collecte des données, et dont la prédiction s'avère par conséquent intéressante pour les
+                    investisseurs.
+                </p>
 
-            <h3> 1 - Choix des indices à prédire </h3>
-            <p>
-                Avant de nous attaquer à la programmation des réseaux de neurones artificiels à proprement parler, nous
-                avons du effectuer un choix concernant les produits financiers dont nous allions cherché à prédire les
-                dynamiques. Après une consultation avec notre tuteur, Olivier Brandouy, nous avons décidé de nous
-                intéresser à 3 indices boursiers : le S&P 500, le NASDAQ Composite et le Dow Jones Industrial Average.
-                En effet, ces indices disposent tous d'une notoriété internationale, ce qui facilite grandement la
-                collecte des données, et dont la prédiction s'avère par conséquent intéressante pour les investisseurs.
-            </p>
+                <h4> a) S&P 500</h4>
+                <p>
+                    Le Standard & Poor's 500, connu sous l'abréviation S&P 500, est un indice boursier américain possédé
+                    par
+                    l'agence de notation Standard & Poor's. Il se base sur la capitalisation boursière, soit la valeur
+                    de
+                    marché de l'ensemble des actions d'une société, de 500 grandes entreprises américaines. Par
+                    ailleurs,
+                    le S&P 500 est un indice boursier relativement ancien, étant apparu en 1923. Il est alors connu sous
+                    le
+                    nom de Composite Index et ne regroupe qu'un faible nombre d'actions. L'indice boursier se développe
+                    graduellement et atteint son apogée en 1957, où il regroupe les actions de 500 grandes entreprises :
+                    il
+                    prend alors le nom de S&P 500.
+                </p>
+                <p>
+                    Le S&P 500 se calcule selon la formule suivante:
+                </p>
+                <p>
+                    <img class="alinea" src="{% static 'hello_world/images/sp500.gif' %}" alt="S&P 500"/>
+                </p>
+                <p>
+                    Où Pi représente le prix de l'action de l'entreprise i, Qi le nombre d'actions disponibles
+                    publiquement,
+                    et Divisor une constante fixé par Standard & Poor's, approximativement égale à 8,9 milliards USD.
+                </p>
 
-            <h4> a) S&P 500</h4>
-            <p>
-                Le Standard & Poor's 500, connu sous l'abréviation S&P 500, est un indice boursier américain possédé par
-                l'agence de notation Standard & Poor's. Il se base sur la capitalisation boursière, soit la valeur de
-                marché de l'ensemble des actions d'une société, de 500 grandes entreprises américaines. Par ailleurs,
-                le S&P 500 est un indice boursier relativement ancien, étant apparu en 1923. Il est alors connu sous le
-                nom de Composite Index et ne regroupe qu'un faible nombre d'actions. L'indice boursier se développe
-                graduellement et atteint son apogée en 1957, où il regroupe les actions de 500 grandes entreprises : il
-                prend alors le nom de S&P 500.
-            </p>
-            <p>
-                Le S&P 500 se calcule selon la formule suivante:
-            </p>
-            <img src="{% static 'hello_world/images/sp500.gif' %}" alt="S&P 500"
-                 style="width:128px;height:50px;"/>
-            <p>
-                Où Pi représente le prix de l'action de l'entreprise i, Qi le nombre d'actions disponibles publiquement,
-                et Divisor une constante fixé par Standard & Poor's, approximativement égale à 8,9 milliards USD.
-            </p>
+                <h4> b) NASDAQ Composite</h4>
+                <p>
+                    Le National Association of Securities Dealers Automated Quotations ou NASDAQ est le second plus
+                    grand
+                    marché d'actions des Etats-Unis, derrière le New York Stock Exchange. Ouvert en 1971, il est le
+                    premier
+                    marché boursier électronique à être apparu et gardera ce statut pendant 15 ans. De plus, en terme de
+                    volume, il cote à l'heure actuelle plus de 3200 valeurs, liées surtout aux entreprises de nouvelles
+                    et
+                    hautes technologies.
+                </p>
+                <p>
+                    Son indice boursier, le NASDAQ Composite, est un des acteurs majeurs du marché d'action des
+                    Etats-Unis.
+                    Ce dernier est lancé en 1971, et cote alors les actions de 50 compagnies. Il connait une croissance
+                    rapide, qui s'accélère dans les années 90 avec la bulle internet. En effet, le NASDAQ Composite
+                    regroupe
+                    de nombreuses entreprises liées à l'informatique, ce qui lui permet de bénéficier pleinement de
+                    l'essor
+                    des nouvelles technologies. L'indice atteint son apogée en mars 2000, avant de connaître un déclin
+                    en
+                    2002, suite à l'explosion de la bulle internet. Toutefois, il parvient à se redresser graduellement
+                    et
+                    atteint un nouveau record en 2015.
+                </p>
+                <p>
+                    Contrairement au S&P 500 qui se limite à un nombre fixe d'entreprises cotées, le NASDAQ Composite
+                    cote
+                    l'ensemble des sociétés du NASDAQ, environ 3200. Chacune d'entre elles est affectées d'un poids
+                    proportionnel à sa valeur de marché.
+                </p>
+                <p>
+                    Le NASDAQ Composite se calcule selon la formule suivante :
+                </p>
+                <p>
+                    <img class="alinea" src="{% static 'hello_world/images/nasdaq.gif' %}" alt="S&P 500"/>
+                </p>
+                <p>
+                    Où Vi est la valeur de marché de l'entreprise i pondérée, Divisor une constante déterminée par le
+                    NASDAQ
+                </p>
 
-            <h4> b) NASDAQ Composite</h4>
-            <p>
-                Le National Association of Securities Dealers Automated Quotations ou NASDAQ est le second plus grand
-                marché d'actions des Etats-Unis, derrière le New York Stock Exchange. Ouvert en 1971, il est le premier
-                marché boursier électronique à être apparu et gardera ce statut pendant 15 ans. De plus, en terme de
-                volume, il cote à l'heure actuelle plus de 3200 valeurs, liées surtout aux entreprises de nouvelles et
-                hautes technologies.
-            </p>
-            <p>
-                Son indice boursier, le NASDAQ Composite, est un des acteurs majeurs du marché d'action des Etats-Unis.
-                Ce dernier est lancé en 1971, et cote alors les actions de 50 compagnies. Il connait une croissance
-                rapide, qui s'accélère dans les années 90 avec la bulle internet. En effet, le NASDAQ Composite regroupe
-                de nombreuses entreprises liées à l'informatique, ce qui lui permet de bénéficier pleinement de l'essor
-                des nouvelles technologies. L'indice atteint son apogée en mars 2000, avant de connaître un déclin en
-                2002, suite à l'explosion de la bulle internet. Toutefois, il parvient à se redresser graduellement et
-                atteint un nouveau record en 2015.
-            </p>
-            <p>
-                Contrairement au S&P 500 qui se limite à un nombre fixe d'entreprises cotées, le NASDAQ Composite cote
-                l'ensemble des sociétés du NASDAQ, environ 3200. Chacune d'entre elles est affectées d'un poids
-                proportionnel à sa valeur de marché.
-            </p>
-            <p>
-                Le NASDAQ Composite se calcule selon la formule suivante :
-            </p>
-            <h3 class="equation upper">
-                $$Indice = {∑V_i}/{Divisor}$$
-            </h3>
-            <p>
-                Où Vi est la valeur de marché de l'entreprise i pondérée, Divisor une constante déterminée par le NASDAQ
-            </p>
+                <h4> c) Dow Jones Industrial Average</h4>
+                <p>
+                    Le Dow Jones Industrial Average est un des plus vieil indice boursier américain, établi pour la
+                    première
+                    fois en 1896, par Charles Dow. Ce dernier est le fondateur du Wall Street Journal, ainsi que de la
+                    firme
+                    éponyme  Dow Jones & Company,  avec son associé Edward Jones. Le Dow Jones Industrial Average est un
+                    indice regroupant à l'origine les 30 plus grandes sociétés publiques américaines. En effet, nous y
+                    trouvons alors des compagnies publiques appartenant au secteur industriel, telles que American Sugar
+                    Company ou North American Company. Graduellement, avec le déclin de l'industrie et l'avénnement du
+                    secteur tertiaire, les entreprises cotées au Dow Jones Industrial Average ont évolué. Ainsi, à
+                    l'heure
+                    actuelle, y figurent des compagnies telles que Apple, Coca-Cola, Microsoft, Nike ou McDonald's.
+                </p>
+                <p>
+                    L'indice du Dow Jones Industrial Average se calcule selon la formule suivante :
+                </p>
+                <p>
+                    <img class="alinea" src="{% static 'hello_world/images/dow.gif' %}" alt="Dow Jones"/>
+                </p>
+                <p>
+                    Où Pi est le prix de l'action de l'entreprise i et Dow Divisor une constante déterminée par le Dow
+                    Jone
+                    Industrial Average.
+                </p>
+                <h4> d) Federal Funds Rate</h4>
+                <p>
+                    Finalement, nous nous sommes également intéressés au Federal Funds Rate, qui correpond au taux
+                    d'intérêt auquel les banques américaines prêtent leurs réserves à d'autres institutions financières.
+                </p>
+                <h3> 2 - Programmation des réseaux de neurones artificiels </h3>
 
-            <h4> c) Dow Jones Industrial Average</h4>
-            <p>
-                Le Dow Jones Industrial Average est un des plus vieil indice boursier américain, établi pour la première
-                fois en 1896, par Charles Dow. Ce dernier est le fondateur du Wall Street Journal, ainsi que de la firme
-                éponyme  Dow Jones & Company,  avec son associé Edward Jones. Le Dow Jones Industrial Average est un
-                indice regroupant à l'origine les 30 plus grandes sociétés publiques américaines. En effet, nous y
-                trouvons alors des compagnies publiques appartenant au secteur industriel, telles que American Sugar
-                Company ou North American Company. Graduellement, avec le déclin de l'industrie et l'avénnement du
-                secteur tertiaire, les entreprises cotées au Dow Jones Industrial Average ont évolué. Ainsi, à l'heure
-                actuelle, y figurent des compagnies telles que Apple, Coca-Cola, Microsoft, Nike ou McDonald's.
-            </p>
-            <p>
-                L'indice du Dow Jones Industrial Average se calcule selon la formule suivante :
-            </p>
-            <img src="{% static 'hello_world/images/dow.gif' %}" alt="Dow Jones"
-                 style="width:128px;height:50px;"/>
-            <p>
-                Où Pi est le prix de l'action de l'entreprise i et Dow Divisor une constante déterminée par le Dow Jone
-                Industrial Average.
-            </p>
+                <h4> a) Choix des plateformes de programmation</h4>
+                <p>
+                    Après avoir déterminé les 3 indices boursiers à prédire, nous avons débuté la programmation de nos
+                    réseaux de neurones artificiels. Nous avons opté pour une double approche qui consiste à programmer,
+                    dans un premier temps, un réseau de neurones artificiels en utilisant les librairies disponibles sur
+                    le
+                    logiciel R, puis à élaborer notre propre réseau, en utilisant le langage python et les librairies
+                    dédiées aux machines learning. Cette double approche se justifie par notre volonté d'expérimenter la
+                    conception des réseaux de neurones sur plusieurs plateformes, afin d'établir une analyse
+                    comparative.
+                </p>
 
-            <h3> 2 - Programmation des réseaux de neurones artificiels </h3>
+                <h4> b) Programmation des réseaux de neurones artificiels sur R</h4>
+                <p>
+                    Notre objectif principal lors de cette première étape est de programmer un réseau de neurones
+                    artificiels sur R, de le visualiser, et d'établir des prédictions quant aux variations d'un indice
+                    boursier,le S&P 500, que nous comparons ensuite aux prédictions obtenus grâce à un modèle ARIMA.
+                </p>
+                <p>
+                    La programmation de notre réseau sur le logiciel R s'est faite grâce à l'interface graphique
+                    RStudio.
+                </p>
+                <img src="{% static 'hello_world/images/R1.jpg' %}" alt="Importation des librairies"/>
+                <p>
+                    Dans un premier temps, nous avons importé les 4 librairies nécessaires à notre entreprise : tseries,
+                    forecast, neuralnet, et Hmisc. Tseries est une librairies permettant entre autres de modéliser une
+                    série
+                    chronologique par un modèle ARIMA, forecast permet d'établir des prédictions sur ce modèle,
+                    neuralnet de
+                    construire notre réseau de neurones artificiels et Hmisc de classer les données d'un tableau avec un
+                    cran de retard ou lag. Ces librairies disposent de nombreuses autres fonctionnalités que nous
+                    n'avons
+                    pas utilisées.
+                </p>
+                <p>
+                    Après avoir importé les librairies, nous nous sommes attaché à la récupération et au traitement des
+                    données de nos indices boursiers. Dans un premier temps, nous avons téléchargé les données relatives
+                    à
+                    l'indice S&P 500, entre le 1er janvier 2013 et le 30 décembre 2016, sous format csv, depuis le site
+                    https://fr.finance.yahoo.com/. Nous obtenons alors le tableau partiellement représenté ci-dessous :
+                </p>
+                <img src="{% static 'hello_world/images/R6.jpg' %}" alt="S&P 500"/>
+                <p>
+                    Nous y trouvons 1008 observations caractérisées par 7 variables : la date, le cours d'ouverture, le
+                    cours
+                    maximal atteint dans la journée, le cours minimal atteint dans la journée, les cours de fermeture,
+                    et le
+                    volume échangé. Seules la variable cours d'ouverture, Open, nous intéresse. En effet, nous avons
+                    arbitrairement décidé de nous baser sur celui-ci lors de nos calculs et de nos prédictions.
+                </p>
+                <img src="{% static 'hello_world/images/R2.jpg' %}" alt="Traitement des données"/>
+                <p>
+                    Une fois les données importées, nous stockons les 1000 premières observations des cours d'ouverture
+                    dans
+                    une variable nommée X, puis nous les convertissons en type numeric. Nous utilisons ensuite la
+                    fonction
+                    tsclean afin de compléter les données manquantes. Nous stockons ensuite les 1001 à 1008 ème
+                    observations
+                    dans la variable true.pred.X, à laquelle nous appliquons le même traitement que X. Cette variable
+                    représente les données réelles que nous chercherons à prédire grâce au modèle ARIMA et à notre
+                    réseau de
+                    neurones artificiels.
+                </p>
+                <img src="{% static 'hello_world/images/R3.jpg' %}" alt="Auto.arima"/>
+                <p>
+                    Par la suite, après le traitement de nos données, nous les modélisons grâce à la fonction auto.arima
+                    et
+                    nous obtenons nos prédictions grâce à la fonction predict.
+                </p>
+                <img src="{% static 'hello_world/images/R4.jpg' %}" alt="Normalisation"/>
+                <p>
+                    Nous nous attaquons ensuite à la conception de notre réseau de neurones artificiels. Premièrement,
+                    il
+                    nous faut procéder à la normalisation de nos données. Pour se faire, nous enlevons à chaque
+                    observation
+                    le minimum de X et nous le divisons par le maximum moins le minimum. Nous stockons les observations
+                    normalisées dans le vecteur Xnorm. Nous séparons ensuite ce vecteur en deux : train, qui représente
+                    l'échantillon sur lequel nous allons entrainé le réseau, et test, qui représente l'échantillon sur
+                    lequel nous allons le tester.
+                </p>
+                <p>
+                    Par la suite, train et test sont convertits en objets ts (time series) et nous créons 2 tableaux
+                    datatrain et datatest. Ces tableaux contiennent à la première colonne les vecteurs tests,
+                    respectivement
+                    train, à la seconde colonne les valeurs de test, respectivement train, au jour précédent (t-1), et à
+                    la
+                    troisième colonne les valeurs de test, respectivement train, au jour d'avant (t-2). En effet, nous
+                    avons
+                    choisi 2 paramètres d'entrée, x1 et x2 pour notre réseau de neurones artitificiels : le cours de
+                    l'indice
+                    au jour précédent, l'instant t-1, et le cours au jour d'avant, l'instant t-2. De manière intuitive,
+                    ce
+                    choix s'explique par la volonté d'imiter un modèle ARIMA, en supposant que le cours d'un indice
+                    boursier
+                    au jour j dépend en partie de sa valeur d'hier, j-1, et d'avant hier, j-2, d'où la nécessité de
+                    regrouper ces trois variables dans un même tableau.
+                </p>
+                <p>
+                    Nous établissons ensuite la formule sur laquelle va travailler notre réseau de neurone :
+                    Xnorm~x1+x2.
+                    Le réseau va donc chercher à expliquer la valeur de Xnorm à l'instant t en fonction de Xnorm à
+                    l'instant
+                    t-1 (x1) et Xnorm à l'instant t-2 (x2). Cette formule est stockée dans la variable f.
+                </p>
+                <p>
+                    Par la suite, nous procédons à la création du réseau, noté rn, grâce à la fonction neuralnet qui
+                    permet
+                    de créer un réseau de neurones artificiels et de l'entrainer. Cette fonction prend comme paramètres
+                    la
+                    formule f, notre échantillon d'entrainement, datatrain, et le nombre de couches cachées, ici une
+                    couche
+                    de 50 neurones.
+                </p>
+                <p>
+                    Nous procédons ensuite à la phase de prédiction, grâce à la fonction compute, qui prend en entrée
+                    notre
+                    réseau de
+                    neurones entrainé, rn, ainsi que les colonnes x1 et x2 de notre echantillon test, datatest. Les
+                    données
+                    prédites sont stockées dans le vecteur Xpred que nous dénormalisons pour finalement obtenir le
+                    vecteur
+                    Xpreddenorm.
+                </p>
+                <img src="{% static 'hello_world/images/R5.jpg' %}" alt="Traitement des données"/>
+                <p>
+                    Finalement, pour comparer notre réseau au modèle ARIMA, nous effectuons une prédiction sur les 8
+                    prochains jours, à partir du 1000ème jour, en alimentant les x1 et les x2 du réseau non plus par les
+                    valeurs réelles de x1 et x2, mais par les valeurs prédites par le réseau aux instants t-1 et t-2.
+                    Les
+                    raisons de cette démarche seront expliquées dans la partie résultat.
+                </p>
 
-            <h4> a) Choix des plateformes de programmation</h4>
-            <p>
-                Après avoir déterminé les 3 indices boursiers à prédire, nous avons débuté la programmation de nos
-                réseaux de neurones artificiels. Nous avons opté pour une double approche qui consiste à programmer,
-                dans un premier temps, un réseau de neurones artificiels en utilisant les librairies disponibles sur le
-                logiciel R, puis à élaborer notre propre réseau, en utilisant le langage python et les librairies
-                dédiées aux machines learning. Cette double approche se justifie par notre volonté d'expérimenter la
-                conception des réseaux de neurones sur plusieurs plateformes, afin d'établir une analyse comparative.
-            </p>
-
-            <h4> b) Programmation des réseaux de neurones artificiels sur R</h4>
-            <p>
-                Notre objectif principal lors de cette première étape est de programmer un réseau de neurones
-                artificiels sur R, de le visualiser, et d'établir des prédictions quant aux variations d'un indice
-                boursier,le S&P 500, que nous comparons ensuite aux prédictions obtenus grâce à un modèle ARIMA.
-            </p>
-            <p>
-                La programmation de notre réseau sur le logiciel R s'est faite grâce à l'interface graphique RStudio.
-            </p>
-            <img src="{% static 'hello_world/images/R1.jpg' %}" alt="Importation des librairies"/>
-            <p>
-                Dans un premier temps, nous avons importé les 4 librairies nécessaires à notre entreprise : tseries,
-                forecast, neuralnet, et Hmisc. Tseries est une librairies permettant entre autres de modéliser une série
-                chronologique par un modèle ARIMA, forecast permet d'établir des prédictions sur ce modèle, neuralnet de
-                construire notre réseau de neurones artificiels et Hmisc de classer les données d'un tableau avec un
-                cran de retard ou lag. Ces librairies disposent de nombreuses autres fonctionnalités que nous n'avons
-                pas utilisées.
-            </p>
-            <p>
-                Après avoir importé les librairies, nous nous sommes attaché à la récupération et au traitement des
-                données de nos indices boursiers. Dans un premier temps, nous avons téléchargé les données relatives à
-                l'indice S&P 500, entre le 1er janvier 2013 et le 30 décembre 2016, sous format csv, depuis le site
-                https://fr.finance.yahoo.com/. Nous obtenons alors le tableau partiellement représenté ci-dessous :
-            </p>
-            <img src="{% static 'hello_world/images/R6.jpg' %}" alt="S&P 500"/>
-            <p>
-                Nous y trouvons 1008 observations caractérisées par 7 variables : la date, le cours d'ouverture, le
-                cours
-                maximal atteint dans la journée, le cours minimal atteint dans la journée, les cours de fermeture, et le
-                volume échangé. Seules la variable cours d'ouverture, Open, nous intéresse. En effet, nous avons
-                arbitrairement décidé de nous baser sur celui-ci lors de nos calculs et de nos prédictions.
-            </p>
-            <img src="{% static 'hello_world/images/R2.jpg' %}" alt="Traitement des données"/>
-            <p>
-                Une fois les données importées, nous stockons les 1000 premières observations des cours d'ouverture dans
-                une variable nommée X, puis nous les convertissons en type numeric. Nous utilisons ensuite la fonction
-                tsclean afin de compléter les données manquantes. Nous stockons ensuite les 1001 à 1008 ème observations
-                dans la variable true.pred.X, à laquelle nous appliquons le même traitement que X. Cette variable
-                représente les données réelles que nous chercherons à prédire grâce au modèle ARIMA et à notre réseau de
-                neurones artificiels.
-            </p>
-            <img src="{% static 'hello_world/images/R3.jpg' %}" alt="Auto.arima"/>
-            <p>
-                Par la suite, après le traitement de nos données, nous les modélisons grâce à la fonction auto.arima et
-                nous obtenons nos prédictions grâce à la fonction predict.
-            </p>
-            <img src="{% static 'hello_world/images/R4.jpg' %}" alt="Normalisation"/>
-            <p>
-                Nous nous attaquons ensuite à la conception de notre réseau de neurones artificiels. Premièrement, il
-                nous faut procéder à la normalisation de nos données. Pour se faire, nous enlevons à chaque observation
-                le minimum de X et nous le divisons par le maximum moins le minimum. Nous stockons les observations
-                normalisées dans le vecteur Xnorm. Nous séparons ensuite ce vecteur en deux : train, qui représente
-                l'échantillon sur lequel nous allons entrainé le réseau, et test, qui représente l'échantillon sur
-                lequel nous allons le tester.
-            </p>
-            <p>
-                Par la suite, train et test sont convertits en objets ts (time series) et nous créons 2 tableaux
-                datatrain et datatest. Ces tableaux contiennent à la première colonne les vecteurs tests, respectivement
-                train, à la seconde colonne les valeurs de test, respectivement train, au jour précédent (t-1), et à la
-                troisième colonne les valeurs de test, respectivement train, au jour d'avant (t-2). En effet, nous avons
-                choisi 2 paramètres d'entrée, x1 et x2 pour notre réseau de neurones artitificiels : le cours de
-                l'indice
-                au jour précédent, l'instant t-1, et le cours au jour d'avant, l'instant t-2. De manière intuitive, ce
-                choix s'explique par la volonté d'imiter un modèle ARIMA, en supposant que le cours d'un indice boursier
-                au jour j dépend en partie de sa valeur d'hier, j-1, et d'avant hier, j-2, d'où la nécessité de
-                regrouper ces trois variables dans un même tableau.
-            </p>
-            <p>
-                Nous établissons ensuite la formule sur laquelle va travailler notre réseau de neurone : Xnorm~x1+x2.
-                Le réseau va donc chercher à expliquer la valeur de Xnorm à l'instant t en fonction de Xnorm à l'instant
-                t-1 (x1) et Xnorm à l'instant t-2 (x2). Cette formule est stockée dans la variable f.
-            </p>
-            <p>
-                Par la suite, nous procédons à la création du réseau, noté rn, grâce à la fonction neuralnet qui permet
-                de créer un réseau de neurones artificiels et de l'entrainer. Cette fonction prend comme paramètres la
-                formule f, notre échantillon d'entrainement, datatrain, et le nombre de couches cachées, ici une couche
-                de 50 neurones.
-            </p>
-            <p>
-                Nous procédons ensuite à la phase de prédiction, grâce à la fonction compute, qui prend en entrée notre
-                réseau de
-                neurones entrainé, rn, ainsi que les colonnes x1 et x2 de notre echantillon test, datatest. Les données
-                prédites sont stockées dans le vecteur Xpred que nous dénormalisons pour finalement obtenir le vecteur
-                Xpreddenorm.
-            </p>
-            <img src="{% static 'hello_world/images/R5.jpg' %}" alt="Traitement des données"/>
-            <p>
-                Finalement, pour comparer notre réseau au modèle ARIMA, nous effectuons une prédiction sur les 8
-                prochains jours, à partir du 1000ème jour, en alimentant les x1 et les x2 du réseau non plus par les
-                valeurs réelles de x1 et x2, mais par les valeurs prédites par le réseau aux instants t-1 et t-2. Les
-                raisons de cette démarche seront expliquées dans la partie résultat.
-            </p>
-
-            <h4> c) Programmation des réseaux de neurones artificiels sur Python</h4>
-            <p>
-                A faire
-            </p>
+                <h4> c) Programmation des réseaux de neurones artificiels sur Python</h4>
+                <p>
+                    Lors de cette seconde partie notre objectif est de programmer notre propre réseau de neurones
+                    artificiels, plutôt que d'utiliser neuralnet. En effet, ce dernier est un réseau dont nous
+                    pouvons certes faire varier les paramètres, mais qui est déjà préprogrammé. Afin d'atteindre cet
+                    objectif, nous utilisons le langage python ainsi que la librairie TensorFlow, qui est un outil
+                    open source d'apprentissage automatique développé par Google.
+                </p>
+                <p>
+                    Afin de créer un noeud du graphe, nous multiplions les poids de ce noeud avec le résultat de la couche précédente(input dans le cas ed la premiere couche cachée). Au résultat on additionne la matrice des biais
+                </p>
+            </div>
 
             <h2 class="chapter header">Résutats Obtenus</h2>
+            <div class="ui segment raised">
+                <h3> 1 - Résultats obtenus par les réseaux de neurones artificiels programmés sur R</h3>
+                <p>
+                    <img src="{% static 'hello_world/images/resultr1.jpg' %}" alt="Résultat"
+                         style="width:800px;height:600px;"/>
+                </p>
+                <p>
+                    <img src="{% static 'hello_world/images/resultr2.jpg' %}" alt="Résultat"
+                         style="width:800px;height:600px;"/>
+                </p>
+                <p>
+                    <img src="{% static 'hello_world/images/resultr3.jpg' %}" alt="Résultat"
+                         style="width:800px;height:600px;"/>
+                </p>
+                <p>
+                    <img src="{% static 'hello_world/images/resultr4.jpg' %}" alt="Résultat"/>
+                </p>
+                <div class="legend">Représentation graphique du réseau de neurones artificiels obtenus sur R</div>
+                </br>
 
-            <h3> 1 - Résultats obtenus par les réseaux de neurones artificiels programmés sur R</h3>
-            <p>
-                <img src="{% static 'hello_world/images/resultr1.jpg' %}" alt="Résultat"
-                     style="width:800px;height:600px;"/>
-            </p>
-            <p>
-                <img src="{% static 'hello_world/images/resultr2.jpg' %}" alt="Résultat"
-                     style="width:800px;height:600px;"/>
-            </p>
-            <p>
-                <img src="{% static 'hello_world/images/resultr3.jpg' %}" alt="Résultat"
-                     style="width:800px;height:600px;"/>
-            </p>
-            <p>
-                <img src="{% static 'hello_world/images/resultr4.jpg' %}" alt="Résultat"/>
-            </p>
-            <div class="legend">Représentation graphique du réseau de neurones artificiels obtenus sur R</div>
+                <p>
+                    les 3 premiers graphiques représentent les mêmes données avec un degrès de zoom différent. La courbe
+                    en
+                    bleue
+                    représente le cours réel du S&P 500 entre le premier et le 1000ème jour, celle en pointillés noirs
+                    le
+                    cours réel du S&P 500 entre le 1000ème et le 1008ème jour, celle en rouge la modélisation du modèle
+                    ARIMA obtenu par auto.arima, celle en pointillés oranges la prédiction du modèle ARIMA, celle en
+                    vert
+                    la modélisation du réseau de neurones sur x1 et x2 réels, et celle en pontillé bleus la modélisation
+                    du
+                    réseau sur x1 et x2 prédits.
+                </p>
 
-            <p>
-                les 3 premiers graphiques représentent les mêmes données avec un degrès de zoom différent. La courbe en
-                bleue
-                représente le cours réel du S&P 500 entre le premier et le 1000ème jour, celle en pointillés noirs le
-                cours réel du S&P 500 entre le 1000ème et le 1008ème jour, celle en rouge la modélisation du modèle
-                ARIMA obtenu par auto.arima, celle en pointillés oranges la prédiction du modèle ARIMA, celle en vert
-                la modélisation du réseau de neurones sur x1 et x2 réels, et celle en pontillé bleus la modélisation du
-                réseau sur x1 et x2 prédits.
-            </p>
+                <p>
+                    Nous observons premièrement, que notre modèle ARIMA est de la forme ARIMA(1,1,0). En effet, son
+                    paramètre p est égale à 1, son degrès de différenciation d est égale à 1, et son son paramètre q est
+                    égal à 0. L'AIC du modèle est de 8180,3. La modélisation ARIMA est, graphiquement, satisfaisante, de
+                    même que ses prédictions qui sont relativement proches des données réelles. En effet, grahiquement,
+                    les
+                    courbes en pointillés oranges et noirs présentent un écart relativement faible.
+                </p>
 
-            <p>
-                Nous observons premièrement, que notre modèle ARIMA est de la forme ARIMA(1,1,0). En effet, son
-                paramètre p est égale à 1, son degrès de différenciation d est égale à 1, et son son paramètre q est
-                égal à 0. L'AIC du modèle est de 8180,3. La modélisation ARIMA est, graphiquement, satisfaisante, de
-                même que ses prédictions qui sont relativement proches des données réelles. En effet, grahiquement, les
-                courbes en pointillés oranges et noirs présentent un écart relativement faible.
-            </p>
+                <p>
+                    En ce qui concerne la modélisation faite par le réseau de neurones artificiels nous observons 2
+                    courbes,
+                    l'une en verte, l'autre en pointillés bleus. La courbe en verte représente la modélisation du réseau
+                    de
+                    neurones artificiels sur l'échantillon test. A première vue, nous pourrions croire que cette
+                    modélisation est très satisfaisante, étant donnée que, graphiquement, la courbe verte, représentant
+                    la
+                    modélisation par le réseau, et la courbe en bleu, représentant les données réelles, sont très
+                    proches au
+                    niveau de leur allure. Toutefois, cette conclusion est érronnée. En effet, la modélisation du réseau
+                    correspondant à la courbe en verte s'est faite point après point, à partir des x1 et x2 réels.
+                    Ainsi,
+                    à l'instant t, le réseau prédit la valeur du cours en se basant sur sa valeur réelle à l'instant t-1
+                    et
+                    t-2. A l'instant t+1, le réseau prédit la valeur du cours en se basant sur la valeur réelle à
+                    l'instant
+                    t (et non celle qu'il a prédite à l'instant t) et à l'instant t-1. Par conséquent, lorsque le réseau
+                    prédit la valeur du cours il commet une erreur, mais cette erreur est automatiquement compensée lors
+                    de
+                    la prédiction suivante puisque ce dernier utilise les données réelles et non les données prédites.
+                </p>
 
-            <p>
-                En ce qui concerne la modélisation faite par le réseau de neurones artificiels nous observons 2 courbes,
-                l'une en verte, l'autre en pointillés bleus. La courbe en verte représente la modélisation du réseau de
-                neurones artificiels sur l'échantillon test. A première vue, nous pourrions croire que cette
-                modélisation est très satisfaisante, étant donnée que, graphiquement, la courbe verte, représentant la
-                modélisation par le réseau, et la courbe en bleu, représentant les données réelles, sont très proches au
-                niveau de leur allure. Toutefois, cette conclusion est érronnée. En effet, la modélisation du réseau
-                correspondant à la courbe en verte s'est faite point après point, à partir des x1 et x2 réels. Ainsi,
-                à l'instant t, le réseau prédit la valeur du cours en se basant sur sa valeur réelle à l'instant t-1 et
-                t-2. A l'instant t+1, le réseau prédit la valeur du cours en se basant sur la valeur réelle à l'instant
-                t (et non celle qu'il a prédite à l'instant t) et à l'instant t-1. Par conséquent, lorsque le réseau
-                prédit la valeur du cours il commet une erreur, mais cette erreur est automatiquement compensée lors de
-                la prédiction suivante puisque ce dernier utilise les données réelles et non les données prédites.
-            </p>
-
-            <p>
-                Afin de tester le véritable pouvoir prédictif de notre réseau, nous devons donc faire en sorte que sa
-                prédiction du cours à l'instant t+1 se base sur la valeur prédite à l'instant t, et non sur la valeur
-                réelle. La courbe en pointillé bleue correspond à cette approche. Nous constatons immédiatement,
-                graphiquement, que les prédictions du réseau de neurones sont beaucoup plus éloignées des données
-                réelles que la prédiction ARIMA. En effet, les courbes en pointillés noirs et bleus présentent un écart
-                important, croissant temporellement. De plus, la courbe représentant la prédiction du réseau tend à
-                décroitre de manière uniforme. Ce résultat s'explique par le fait que lorsque le réseau effectue une
-                prédiction à l'instant t, il commet une erreur e. Lors de la prédiction suivante à l'instant t+1, il se
-                base sur la prédiction érronée de l'instant t, et commet encore une autre erreur e1. Il existe donc un
-                mécanisme d'amplification des erreurs commise par le réseau, ce qui explique le fait que plus nous nous
-                éloignons dans le temps, plus la prédiction faite par le réseau est éloignée des données réelles.
-            </p>
+                <p>
+                    Afin de tester le véritable pouvoir prédictif de notre réseau, nous devons donc faire en sorte que
+                    sa
+                    prédiction du cours à l'instant t+1 se base sur la valeur prédite à l'instant t, et non sur la
+                    valeur
+                    réelle. La courbe en pointillé bleue correspond à cette approche. Nous constatons immédiatement,
+                    graphiquement, que les prédictions du réseau de neurones sont beaucoup plus éloignées des données
+                    réelles que la prédiction ARIMA. En effet, les courbes en pointillés noirs et bleus présentent un
+                    écart
+                    important, croissant temporellement. De plus, la courbe représentant la prédiction du réseau tend à
+                    décroitre de manière uniforme. Ce résultat s'explique par le fait que lorsque le réseau effectue une
+                    prédiction à l'instant t, il commet une erreur e. Lors de la prédiction suivante à l'instant t+1, il
+                    se
+                    base sur la prédiction érronée de l'instant t, et commet encore une autre erreur e1. Il existe donc
+                    un
+                    mécanisme d'amplification des erreurs commise par le réseau, ce qui explique le fait que plus nous
+                    nous
+                    éloignons dans le temps, plus la prédiction faite par le réseau est éloignée des données réelles.
+                </p>
 
             <p>
                 En conclusion, sur cette application pratique, le modèle ARIMA donne de meilleurs prédictions que notre
@@ -307,20 +399,24 @@
                 cas considéré, un certain intérêt pour les prédictions à court terme, d'un jour sur l'autre par exemple,
                 mais perd rapidement son pouvoir prédictif à long terme, contrairement au modèle ARIMA. Toutefois, cette
                 conclusion ne fait pas office de généralisation. En effet, notre réseau de neurones artificiels reste
-                relativement simple dans son architecture, et nous l'avons testé sur un seul échantillon de 1008
-                données.
+                relativement simple dans son architecture, et nous l'avons testé sur un seul échantillon de 1008 données.
                 De plus, il n'est pas exclu que nous ayons commis des erreurs de paramétrages du réseau.
             </p>
 
-            <p>
-                Au vue de cette première expémentation, nous formulons donc l'hypothèse qu'à court terme les réseaus de
-                neurones artificiels donnent des prédictions légèrement meilleurs que ceux obtenus de manière aléatoire,
-                mais qu'ils perdent rapidement de leur pouvoir prédictif à long terme. Afin de confirmer ou d'infirmer
-                cette hypothèse, nous avons décidé de pogrammer un réseau de neurones artificiels en utilisant un autre
-                logiciel, python.
-            </p>
+                <p>
+                    Au vue de cette première expémentation, nous formulons donc l'hypothèse qu'à court terme les réseaus
+                    de
+                    neurones artificiels donnent des prédictions légèrement meilleurs que ceux obtenus de manière
+                    aléatoire,
+                    mais qu'ils perdent rapidement de leur pouvoir prédictif à long terme. Afin de confirmer ou
+                    d'infirmer
+                    cette hypothèse, nous avons décidé de pogrammer un réseau de neurones artificiels en utilisant un
+                    autre
+                    logiciel, python.
+                </p>
 
-            <h3> 2 - Résultats obtenus par les réseaux de neurones artificiels programmés sur Python</h3>
+                <h3> 2 - Résultats obtenus par les réseaux de neurones artificiels programmés sur Python</h3>
+                <p>
 
 
             <div class="ui pointing secondary four item indexes menu">

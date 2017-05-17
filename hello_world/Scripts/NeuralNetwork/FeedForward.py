@@ -22,6 +22,7 @@ class FeedForward(Model.NeuralNetwork):
                     tf.matmul(last_layer, w_h[i]), w_b[i])
             else:
                 self.ops['h%s' % i] = tf.matmul(last_layer, w_h[i])
+
         if w_b:
             self.ops['model'] = tf.add(
                 tf.matmul(self.ops['h%s' % (len(w_h) - 2)], w_h[-1]), w_b[-1])
