@@ -16,457 +16,573 @@
             </h1>
 
             <h2 class="chapter header">Introduction</h2>
-            <p>
-                Au cours des XX ème et XIX ème siècles, le monde a connu une succession de crises financières, la
-                dernière datant de 2007, avec l'éclatement de la bulle spéculative de l'immobilier aux Etats-Unis. Cette
-                occurrence cyclique des crises et l'instabilité générale du monde de la finance, poussent ses différents
-                acteurs à rechercher perpétuellement des méthodes de modélisation et de prévision toujours plus
-                efficaces. Ainsi, dans les années 90, les investisseurs ont commencé à s'intéresser à l'utilisation des
-                réseaux de neurones artificiels afin de prédire les dynamiques financières. Comme défini précedemment,
-                un réseau de neurones artificiels est un algorithme informatique dont l'organisation et le
-                fonctionnement est basé sur celui du cerveau humain. Il prend une ou plusieurs variables en entrée
-                (input), et en ressort une ou plusieurs en sortie (output). Sa caractéristique phare est son aptitude à
-                apprendre de lui même les relations entre les différentes variables, ce qui le rend particulièrement
-                efficace lors de la modélisation de phénomènes complexes. Le terme dynamique financière désigne, quant à
-                lui, l'ensemble des fluctuations liées aux produits ou aux acteurs financiers, comme par exemple les
-                variations du cours d'une action et le rating d'une entreprise ou d'un Etat.
-            </p>
-            <p>
-                Dans le cadre de cette partie, nous pouvons nous demander quelles sont les différentes applications des
-                réseaux de neurones artificiels en finance ?
-            </p>
-            <p>
-                Afin de répondre à cette problématique, nous aborderons dans un premier temps l'architecture et le type
-                des différents réseaux de neurones artificiels utilisés en finance, puis nous nous intéresserons à leurs
-                applications pratiques dans ce secteur, et finalement nous énoncerons leurs différentes limites
-                actuelles.
-            </p>
-
+            <div class="ui segment raised">
+                <p>
+                    Au cours des XX ème et XIX ème siècles, le monde a connu une succession de crises financières, la
+                    dernière datant de 2007, avec l'éclatement de la bulle spéculative de l'immobilier aux Etats-Unis.
+                    Cette
+                    occurrence cyclique des crises et l'instabilité générale du monde de la finance, poussent ses
+                    différents
+                    acteurs à rechercher perpétuellement des méthodes de modélisation et de prévision toujours plus
+                    efficaces. Ainsi, dans les années 90, les investisseurs ont commencé à s'intéresser à l'utilisation
+                    des
+                    réseaux de neurones artificiels afin de prédire les dynamiques financières. Comme défini
+                    précedemment,
+                    un réseau de neurones artificiels est un algorithme informatique dont l'organisation et le
+                    fonctionnement est basé sur celui du cerveau humain. Il prend une ou plusieurs variables en entrée
+                    (input), et en ressort une ou plusieurs en sortie (output). Sa caractéristique phare est son
+                    aptitude à
+                    apprendre de lui même les relations entre les différentes variables, ce qui le rend particulièrement
+                    efficace lors de la modélisation de phénomènes complexes. Le terme dynamique financière désigne,
+                    quant à
+                    lui, l'ensemble des fluctuations liées aux produits ou aux acteurs financiers, comme par exemple les
+                    variations du cours d'une action et le rating d'une entreprise ou d'un Etat.
+                </p>
+                <p>
+                    Dans le cadre de cette partie, nous pouvons nous demander quelles sont les différentes applications
+                    des
+                    réseaux de neurones artificiels en finance ?
+                </p>
+                <p>
+                    Afin de répondre à cette problématique, nous aborderons dans un premier temps l'architecture et le
+                    type
+                    des différents réseaux de neurones artificiels utilisés en finance, puis nous nous intéresserons à
+                    leurs
+                    applications pratiques dans ce secteur, et finalement nous énoncerons leurs différentes limites
+                    actuelles.
+                </p>
+            </div>
             <h2 class="chapter header">Architecture des réseaux de neurones artificiels utilisés en finance</h2>
+            <div class="ui segment raised">
+                <p>
+                    Dans cette sous-partie, nous allons présenter l'architecture des différents types de réseaux de
+                    neurones
+                    artificiels que nous retrouvons le plus souvent en finance.
+                </p>
+                <h3> 1 - Le Perceptron </h3>
+                <img src="{% static 'hello_world/images/nn1.jpg' %}" alt="Perceptron"/>
+                <p>
+                    Le Perceptron, inventé en 1957 par Frank Rosenblatt, est l'architecture la plus simple que puisse
+                    posséder
+                    un réseau de neurones artificiels. En effet, il est constitué de deux couches uniquement : l'une
+                    pour
+                    les variables d'entrée (input),
+                    l'autre pour les variables de sortie (output). Ces deux couches sont formées d'un ou plusieurs
+                    neurones,
+                    reliés entre eux par des liaisons affectées de poids, qui seront modifiés par le réseau au cours du
+                    processus d'apprentissage.
+                    Dans une architecture en Percepton, l'information est transmise de manière linéaire, des neurones de
+                    la
+                    couche d'entrée à ceux de la couche de sortie.
+                    Le Perceptron ne possède donc pas de cycles ou de possibilités de rétropropagation de l'information
+                    entre ses différents neurones.
+                    La valeur renvoyée du ou des neurones de la couche de sortie correspond donc à :
+                </p>
+                <img class="alinea" src="{% static 'hello_world/images/f124.gif' %}"
+                     alt="Valeur renvoyée par les neurones de sortie"/>
+                <p>
+                    où Y est la valeur obtenue en sortie, f la fonction d'activation du neurone, ik la valeur de sortie
+                    du
+                    neurone k et wk le poids
+                    associé à la liaison avec le neurone k.
+                </p>
 
-            <p>
-                Dans cette sous-partie, nous allons présenter l'architecture des différents types de réseaux de neurones
-                artificiels que nous retrouvons le plus souvent en finance.
-            </p>
-            <h3> 1 - Le Perceptron </h3>
-            <img src="{% static 'hello_world/images/nn1.jpg' %}" alt="Perceptron"/>
-            <p>
-                Le Perceptron, inventé en 1957 par Frank Rosenblatt, est l'architecture la plus simple que puisse
-                posséder
-                un réseau de neurones artificiels. En effet, il est constitué de deux couches uniquement : l'une pour
-                les variables d'entrée (input),
-                l'autre pour les variables de sortie (output). Ces deux couches sont formées d'un ou plusieurs neurones,
-                reliés entre eux par des liaisons affectées de poids, qui seront modifiés par le réseau au cours du
-                processus d'apprentissage.
-                Dans une architecture en Percepton, l'information est transmise de manière linéaire, des neurones de la
-                couche d'entrée à ceux de la couche de sortie.
-                Le Perceptron ne possède donc pas de cycles ou de possibilités de rétropropagation de l'information
-                entre ses différents neurones.
-                La valeur renvoyée du ou des neurones de la couche de sortie correspond donc à :
-            </p>
-            <img class ="alinea" src="{% static 'hello_world/images/f124.gif' %}" alt="Valeur renvoyée par les neurones de sortie"/>
-            <p>
-                où Y est la valeur obtenue en sortie, f la fonction d'activation du neurone, ik la valeur de sortie du
-                neurone k et wk le poids
-                associé à la liaison avec le neurone k.
-            </p>
+                <h3> 2 - Le Feedforward Neural Network </h3>
+                <img src="{% static 'hello_world/images/nn2.jpg' %}" alt="FFN"/>
+                <p>
+                    Le Feedforward Neural Network, ou Perceptron multi-couche, présente une organisation très proche de
+                    celle du Perceptron,
+                    à la différence qu'il peut posséder plus de 2 couches neuronales. En effet, le Feedforward Neural
+                    Network dispose d'une couche d'entrée,
+                    d'une ou plusieurs couches intermédiaires, dites aussi cachées, et d'une couche de sortie. Comme le
+                    perceptron, l'information est transmise
+                    de manière linéaire des neurones de la couches d'entrée, à ceux de la couche intermédiaires, qui eux
+                    même la transmettent à ceux de la couche
+                    de sortie. Cette transmission linéaire de l'information et l'absence de cycle ou de possibilité de
+                    rétropropagation de l'information, vient justifier
+                    l'appélation de Feedforward.
+                </p>
+                <p>
+                    La valeur renvoyée par les neurones de la couche intermédiaire et de sortie correspond à :
+                </p>
+                <img class="alinea" src="{% static 'hello_world/images/f124.gif' %}"
+                     alt="Valeur renvoyée par les neurones de sortie"/>
+                <p>
+                    où Y est la valeur renvoyée, f la fonction d'activation du neurone, ik la valeur de sortie du
+                    neurone k
+                    et wk le
+                    poids associé à la liaison avec le neurone k.
+                </p>
 
-            <h3> 2 - Le Feedforward Neural Network </h3>
-            <img src="{% static 'hello_world/images/nn2.jpg' %}" alt="FFN"/>
-            <p>
-                Le Feedforward Neural Network, ou Perceptron multi-couche, présente une organisation très proche de
-                celle du Perceptron,
-                à la différence qu'il peut posséder plus de 2 couches neuronales. En effet, le Feedforward Neural
-                Network dispose d'une couche d'entrée,
-                d'une ou plusieurs couches intermédiaires, dites aussi cachées, et d'une couche de sortie. Comme le
-                perceptron, l'information est transmise
-                de manière linéaire des neurones de la couches d'entrée, à ceux de la couche intermédiaires, qui eux
-                même la transmettent à ceux de la couche
-                de sortie. Cette transmission linéaire de l'information et l'absence de cycle ou de possibilité de
-                rétropropagation de l'information, vient justifier
-                l'appélation de Feedforward.
-            </p>
-            <p>
-                La valeur renvoyée par les neurones de la couche intermédiaire et de sortie correspond à :
-            </p>
-            <img class ="alinea" src="{% static 'hello_world/images/f124.gif' %}" alt="Valeur renvoyée par les neurones de sortie"/>
-            <p>
-                où Y est la valeur renvoyée, f la fonction d'activation du neurone, ik la valeur de sortie du neurone k
-                et wk le
-                poids associé à la liaison avec le neurone k.
-            </p>
+                <h3> 3 - Le Recurrent Neural Network </h3>
+                <img src="{% static 'hello_world/images/nn3.jpg' %}" alt="RNN"/>
+                <p>
+                    Les réseaux de neurones artficiels récurrents ou Recurrent Neural Networks, possèdent une
+                    architecture
+                    similaire à ceux des Feedforward, avec
+                    une couche d'entrée, une ou plusieurs couches intermédiaires, et une couche de sortie. Cependant, la
+                    différence entre les 2 architectures
+                    se fait au niveau du mode de transmission de l'information. En effet, contrairement aux réseaux
+                    Feedforward, l'information n'est plus transmise
+                    de manière linéaire. Ainsi, à un instant t, les neurones des couches intermédiaires ne recoivent
+                    plus
+                    uniquement l'information des neurones
+                    des couches précédentes, mais aussi d'eux même, à l'instant t-1, formant alors un cycle. Les réseaux
+                    de
+                    neurones récurrents disposent donc
+                    d'une aptitude de mémorisation. Cette capacité à représenter le temps rend ce type de réseaux
+                    particulièrement adaptés à la modélisation
+                    des systèmes dynamiques.
+                </p>
+                <p>
+                    La valeur renvoyée par les neurones de la couche intermédiaire correspond à :
+                </p>
+                <img class="alinea" src="{% static 'hello_world/images/f3.gif' %}"
+                     alt="Valeur renvoyée par les neurones de sortie"/>
+                <p>
+                    où Y(t) est la valeur renvoyée à l'instant t, f la fonction d'activation du neurone, ik la valeur de
+                    sortie du neurone k,
+                    wk le poids associé à la liaison avec le neurone k, Y(t-1) la valeur renvoyée par le neurone à
+                    l'instant
+                    t-1 et wy le poids
+                    de la liaison du neurone avec lui-même.
+                </p>
+                <p>
+                    La valeur renvoyée par les neurones de la couche de sortie correspond à :
+                </p>
+                <img class="alinea" src="{% static 'hello_world/images/f124.gif' %}"
+                     alt="Valeur renvoyée par les neurones de sortie"/>
+                <p>
+                    où Y est la valeur renvoyée, f la fonction d'activation du neurone, ik la valeur de sortie du
+                    neurone k,
+                    et wk le poids associé
+                    à la liaison avec le neurone k.
+                </p>
+                <p>
+                    Les réseaux de neurones récurrents sont confrontés à un problème majeur : selon la fonction
+                    d'activation
+                    utilisée, l'information se perd
+                    rapidement au cours du temps : c'est la disparition ou l'explosion du gradient. Ces derniers sont
+                    donc
+                    limités dans le temps et leur processus
+                    d'apprentissage s'arrête dès lors que l'information se trouve dans un passé trop lointain. Par
+                    analogie
+                    avec la mémoire humaine, nous pouvons dire
+                    que ces réseaux disposent d'une mémoire de cours terme, mais pas de long terme.
+                </p>
 
-            <h3> 3 - Le Recurrent Neural Network </h3>
-            <img src="{% static 'hello_world/images/nn3.jpg' %}" alt="RNN"/>
-            <p>
-                Les réseaux de neurones artficiels récurrents ou Recurrent Neural Networks, possèdent une architecture
-                similaire à ceux des Feedforward, avec
-                une couche d'entrée, une ou plusieurs couches intermédiaires, et une couche de sortie. Cependant, la
-                différence entre les 2 architectures
-                se fait au niveau du mode de transmission de l'information. En effet, contrairement aux réseaux
-                Feedforward, l'information n'est plus transmise
-                de manière linéaire. Ainsi, à un instant t, les neurones des couches intermédiaires ne recoivent plus
-                uniquement l'information des neurones
-                des couches précédentes, mais aussi d'eux même, à l'instant t-1, formant alors un cycle. Les réseaux de
-                neurones récurrents disposent donc
-                d'une aptitude de mémorisation. Cette capacité à représenter le temps rend ce type de réseaux
-                particulièrement adaptés à la modélisation
-                des systèmes dynamiques.
-            </p>
-            <p>
-                La valeur renvoyée par les neurones de la couche intermédiaire correspond à :
-            </p>
-            <img class ="alinea" src="{% static 'hello_world/images/f3.gif' %}" alt="Valeur renvoyée par les neurones de sortie"/>
-            <p>
-                où Y(t) est la valeur renvoyée à l'instant t, f la fonction d'activation du neurone, ik la valeur de
-                sortie du neurone k,
-                wk le poids associé à la liaison avec le neurone k, Y(t-1) la valeur renvoyée par le neurone à l'instant
-                t-1 et wy le poids
-                de la liaison du neurone avec lui-même.
-            </p>
-            <p>
-                La valeur renvoyée par les neurones de la couche de sortie correspond à :
-            </p>
-            <img class ="alinea" src="{% static 'hello_world/images/f124.gif' %}" alt="Valeur renvoyée par les neurones de sortie"/>
-            <p>
-                où Y est la valeur renvoyée, f la fonction d'activation du neurone, ik la valeur de sortie du neurone k,
-                et wk le poids associé
-                à la liaison avec le neurone k.
-            </p>
-            <p>
-                Les réseaux de neurones récurrents sont confrontés à un problème majeur : selon la fonction d'activation
-                utilisée, l'information se perd
-                rapidement au cours du temps : c'est la disparition ou l'explosion du gradient. Ces derniers sont donc
-                limités dans le temps et leur processus
-                d'apprentissage s'arrête dès lors que l'information se trouve dans un passé trop lointain. Par analogie
-                avec la mémoire humaine, nous pouvons dire
-                que ces réseaux disposent d'une mémoire de cours terme, mais pas de long terme.
-            </p>
-
-            <h3> 4 - Le long/short Term Memory Neural Network</h3>
-            <img src="{% static 'hello_world/images/nn4.jpg' %}" alt="LSTM"/>
-            <p>
-                Afin de combattre le problème de disparition ou d'explosion du gradient auquel sont confrontés les
-                réseaux de neurones récurrents, Sepp Hochreiter
-                et Jürgen Schmidhuber ont introduit en 1997 les Long/Short Term Memory Neural Network. Ces réseaux ont
-                une architecture similaire à celle des
-                réseaux récurrents, mais disposent en plus d'une mémoire de long terme, grâce à la présence de 3
-                portails au sein du neurone : un portail d'entrée,
-                de sortie et d'oubli. Le portail d'entrée contrôle la portion d'information transmise par les neurones
-                de la couche précedente, mais aussi par
-                le neurone à l'instant t-1, à lui même, à l'instant t. Le portail d'oubli permet au neurone d'oublier
-                les informations non pertinentes.
-                Finalement, le portail de sortie contrôle la portion d'information transmise par le neurone à ceux de la
-                couche suivante.
-            </p>
+                <h3> 4 - Le long/short Term Memory Neural Network</h3>
+                <img src="{% static 'hello_world/images/nn4.jpg' %}" alt="LSTM"/>
+                <p>
+                    Afin de combattre le problème de disparition ou d'explosion du gradient auquel sont confrontés les
+                    réseaux de neurones récurrents, Sepp Hochreiter
+                    et Jürgen Schmidhuber ont introduit en 1997 les Long/Short Term Memory Neural Network. Ces réseaux
+                    ont
+                    une architecture similaire à celle des
+                    réseaux récurrents, mais disposent en plus d'une mémoire de long terme, grâce à la présence de 3
+                    portails au sein du neurone : un portail d'entrée,
+                    de sortie et d'oubli. Le portail d'entrée contrôle la portion d'information transmise par les
+                    neurones
+                    de la couche précedente, mais aussi par
+                    le neurone à l'instant t-1, à lui même, à l'instant t. Le portail d'oubli permet au neurone
+                    d'oublier
+                    les informations non pertinentes.
+                    Finalement, le portail de sortie contrôle la portion d'information transmise par le neurone à ceux
+                    de la
+                    couche suivante.
+                </p>
+            </div>
 
             <h2 class="chapter header"> Application en finance</h2>
+            <div class="ui segment raised">
+                <p>Dans cette partie, nous présenterons les applications les plus fréquentes des réseaux de neurones
+                    artficiels en finance.</p>
 
-            <p>Dans cette partie, nous présenterons les applications les plus fréquentes des réseaux de neurones
-                artficiels en finance.</p>
+                <h3> 1 - Analyse et prédiction des séries chronologiques en finance</h3>
+                <p>
+                    Une série chronologique est une suite de variables aléatoires qui ne sont pas nécessairement
+                    indépendantes
+                    et identiquement distribuées :elles ne suivent donc pas la même lois. De plus, 2 valeurs de la série
+                    proches
+                    dans le temps présentent une forte corrélation : les valeurs passées influencent donc les valeurs
+                    futures.
+                </p>
+                <p>
+                    De nombreux modèles financiers reposent sur la compréhension des séries chronologiques afin
+                    d'établir
+                    des prédictions.
+                    En effet, ces modèles se basent sur les valeurs passées d'un produit financier, comme le cours d'une
+                    action par exemple, afin d'en
+                    extraire des relations en vue de déterminer ses valeurs futures. Néanmoins, ces relations ne sont
+                    pas
+                    toujours linéaires, ce qui a
+                    conduit au développement de modèles statistiques non linéaires comme les modèles ARMA ou ARIMA, qui
+                    permettent de comprendre et de prédire
+                    les valeurs d'une telle série chronologique.
+                </p>
+                <p>
+                    Le modèle ARMA (Auto Regressive Moving Average) s'écrit de la manière suivante :
+                </p>
+                <img class="alinea" src="{% static 'hello_world/images/f5.jpg' %}" alt="ARIMA"/>
+                <p>
+                    Nous voyons que la valeur d'un élément de la série à un instant t dépend de ses valeurs passées,
+                    d'où le
+                    terme auto-régressif,
+                    associé à des chocs aléatoires retardés, qui sont en général de moyenne nulle, de variance constante
+                    et
+                    non autocorrélés  ,
+                    nous parlons alors de moyenne mobile.
+                </p>
+                <p>
+                    Le modèle ARMA ne permet de traiter que des séries chronologiques stationnaires, c'est à dires des
+                    séries dont les valeurs ont une
+                    variance et une espérance constantes au cours du temps, et une corrélation ne dépendant que d'un pas
+                    de
+                    temps t. Lorsque la série
+                    n'est pas stationnaire, c'est le modèle ARIMA qui est utilisé.
+                </p>
+                <p>
+                    Toutefois, les modèles ARMA et ARIMA ne suffisent pas pour expliquer toutes les relations existantes
+                    entre 2 valeurs d'une série chronologique
+                    complexe. Les acteurs financiers, se tournent donc vers l'utilisation des réseaux de neurones
+                    artificiels, qui disposent de la faculté à découvrir
+                    d'eux même des formes récurrentes au sein de ces séries chronologiques. Par ailleurs, les réseaux de
+                    neurones artificiels présentent l'avantage
+                    de pouvoir prendre plusieurs paramètres, qualitatifs ou quantitatifs en entrée, contrairement aux
+                    modèles ARMA et ARIMA, ce qui accroit leur pouvoir
+                    de prédiction.
+                </p>
+                <p>
+                    Par exemple, Avouyi-Dovi et Caulet sont parvenus en 1995 à prévoir efficacement les indices
+                    boursiers
+                    (DAX,CAC 40) avec un réseau de neurones artficiels,
+                    face à un modèle de type ARMA. De la même manière, Kimoto et Yoda arrivent à prédire l'évolution du
+                    TOPIX sur la pèriode 1989-1992. Les réseaux de neurones
+                    semblent donc pouvoir concurrencer les techniques de modélisation statistique traditionnelles en ce
+                    qui
+                    concerne la compréhension et la prévision
+                    des séries chronologiques.
+                </p>
+                <p>
+                    De plus, Christian L. Dunis, Jason Laws, et Andreas Karathanasopoulos, ne se sont pas limités à une
+                    vision manichéennes, et ont décidé de constituer
+                    des réseaux de neurones artificiels hybrides, combinés avec un modèle ARMA. Les chercheurs ont
+                    ensuite
+                    utilisé ces réseaux hybrides, des réseaux classiques,
+                    et un modèle ARMA pour prédire et trader l'indice Grec ASE 20 sur la pèriode 2001-2008. Les
+                    résultats
+                    obtenus ont montré que les réseaux hybrides donnaient
+                    de meilleures prédictions et ont permis de réaliser le gain le plus élevé, avec un retour sur
+                    investissement annuel de 37,7%, contre 28% pour un réseau
+                    classique, et 7% pour le modèle ARMA. Au vue de ces travaux, la combinaison des modèles statistiques
+                    classiques avec les réseaux de neurones artificiels
+                    s'annoncent donc prometteuse.
+                </p>
 
-            <h3> 1 - Analyse et prédiction des séries chronologiques en finance</h3>
-            <p>
-                Une série chronologique est une suite de variables aléatoires qui ne sont pas nécessairement
-                indépendantes
-                et identiquement distribuées :elles ne suivent donc pas la même lois. De plus, 2 valeurs de la série
-                proches
-                dans le temps présentent une forte corrélation : les valeurs passées influencent donc les valeurs
-                futures.
-            </p>
-            <p>
-                De nombreux modèles financiers reposent sur la compréhension des séries chronologiques afin d'établir
-                des prédictions.
-                En effet, ces modèles se basent sur les valeurs passées d'un produit financier, comme le cours d'une
-                action par exemple, afin d'en
-                extraire des relations en vue de déterminer ses valeurs futures. Néanmoins, ces relations ne sont pas
-                toujours linéaires, ce qui a
-                conduit au développement de modèles statistiques non linéaires comme les modèles ARMA ou ARIMA, qui
-                permettent de comprendre et de prédire
-                les valeurs d'une telle série chronologique.
-            </p>
-            <p>
-                Le modèle ARMA (Auto Regressive Moving Average) s'écrit de la manière suivante :
-            </p>
-            <img class="alinea" src="{% static 'hello_world/images/f5.jpg' %}" alt="ARIMA"/>
-            <p>
-                Nous voyons que la valeur d'un élément de la série à un instant t dépend de ses valeurs passées, d'où le
-                terme auto-régressif,
-                associé à des chocs aléatoires retardés, qui sont en général de moyenne nulle, de variance constante et
-                non autocorrélés  ,
-                nous parlons alors de moyenne mobile.
-            </p>
-            <p>
-                Le modèle ARMA ne permet de traiter que des séries chronologiques stationnaires, c'est à dires des
-                séries dont les valeurs ont une
-                variance et une espérance constantes au cours du temps, et une corrélation ne dépendant que d'un pas de
-                temps t. Lorsque la série
-                n'est pas stationnaire, c'est le modèle ARIMA qui est utilisé.
-            </p>
-            <p>
-                Toutefois, les modèles ARMA et ARIMA ne suffisent pas pour expliquer toutes les relations existantes
-                entre 2 valeurs d'une série chronologique
-                complexe. Les acteurs financiers, se tournent donc vers l'utilisation des réseaux de neurones
-                artificiels, qui disposent de la faculté à découvrir
-                d'eux même des formes récurrentes au sein de ces séries chronologiques. Par ailleurs, les réseaux de
-                neurones artificiels présentent l'avantage
-                de pouvoir prendre plusieurs paramètres, qualitatifs ou quantitatifs en entrée, contrairement aux
-                modèles ARMA et ARIMA, ce qui accroit leur pouvoir
-                de prédiction.
-            </p>
-            <p>
-                Par exemple, Avouyi-Dovi et Caulet sont parvenus en 1995 à prévoir efficacement les indices boursiers
-                (DAX,CAC 40) avec un réseau de neurones artficiels,
-                face à un modèle de type ARMA. De la même manière, Kimoto et Yoda arrivent à prédire l'évolution du
-                TOPIX sur la pèriode 1989-1992. Les réseaux de neurones
-                semblent donc pouvoir concurrencer les techniques de modélisation statistique traditionnelles en ce qui
-                concerne la compréhension et la prévision
-                des séries chronologiques.
-            </p>
-            <p>
-                De plus, Christian L. Dunis, Jason Laws, et Andreas Karathanasopoulos, ne se sont pas limités à une
-                vision manichéennes, et ont décidé de constituer
-                des réseaux de neurones artificiels hybrides, combinés avec un modèle ARMA. Les chercheurs ont ensuite
-                utilisé ces réseaux hybrides, des réseaux classiques,
-                et un modèle ARMA pour prédire et trader l'indice Grec ASE 20 sur la pèriode 2001-2008. Les résultats
-                obtenus ont montré que les réseaux hybrides donnaient
-                de meilleures prédictions et ont permis de réaliser le gain le plus élevé, avec un retour sur
-                investissement annuel de 37,7%, contre 28% pour un réseau
-                classique, et 7% pour le modèle ARMA. Au vue de ces travaux, la combinaison des modèles statistiques
-                classiques avec les réseaux de neurones artificiels
-                s'annoncent donc prometteuse.
-            </p>
+                <h3> 2 - Evaluation et notation des titres</h3>
+                <p>
+                    A l'heure actuelle, de plus en plus de sociétés et d'individus possèdent des titres financiers, qui
+                    englobent les titres de capital, comme les actions,
+                    les titres de créance, tels que les obligations, et les valeurs mobilières de placement. Leur
+                    évaluation
+                    est donc devenue un élément incontournable pour
+                    les acteurs financiers. En effet, un titre sera considéré comme surévalué si son ratio cours sur
+                    bénéfices (price earning ratio) est trop élevé par rapport
+                    à la croissance réelle de l'entité émettrice du titre. Inversement, un titre sera sousévalué si son
+                    price earning ratio est trop faible par rapport à la
+                    croissance réelle de l'entité émettrice. Afin de réaliser un bénéfice sur les marchés financiers,
+                    les
+                    investisseurs vont donc chercher à acheter des titres
+                    sousévalués, dont la valeur va croitre, et vendre ceux qui sont surévalués, car leur valeur va
+                    diminuer.
+                </p>
+                <p>
+                    A l'heure actuelle, il existe de nombreuses méthodes pour évaluer le prix d'un titre de capital,
+                    mais
+                    nous nous intéresserons essentiellement qu'à la méthode de Gordon et Shapiro (Dividend Discount
+                    Model).
+                    Ce modèle est utilisé pour évaluer le prix d'une action et s'écrit de la manière suivante :
+                </p>
+                <img class="alinea" src="{% static 'hello_world/images/f6.jpg' %}" alt="Gordon et Shapiro"/>
+                <p>
+                    Où P0 est la valeur théorique de l'action, D1 le dividende anticipé de la première période, k le
+                    taux de
+                    rendement attendu par les actionnaires et g le taux de croissance du bénéfice brut par action.
+                    Les paramètres g et k sont estimés, le modèle de Gordon et Shapiro demeure donc une approximation du
+                    prix d'une action. Ce modèle, associé à un réseau de neurones artificiels permet de vérifier si les
+                    actions sont correctement évaluées et si les entités émettrices sont stables. Les réseaux de
+                    neurones
+                    sont ici un outil complémentaire, permettant de valider l'estimation du modèle de Gordon et Shapiro.
+                </p>
+                <p>
+                    En ce qui concerne les titres de créance, ces derniers sont généralement affectés d'une note qui
+                    témoigne de la solvabilité de l'émetteur, c'est à dire de sa capacité à rembourser ses dettes. Ce
+                    système de notation joue le rôle d'indicateur pour les investisseurs, leur permettant de savoir si
+                    une
+                    obligation est fiable ou non. Ces notes vont du AAA, pour une obligation emise par une entité sure,
+                    au C
+                    pour une obligation issue d'une entité proche de la faillite. Elles sont attribuées par des agences
+                    de
+                    notation ou rating, dont les 3 principales sont américaines : Standard & Poor’s, Moody’s et Fitch.
+                </p>
+                <p>
+                    Des chercheurs ont tenté d'utiliser des réseaux de neurones artificiels afin d'obtenir les mêmes
+                    notations que celles affectées par les agences Standard & Poor’s et Moody’s. En effet, Dutta et
+                    Shashi
+                    en 1988, Singleton et Surkan en 1991 et Moddy et Utans en 1995, sont parvenus à reproduire avec des
+                    réseaux de neurones artificiels, la notation des agences de rating à partir d'un échantillon.
+                    Toutefois,
+                    même s'ils sont encourageants, ces résultats doivent être considérés avec parcimonie. En effet, le
+                    raisonnement mené par un expert dans le cadre de la notation d'une obligation est très complexe,
+                    prenant
+                    en compte une multitude de variables qualitatives et quantitatives, qui ne sont pas intégrées dans
+                    le
+                    réseau.
+                </p>
+                <p>
+                    Cependant, les réseaux de neurones restent un champ de recherche très prometteur dans le cadre de
+                    l'évaluation de titres de créances, et semblent trouver tout leur interêt pour les experts en tant
+                    qu'outil d'aide à la décision. D'ailleurs, un modèle associant la connaissance de l'expert à un
+                    réseau
+                    de neurones artificiels a fourni de bon résulats chez Nikko Securities, avec des notations correctes
+                    dans 96% des cas.
+                </p>
 
-            <h3> 2 - Evaluation et notation des titres</h3>
-            <p>
-                A l'heure actuelle, de plus en plus de sociétés et d'individus possèdent des titres financiers, qui
-                englobent les titres de capital, comme les actions,
-                les titres de créance, tels que les obligations, et les valeurs mobilières de placement. Leur évaluation
-                est donc devenue un élément incontournable pour
-                les acteurs financiers. En effet, un titre sera considéré comme surévalué si son ratio cours sur
-                bénéfices (price earning ratio) est trop élevé par rapport
-                à la croissance réelle de l'entité émettrice du titre. Inversement, un titre sera sousévalué si son
-                price earning ratio est trop faible par rapport à la
-                croissance réelle de l'entité émettrice. Afin de réaliser un bénéfice sur les marchés financiers, les
-                investisseurs vont donc chercher à acheter des titres
-                sousévalués, dont la valeur va croitre, et vendre ceux qui sont surévalués, car leur valeur va diminuer.
-            </p>
-            <p>
-                A l'heure actuelle, il existe de nombreuses méthodes pour évaluer le prix d'un titre de capital, mais
-                nous nous intéresserons essentiellement qu'à la méthode de Gordon et Shapiro (Dividend Discount Model).
-                Ce modèle est utilisé pour évaluer le prix d'une action et s'écrit de la manière suivante :
-            </p>
-            <img class="alinea" src="{% static 'hello_world/images/f6.jpg' %}" alt="Gordon et Shapiro"/>
-            <p>
-                Où P0 est la valeur théorique de l'action, D1 le dividende anticipé de la première période, k le taux de
-                rendement attendu par les actionnaires et g le taux de croissance du bénéfice brut par action.
-                Les paramètres g et k sont estimés, le modèle de Gordon et Shapiro demeure donc une approximation du
-                prix d'une action. Ce modèle, associé à un réseau de neurones artificiels permet de vérifier si les
-                actions sont correctement évaluées et si les entités émettrices sont stables. Les réseaux de neurones
-                sont ici un outil complémentaire, permettant de valider l'estimation du modèle de Gordon et Shapiro.
-            </p>
-            <p>
-                En ce qui concerne les titres de créance, ces derniers sont généralement affectés d'une note qui
-                témoigne de la solvabilité de l'émetteur, c'est à dire de sa capacité à rembourser ses dettes. Ce
-                système de notation joue le rôle d'indicateur pour les investisseurs, leur permettant de savoir si une
-                obligation est fiable ou non. Ces notes vont du AAA, pour une obligation emise par une entité sure, au C
-                pour une obligation issue d'une entité proche de la faillite. Elles sont attribuées par des agences de
-                notation ou rating, dont les 3 principales sont américaines : Standard & Poor’s, Moody’s et Fitch.
-            </p>
-            <p>
-                Des chercheurs ont tenté d'utiliser des réseaux de neurones artificiels afin d'obtenir les mêmes
-                notations que celles affectées par les agences Standard & Poor’s et Moody’s. En effet, Dutta et Shashi
-                en 1988, Singleton et Surkan en 1991 et Moddy et Utans en 1995, sont parvenus à reproduire avec des
-                réseaux de neurones artificiels, la notation des agences de rating à partir d'un échantillon. Toutefois,
-                même s'ils sont encourageants, ces résultats doivent être considérés avec parcimonie. En effet, le
-                raisonnement mené par un expert dans le cadre de la notation d'une obligation est très complexe, prenant
-                en compte une multitude de variables qualitatives et quantitatives, qui ne sont pas intégrées dans le
-                réseau.
-            </p>
-            <p>
-                Cependant, les réseaux de neurones restent un champ de recherche très prometteur dans le cadre de
-                l'évaluation de titres de créances, et semblent trouver tout leur interêt pour les experts en tant
-                qu'outil d'aide à la décision. D'ailleurs, un modèle associant la connaissance de l'expert à un réseau
-                de neurones artificiels a fourni de bon résulats chez Nikko Securities, avec des notations correctes
-                dans 96% des cas.
-            </p>
+                <h3> 3 - Budgétisation des immobilisations</h3>
 
-            <h3> 3 - Budgétisation des immobilisations</h3>
+                <p>
+                    La budgétisation des immobilisations en finance se définit comme l'ensemble des stratégies
+                    d'investissement auprès de produits dont les rentrées d'argent (cash flow) s'étendent au delà de une
+                    année. Il s'agit donc d'opérations d'investissement sur le long terme, qui nécessitent de ce fait
+                    l'utilisation de modèles afin de prédire les valeurs futures des immobilisations investies.
+                </p>
+                <p>
+                    Les sociétés dépensent généralement des sommes importantes lors de l'investissement auprès des
+                    immobilisations financières. Des stratégies de financement doivent donc être définies à l'avance, ce
+                    qui
+                    implique la mise en œuvre d'opérations de prévision et d'évaluation des risques. Comme nous l'avons
+                    vu
+                    précedemment, les réseaux de neurones artificiels sont utiles dans ce cadre, en parvenant à
+                    déterminer
+                    des relations entre plusieurs variables liées de manière complexe et en approximant les coefficients
+                    de
+                    risque.
+                </p>
 
-            <p>
-                La budgétisation des immobilisations en finance se définit comme l'ensemble des stratégies
-                d'investissement auprès de produits dont les rentrées d'argent (cash flow) s'étendent au delà de une
-                année. Il s'agit donc d'opérations d'investissement sur le long terme, qui nécessitent de ce fait
-                l'utilisation de modèles afin de prédire les valeurs futures des immobilisations investies.
-            </p>
-            <p>
-                Les sociétés dépensent généralement des sommes importantes lors de l'investissement auprès des
-                immobilisations financières. Des stratégies de financement doivent donc être définies à l'avance, ce qui
-                implique la mise en œuvre d'opérations de prévision et d'évaluation des risques. Comme nous l'avons vu
-                précedemment, les réseaux de neurones artificiels sont utiles dans ce cadre, en parvenant à déterminer
-                des relations entre plusieurs variables liées de manière complexe et en approximant les coefficients de
-                risque.
-            </p>
+                <h3> 4 - Prédiction des cours des actions ou des indices boursiers sur les marchés financiers</h3>
 
-            <h3> 4 - Prédiction des cours des actions ou des indices boursiers sur les marchés financiers</h3>
+                <p>
+                    Comme nous l'avons vue précedemment, les réseaux de neurones artificiels sont particulièrement
+                    efficace
+                    lors de l'analyse et la prédiction de séries chronologiques. Or, le cours d'une action sur un marché
+                    financier s'apparente à une telle série. En effet, intituivement, il n'est pas absurde de supposer
+                    que
+                    le prix d'une action aujourd'hui dépend en partie de son prix d'hier. Par conséquent, de nombreux
+                    chercheurs ont tenté de prédire le cours des actions à l'aide de réseaux de neurones artificiels.
+                </p>
+                <p>
+                    Nous nous intéressons ici aux travaux de Jakob Aungiers, spécialiste de l'intelligence artificielle
+                    et
+                    du machine learning. Ce dernier en utilisant python et les librairies TensorFlow et Keras, a tenté
+                    de
+                    configurer un réseau de neurones artificiels d'architecture Long/Short Term Memory, afin de prédire
+                    le
+                    cours du S&P 500 entre 2000 et 2016. Ce dernier est un indice boursier géré par Standard & Poor's et
+                    basé sur 500 grandes sociétés cotées sur la bourse américaine.
+                </p>
+                <p>
+                    Après avoir configuré et entraîné son réseau, Aungiers a tenté de prédire le cours du S&P 500 point
+                    après point. Les résultats obtenus se sont avérés très prometteurs, avec des cours prédits très
+                    proches
+                    des cours réels. Toutefois, selon le chercheur, cette prédiction n'est pas fiable, car le réseau
+                    prédit
+                    chaque point en fonction du point précédent uniquement, sans tenir compte du passé lointain. En
+                    effet,
+                    le réseau, plutôt que de détecter une tendance au sein du cours, se contente de prédire le point
+                    suivant
+                    de manière aléatoire, en ne s'éloignant pas trop des valeurs précédentes.
+                </p>
+                <p>
+                    Afin de remédier à ce problème et de tenter de découvrir une relation sous-jacente au sein du cours,
+                    Aungiers, plutôt que de prédire un point après l'autre, a décidé de prédire les valeurs prises par
+                    une
+                    séquence de points. Ses prédictions se sont avérées encourageantes, en étant capable de discerner si
+                    le
+                    cours de l'action allait monter ou diminuer.
+                </p>
+                <p>
+                    Cependant, le chercheur insiste sur le fait que ses résultats doivent être considérés avec prudence
+                    pour
+                    plusieurs raisons : une erreur d'échantillonage, la petite taille de l'échantillon, ou encore, tout
+                    simplement, un coup de chance. Néanmoins, ils restent prometteurs et montrent que les réseaux de
+                    neurones artificiels sont un champ de recherche à approfondir en finance.
+                </p>
 
-            <p>
-                Comme nous l'avons vue précedemment, les réseaux de neurones artificiels sont particulièrement efficace
-                lors de l'analyse et la prédiction de séries chronologiques. Or, le cours d'une action sur un marché
-                financier s'apparente à une telle série. En effet, intituivement, il n'est pas absurde de supposer que
-                le prix d'une action aujourd'hui dépend en partie de son prix d'hier. Par conséquent, de nombreux
-                chercheurs ont tenté de prédire le cours des actions à l'aide de réseaux de neurones artificiels.
-            </p>
-            <p>
-                Nous nous intéressons ici aux travaux de Jakob Aungiers, spécialiste de l'intelligence artificielle et
-                du machine learning. Ce dernier en utilisant python et les librairies TensorFlow et Keras, a tenté de
-                configurer un réseau de neurones artificiels d'architecture Long/Short Term Memory, afin de prédire le
-                cours du S&P 500 entre 2000 et 2016. Ce dernier est un indice boursier géré par Standard & Poor's et
-                basé sur 500 grandes sociétés cotées sur la bourse américaine.
-            </p>
-            <p>
-                Après avoir configuré et entraîné son réseau, Aungiers a tenté de prédire le cours du S&P 500 point
-                après point. Les résultats obtenus se sont avérés très prometteurs, avec des cours prédits très proches
-                des cours réels. Toutefois, selon le chercheur, cette prédiction n'est pas fiable, car le réseau prédit
-                chaque point en fonction du point précédent uniquement, sans tenir compte du passé lointain. En effet,
-                le réseau, plutôt que de détecter une tendance au sein du cours, se contente de prédire le point suivant
-                de manière aléatoire, en ne s'éloignant pas trop des valeurs précédentes.
-            </p>
-            <p>
-                Afin de remédier à ce problème et de tenter de découvrir une relation sous-jacente au sein du cours,
-                Aungiers, plutôt que de prédire un point après l'autre, a décidé de prédire les valeurs prises par une
-                séquence de points. Ses prédictions se sont avérées encourageantes, en étant capable de discerner si le
-                cours de l'action allait monter ou diminuer.
-            </p>
-            <p>
-                Cependant, le chercheur insiste sur le fait que ses résultats doivent être considérés avec prudence pour
-                plusieurs raisons : une erreur d'échantillonage, la petite taille de l'échantillon, ou encore, tout
-                simplement, un coup de chance. Néanmoins, ils restent prometteurs et montrent que les réseaux de
-                neurones artificiels sont un champ de recherche à approfondir en finance.
-            </p>
-
-            <h3> 5 - La détection d'entreprises ou de banques en difficulté</h3>
-            <p>
-                Afin de détecter les entreprises ou les banques en difficulté, 2 méthodes sont classiquement utilisées
-                afin de les classifier : la régression logistique et l'analyse discriminante.
-            </p>
-            <p>
-                La régression logistique ou modèle logit est un cas particulier du modèle linéaire généralisé. En effet,
-                il s'agit de modéliser l'effet d'un vecteurs de variables aléatoires sur une variable aléatoire
-                binomiale. Cette dernière prend par définition uniquement 2 valeurs : 0 ou 1. Ainsi, par exemple, nous
-                pouvons associé le 0 à une entreprise saine et le 1 à une entreprise en difficulté.
-            </p>
-            <p>
-                L’analyse discriminante est une technique statistique qui vise à décrire, expliquer et prédire
-                l’appartenance à des groupes prédéfinis d’un ensemble d’observations à partir d’une série de variables
-                prédictives. L'analyse discriminante possède 2 approches, l'une descriptive, l'autre prédictive. Lors de
-                la détection des entreprises en difficulté, c'est l'approche prédictive qui est utilisée, et qui
-                regroupe elle même plusieurs techniques, dont l'analyse discriminante linéaire qui est particulièrement
-                utilisée en scoring.
-            </p>
-            <p>
-                Face à ces 2 méthodes de détection des entreprises en difficulté, différents travaux ont montré que les
-                réseaux de neurones artificiels donnent de bons résultats. En effet, en 1990, Odom et Sharda ont calculé
-                5 ratios financiers censés représenter l'état de santé d'une entreprise. Leur échantillon comprend 64
-                firmes saines et 65 considérées comme défaillantes entre 1975 et 1982. Le réseau de neurones artificiels
-                utilisé donne de meilleurs résultats que l'analyse discriminante, en parvenant à classifier correctement
-                81,8% des entreprises, contre 74,3% pour la méthode de classement discriminante. Toutefois, la taille
-                limitée de l'échantillon ne permet pas de conclure sur une réelle supériorité des réseaux de neurones
-                artificiels face à l'analyse discriminante. Cependant, en 1994, Altman et al testent différents réseaux
-                pour détecter les entreprises en difficulté sur un échantillon de 800 entreprises italiennes. Les
-                résultats obtenus montrent que les réseaux sont capables de reconnaitre les entreprises saine dans 97,7%
-                des cas et celles en en difficulté dans 97% des cas. Ces résultats sont meilleurs que ceux obtenus par
-                l'analyse discriminante, avec un taux de détection de 90,3% pour les entreprises saines et 86,4% pour
-                les entreprises en difficulté. Finalement, Udo en 1993, à partir d'un échantillon de 400 entreprises,
-                démontre encore une fois la supériorité des réseaux de neurones artificiels face à une technique de
-                régression multiple.
-            </p>
-            <p>
-                De nombreux autres travaux visant à comparer l'efficacité des réseaux de neurones face aux techniques de
-                classification classique ont été menés. Ils sont résumés dans le tableau suivant, extrait
-                de An analysis of the applications of neural networks in finance par Adam Fadlalla et Chien-Hua Lin.
-            </p>
-            <img class="alinea" src="{% static 'hello_world/images/f7.jpg' %}" alt="Gordon et Shapiro"/>
-            <p>
-                Ces différents travaux expérimentaux montrent bien que les réseaux de neurones sont particulièrement
-                adaptés à la détection des entreprises ou des banques en difficulté, en particulier face aux méthodes
-                statistiques classiques de classification. En effet, dans une large majorité de cas, les réseaux de
-                neurones artificiels donnent de meilleurs résultats que l'analyse discriminante ou la régression
-                logistique.
-            </p>
-
+                <h3> 5 - La détection d'entreprises ou de banques en difficulté</h3>
+                <p>
+                    Afin de détecter les entreprises ou les banques en difficulté, 2 méthodes sont classiquement
+                    utilisées
+                    afin de les classifier : la régression logistique et l'analyse discriminante.
+                </p>
+                <p>
+                    La régression logistique ou modèle logit est un cas particulier du modèle linéaire généralisé. En
+                    effet,
+                    il s'agit de modéliser l'effet d'un vecteurs de variables aléatoires sur une variable aléatoire
+                    binomiale. Cette dernière prend par définition uniquement 2 valeurs : 0 ou 1. Ainsi, par exemple,
+                    nous
+                    pouvons associé le 0 à une entreprise saine et le 1 à une entreprise en difficulté.
+                </p>
+                <p>
+                    L’analyse discriminante est une technique statistique qui vise à décrire, expliquer et prédire
+                    l’appartenance à des groupes prédéfinis d’un ensemble d’observations à partir d’une série de
+                    variables
+                    prédictives. L'analyse discriminante possède 2 approches, l'une descriptive, l'autre prédictive.
+                    Lors de
+                    la détection des entreprises en difficulté, c'est l'approche prédictive qui est utilisée, et qui
+                    regroupe elle même plusieurs techniques, dont l'analyse discriminante linéaire qui est
+                    particulièrement
+                    utilisée en scoring.
+                </p>
+                <p>
+                    Face à ces 2 méthodes de détection des entreprises en difficulté, différents travaux ont montré que
+                    les
+                    réseaux de neurones artificiels donnent de bons résultats. En effet, en 1990, Odom et Sharda ont
+                    calculé
+                    5 ratios financiers censés représenter l'état de santé d'une entreprise. Leur échantillon comprend
+                    64
+                    firmes saines et 65 considérées comme défaillantes entre 1975 et 1982. Le réseau de neurones
+                    artificiels
+                    utilisé donne de meilleurs résultats que l'analyse discriminante, en parvenant à classifier
+                    correctement
+                    81,8% des entreprises, contre 74,3% pour la méthode de classement discriminante. Toutefois, la
+                    taille
+                    limitée de l'échantillon ne permet pas de conclure sur une réelle supériorité des réseaux de
+                    neurones
+                    artificiels face à l'analyse discriminante. Cependant, en 1994, Altman et al testent différents
+                    réseaux
+                    pour détecter les entreprises en difficulté sur un échantillon de 800 entreprises italiennes. Les
+                    résultats obtenus montrent que les réseaux sont capables de reconnaitre les entreprises saine dans
+                    97,7%
+                    des cas et celles en en difficulté dans 97% des cas. Ces résultats sont meilleurs que ceux obtenus
+                    par
+                    l'analyse discriminante, avec un taux de détection de 90,3% pour les entreprises saines et 86,4%
+                    pour
+                    les entreprises en difficulté. Finalement, Udo en 1993, à partir d'un échantillon de 400
+                    entreprises,
+                    démontre encore une fois la supériorité des réseaux de neurones artificiels face à une technique de
+                    régression multiple.
+                </p>
+                <p>
+                    De nombreux autres travaux visant à comparer l'efficacité des réseaux de neurones face aux
+                    techniques de
+                    classification classique ont été menés. Ils sont résumés dans le tableau suivant, extrait
+                    de An analysis of the applications of neural networks in finance par Adam Fadlalla et Chien-Hua Lin.
+                </p>
+                <img class="alinea" src="{% static 'hello_world/images/f7.jpg' %}" alt="Gordon et Shapiro"/>
+                <p>
+                    Ces différents travaux expérimentaux montrent bien que les réseaux de neurones sont particulièrement
+                    adaptés à la détection des entreprises ou des banques en difficulté, en particulier face aux
+                    méthodes
+                    statistiques classiques de classification. En effet, dans une large majorité de cas, les réseaux de
+                    neurones artificiels donnent de meilleurs résultats que l'analyse discriminante ou la régression
+                    logistique.
+                </p>
+            </div>
             <h2> Limites des réseaux de neurones artificiels </h2>
+            <div class="ui segment raised">
+                <p>
+                    Comme montré précedemment, les réseaux de neurones artificiels ont de multiples applications en
+                    finance,surpassant parfois les méthodes statistiques classiquement utilisées, et semblent donc être
+                    un
+                    champ de recherche très prometteur. Néanmoins, ils ne sont pas exempts de toutes critiques et font
+                    face
+                    à certaines limites.
+                </p>
 
-            <p>
-                Comme montré précedemment, les réseaux de neurones artificiels ont de multiples applications en
-                finance,surpassant parfois les méthodes statistiques classiquement utilisées, et semblent donc être un
-                champ de recherche très prometteur. Néanmoins, ils ne sont pas exempts de toutes critiques et font face
-                à certaines limites.
-            </p>
+                <h3> 1 - Absence de théorie de construction</h3>
 
-            <h3> 1 - Absence de théorie de construction</h3>
+                <p>
+                    La première limite à laquelles sont confrontés les réseaux de neurones artificiels est le manque de
+                    théories et de règles permettant d'établir l'architecture optimale d'un réseau de neurones
+                    artificiels
+                    pour résoudre un problème donné. En effet, le choix de l'architecture du réseau (perceptron, RNN,
+                    LSTM)
+                    ainsi que le nombre de neurones des couches cachées, relèvent largement de l'intuition ou de
+                    l'expérimentation
+                    de l'utilisateur. Ce dernier doit donc expérimenter plusieurs types de réseaux avant de trouver
+                    celui
+                    qu'il considère comme optimal. Cette pèriode d'essai et d'expérimentation peut parfois s'avérer
+                    assez
+                    longue et fastidieuse.
+                </p>
 
-            <p>
-                La première limite à laquelles sont confrontés les réseaux de neurones artificiels est le manque de
-                théories et de règles permettant d'établir l'architecture optimale d'un réseau de neurones artificiels
-                pour résoudre un problème donné. En effet, le choix de l'architecture du réseau (perceptron, RNN, LSTM)
-                ainsi que le nombre de neurones des couches cachées, relèvent largement de l'intuition ou de l'expérimentation
-                de l'utilisateur. Ce dernier doit donc expérimenter plusieurs types de réseaux avant de trouver celui
-                qu'il considère comme optimal. Cette pèriode d'essai et d'expérimentation peut parfois s'avérer assez
-                longue et fastidieuse.
-            </p>
+                <h3> 2 - Boite hermétique</h3>
+                <p>
+                    Une autre critique fréquemment adressée aux réseaux de neurones artificiels est le fait qu'ils
+                    constituent une « boite hermétique ». En effet, le « raisonnement » par l'intermédiaire duquel un
+                    réseau
+                    de
+                    neurones artficiels parvient à extraire des relations entre des variables est inconnu de
+                    l'utilisateur.
+                    Ainsi, s'ils sont efficaces pour la prédiction, les réseaux de neurones le sont beaucoup moins
+                    lorsqu'ils s'agit de rendre compte des mécanismes sous-jacents ayant permis d'obtenir cette
+                    prédiction,
+                    contrairement aux méthodes de statistiques classiques qui sont elles capables de retracer
+                    parfaitement
+                    le cheminement suivi. Par conséquenent, le pouvoir explicatif des réseaux de neurones artificiels
+                    reste
+                    limité. Afin de palier très partiellement à cette faiblesse, des analyses de sensibilité peuvent
+                    être
+                    menées. Celles-ci consistent à faire varier la valeur d'un neurone de la couche d'entrée en
+                    maintenant
+                    la valeur des autres neurones fixés, et cela à tour de rôle pour tous les neurones de la couche
+                    d'entrée.
+                </p>
 
-            <h3> 2 - Boite hermétique</h3>
-            <p>
-                Une autre critique fréquemment adressée aux réseaux de neurones artificiels est le fait qu'ils
-                constituent une « boite hermétique ». En effet, le « raisonnement » par l'intermédiaire duquel un réseau de
-                neurones artficiels parvient à extraire des relations entre des variables est inconnu de l'utilisateur.
-                Ainsi, s'ils sont efficaces pour la prédiction, les réseaux de neurones le sont beaucoup moins
-                lorsqu'ils s'agit de rendre compte des mécanismes sous-jacents ayant permis d'obtenir cette prédiction,
-                contrairement aux méthodes de statistiques classiques qui sont elles capables de retracer parfaitement
-                le cheminement suivi. Par conséquenent, le pouvoir explicatif des réseaux de neurones artificiels reste
-                limité. Afin de palier très partiellement à cette faiblesse, des analyses de sensibilité peuvent être
-                menées. Celles-ci consistent à faire varier la valeur d'un neurone de la couche d'entrée en maintenant
-                la valeur des autres neurones fixés, et cela à tour de rôle pour tous les neurones de la couche
-                d'entrée.
-            </p>
+                <h3> 3 - Normalisation des données</h3>
 
-            <h3> 3 - Normalisation des données</h3>
+                <p>
+                    Par ailleurs, une autre limite des réseaux de neurones artificiels reposent sur le fait qu'ils
+                    nécessitent souvent une normalisation des données. En effet, si nous considérons un réseau utilisant
+                    une
+                    fonction d'activation du type sigmoide, nous nous apercevons que les valeurs au dessus d'un certain
+                    seuil donneront exactement le même résulat, même s'ils ont un écart conséquent. Il existe donc un
+                    phénomène de perte de sensibilité de la fonction d'activation au dessus d'un certain seuil. Afin de
+                    palier à se phénomène, il est donc nécessaire de rammener les variables de l'échantillon considéré
+                    au
+                    sein d'un intervalle compris entre les deux seuils de la fonction d'activation : c'est la
+                    normalisation
+                    des données. Deux méthodes de normalisation des données sont généralement utilisées. La première
+                    consiste à les centrer-réduire, ce qui consiste dans un premier temps à leur soustraire leur
+                    moyenne,
+                    puis à les diviser par leur écart-type, comme illustré ci-dessous:
+                </p>
+                <img class="alinea" src="{% static 'hello_world/images/f8.1.gif' %}" alt="centrée-réduire""/>
+                <p>
+                    La deuxième méthode s'effectue selon la formule suivante :
+                </p>
+                <img class="alinea" src="{% static 'hello_world/images/f8.gif' %}" alt="maxmin"/>
+                <p>
+                    Où zi représente la variable normalisée, xi la variable que l'on souhaite normaliser, min(x) le
+                    minimum
+                    des variables, et max(x) le maximum des variables.
+                </p>
+                <p>
+                    Outre la normalisation des données, lorsque l'on considère une série chronologique, il est aussi
+                    souvent
+                    nécessaire de la stationnariser, par exemple en effectuant une différenciation.
+                </p>
 
-            <p>
-                Par ailleurs, une autre limite des réseaux de neurones artificiels reposent sur le fait qu'ils
-                nécessitent souvent une normalisation des données. En effet, si nous considérons un réseau utilisant une
-                fonction d'activation du type sigmoide, nous nous apercevons que les valeurs au dessus d'un certain
-                seuil donneront exactement le même résulat, même s'ils ont un écart conséquent. Il existe donc un
-                phénomène de perte de sensibilité de la fonction d'activation au dessus d'un certain seuil. Afin de
-                palier à se phénomène, il est donc nécessaire de rammener les variables de l'échantillon considéré au
-                sein d'un intervalle compris entre les deux seuils de la fonction d'activation : c'est la normalisation
-                des données. Deux méthodes de normalisation des données sont généralement utilisées. La première
-                consiste à les centrer-réduire, ce qui consiste dans un premier temps à leur soustraire leur moyenne,
-                puis à les diviser par leur écart-type, comme illustré ci-dessous:
-            </p>
-            <img class="alinea" src="{% static 'hello_world/images/f8.1.gif' %}" alt="centrée-réduire""/>
-            <p>
-            La deuxième méthode s'effectue selon la formule suivante :
-            </p>
-            <img class="alinea" src="{% static 'hello_world/images/f8.gif' %}" alt="maxmin"/>
-            <p>
-                Où zi représente la variable normalisée, xi la variable que l'on souhaite normaliser, min(x) le minimum
-                des variables, et max(x) le maximum des variables.
-            </p>
-            <p>
-                Outre la normalisation des données, lorsque l'on considère une série chronologique, il est aussi souvent
-                nécessaire de la stationnariser, par exemple en effectuant une différenciation.
-            </p>
+                <h3> 4 - Intervention humaine</h3>
 
-            <h3> 4 - Intervention humaine</h3>
-
-            <p>
-                Finalement, comme évoqué précédemment, les réseaux de neurones artificiels présentent comme limite le
-                fait de nécessiter une forte intervention de l'intuition humaine, qu'il s'agisse du choix de son
-                architecture, du nombre de couches intermédiaires, du nombre de neurones de ces couches, ou de ses
-                modalités d'entrainement.
-            </p>
+                <p>
+                    Finalement, comme évoqué précédemment, les réseaux de neurones artificiels présentent comme limite
+                    le
+                    fait de nécessiter une forte intervention de l'intuition humaine, qu'il s'agisse du choix de son
+                    architecture, du nombre de couches intermédiaires, du nombre de neurones de ces couches, ou de ses
+                    modalités d'entrainement.
+                </p>
+            </div>
         </div>
     </div>
 {% endblock %}
