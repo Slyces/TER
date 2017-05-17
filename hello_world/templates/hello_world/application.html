@@ -241,7 +241,74 @@
                  <img src="{% static 'hello_world/images/resultr3.jpg' %}" alt="Résultat" style="width:800px;height:600px;"/>
             </p>
             <p>
-                 <img src="{% static 'hello_world/images/resultr4.jpg' %}" alt="Résultat"/>
+                <img src="{% static 'hello_world/images/resultr4.jpg' %}" alt="Résultat"/></p></br>
+            <div class="legend">Représentation graphique du réseau de neurones artificiels obtenus sur R </div>
+            </p>
+
+            <p>
+                les 3 premiers graphiques représentent les mêmes données avec un degrès de zoom différent. La courbe en bleue
+                représente le cours réel du S&P 500 entre le premier et le 1000ème jour, celle en pointillés noirs le
+                cours réel du S&P 500 entre le 1000ème et le 1008ème jour, celle en rouge la modélisation du modèle
+                ARIMA obtenu par auto.arima, celle en pointillés oranges la prédiction du modèle ARIMA, celle en vert
+                la modélisation du réseau de neurones sur x1 et x2 réels, et celle en pontillé bleus la modélisation du
+                réseau sur x1 et x2 prédits.
+            </p>
+
+            <p>
+                Nous observons premièrement, que notre modèle ARIMA est de la forme ARIMA(1,1,0). En effet, son
+                paramètre p est égale à 1, son degrès de différenciation d est égale à 1, et son son paramètre q est
+                égal à 0. L'AIC du modèle est de 8180,3. La modélisation ARIMA est, graphiquement, satisfaisante, de
+                même que ses prédictions qui sont relativement proches des données réelles. En effet, grahiquement, les
+                courbes en pointillés oranges et noirs présentent un écart relativement faible.
+            </p>
+
+            <p>
+                En ce qui concerne la modélisation faite par le réseau de neurones artificiels nous observons 2 courbes,
+                l'une en verte, l'autre en pointillés bleus. La courbe en verte représente la modélisation du réseau de
+                neurones artificiels sur l'échantillon test. A première vue, nous pourrions croire que cette
+                modélisation est très satisfaisante, étant donnée que, graphiquement, la courbe verte, représentant la
+                modélisation par le réseau, et la courbe en bleu, représentant les données réelles, sont très proches au
+                niveau de leur allure. Toutefois, cette conclusion est érronnée. En effet, la modélisation du réseau
+                correspondant à la courbe en verte s'est faite point après point, à partir des x1 et x2 réels. Ainsi,
+                à l'instant t, le réseau prédit la valeur du cours en se basant sur sa valeur réelle à l'instant t-1 et
+                t-2. A l'instant t+1, le réseau prédit la valeur du cours en se basant sur la valeur réelle à l'instant
+                t (et non celle qu'il a prédite à l'instant t) et à l'instant t-1. Par conséquent, lorsque le réseau
+                prédit la valeur du cours il commet une erreur, mais cette erreur est automatiquement compensée lors de
+                la prédiction suivante puisque ce dernier utilise les données réelles et non les données prédites.
+            </p>
+
+            <p>
+                Afin de tester le véritable pouvoir prédictif de notre réseau, nous devons donc faire en sorte que sa
+                prédiction du cours à l'instant t+1 se base sur la valeur prédite à l'instant t, et non sur la valeur
+                réelle. La courbe en pointillé bleue correspond à cette approche. Nous constatons immédiatement,
+                graphiquement, que les prédictions du réseau de neurones sont beaucoup plus éloignées des données
+                réelles que la prédiction ARIMA. En effet, les courbes en pointillés noirs et bleus présentent un écart
+                important, croissant temporellement. De plus, la courbe représentant la prédiction du réseau tend à
+                décroitre de manière uniforme. Ce résultat s'explique par le fait que lorsque le réseau effectue une
+                prédiction à l'instant t, il commet une erreur e. Lors de la prédiction suivante à l'instant t+1, il se
+                base sur la prédiction érronée de l'instant t, et commet encore une autre erreur e1. Il existe donc un
+                mécanisme d'amplification des erreurs commise par le réseau, ce qui explique le fait que plus nous nous
+                éloignons dans le temps, plus la prédiction faite par le réseau est éloignée des données réelles.
+            </p>
+
+            <p>
+                En conclusion, sur cette application pratique, le modèle ARIMA donne de meilleurs prédictions que notre
+                réseau de neurones artificiels. Nous avons expérimentés plusieurs types de réseaux, en faisant varier le
+                nombre de couches cachées et le nombre de neurones les composant, mais nous n'avons pas obtenus de
+                résultats significativement différents. Le réseau de neurones artificiels semble donc présenter, dans le
+                cas considéré, un certain intérêt pour les prédictions à court terme, d'un jour sur l'autre par exemple,
+                mais perd rapidement son pouvoir prédictif à long terme, contrairement au modèle ARIMA. Toutefois, cette
+                conclusion ne fait pas office de généralisation. En effet, notre réseau de neurones artificiels reste
+                relativement simple dans son architecture, et nous l'avons testé sur un seul échantillon de 1008 données.
+                De plus, il n'est pas exclu que nous ayons commis des erreurs de paramétrages du réseau.
+            </p>
+
+            <p>
+                Au vue de cette première expémentation, nous formulons donc l'hypothèse qu'à court terme les réseaus de
+                neurones artificiels donnent des prédictions légèrement meilleurs que ceux obtenus de manière aléatoire,
+                mais qu'ils perdent rapidement de leur pouvoir prédictif à long terme. Afin de confirmer ou d'infirmer
+                cette hypothèse, nous avons décidé de pogrammer un réseau de neurones artificiels en utilisant un autre
+                logiciel, python.
             </p>
 
             <h3> 2 - Résultats obtenus par les réseaux de neurones artificiels programmés sur Python</h3>
