@@ -81,6 +81,46 @@
                     </p>
                 </div>
             </div>
+
+
+             <div class="ui segment raised">
+                 <h3 style="padding-left: 4ex">Plan du site :</h3>
+                 <ul>
+                     <li><a href="{% url 'hello_world:Introduction' %}">Introduction générale : </a>
+                         <ul>
+                             <li><a href="{% url 'hello_world:Introduction' %}/#lapb">Problématique </a></li>
+                             <li><a href="{% url 'hello_world:Introduction' %}/#ldf">Les dynamiques financières</a></li>
+                             <li><a href="{% url 'hello_world:Introduction' %}/#lrdna">Les réseaux de neurones artificiels</a></li>
+                             <li><a href="{% url 'hello_world:Introduction' %}/#lrdnaaalf">Les réseaux de neurones articiciels appliqués à la finance</a></li>
+                             <li><a href="{% url 'hello_world:Introduction' %}/#lsdd">La selection des données</a></li>
+                             <li><a href="{% url 'hello_world:Introduction' %}/#lm">La méthodologie</a></li>
+                         </ul>
+                     </li>
+                     <li><a href="{% url 'hello_world:Concepts' %}">Introduction aux réseaux de neurones : </a>
+                         <ul>
+                             <li><a href="{% url 'hello_world:Concepts' %}/#g">Généralité</a></li>
+                             <li><a href="{% url 'hello_world:Concepts' %}/#qdc">Dates clefs</a></li>
+                             <li><a href="{% url 'hello_world:Concepts' %}/#tddin"> Transition des données inter-neurones </a></li>
+                             <li><a href="{% url 'hello_world:Concepts' %}/#lfa">Les fonctions d'activation</a></li>
+                             <li><a href="{% url 'hello_world:Concepts' %}/#l">L'apprentissage</a></li>
+                             <li><a href="{% url 'hello_world:Concepts' %}/#ldtdrdna">Les différents types de réseaux de neurones artificiels</a></li>
+                             <li><a href="{% url 'hello_world:Concepts' %}/#lldrdn">Les limites des réseaux de neurones artificiels</a></li>
+                         </ul>
+                     </li>
+                     <li><a href="{% url 'hello_world:Finance' %}">Etat de l'art dans la finance :</a>
+                         <ul>
+                             <li><a href="{% url 'hello_world:Finance' %}/#intro">Introduction</a></li>
+                             <li><a href="{% url 'hello_world:Finance' %}/#adrdnauef">Architecture des réseaux de neurones artificiels utilisés en finance</a></li>
+                             <li><a href="{% url 'hello_world:Finance' %}/#aef">Application en finance</a></li>
+                             <li><a href="{% url 'hello_world:Finance' %}/#leslim">Les limites des réseaux de neurones artificiels utilisés en finance</li>
+                         </ul>
+                     </li>
+                     <li><a href="{% url 'hello_world:Application' %}">Application pratique : </a>
+                     </li>
+                     <li><a href="{% url 'hello_world:Conclusion' %}">Conclusion</a></li>
+                 </ul>
+
+             </div>
         </div>
     </div>
 {% endblock %}
