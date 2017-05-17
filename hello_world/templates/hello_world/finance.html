@@ -64,7 +64,7 @@
                 entre ses différents neurones.
                 La valeur renvoyée du ou des neurones de la couche de sortie correspond donc à :
             </p>
-            <img src="{% static 'hello_world/images/f124.gif' %}" alt="Valeur renvoyée par les neurones de sortie"/>
+            <img class ="alinea" src="{% static 'hello_world/images/f124.gif' %}" alt="Valeur renvoyée par les neurones de sortie"/>
             <p>
                 où Y est la valeur obtenue en sortie, f la fonction d'activation du neurone, ik la valeur de sortie du
                 neurone k et wk le poids
@@ -89,7 +89,7 @@
             <p>
                 La valeur renvoyée par les neurones de la couche intermédiaire et de sortie correspond à :
             </p>
-            <img src="{% static 'hello_world/images/f124.gif' %}" alt="Valeur renvoyée par les neurones de sortie"/>
+            <img class ="alinea" src="{% static 'hello_world/images/f124.gif' %}" alt="Valeur renvoyée par les neurones de sortie"/>
             <p>
                 où Y est la valeur renvoyée, f la fonction d'activation du neurone, ik la valeur de sortie du neurone k
                 et wk le
@@ -116,7 +116,7 @@
             <p>
                 La valeur renvoyée par les neurones de la couche intermédiaire correspond à :
             </p>
-            <img src="{% static 'hello_world/images/f3.gif' %}" alt="Valeur renvoyée par les neurones de sortie"/>
+            <img class ="alinea" src="{% static 'hello_world/images/f3.gif' %}" alt="Valeur renvoyée par les neurones de sortie"/>
             <p>
                 où Y(t) est la valeur renvoyée à l'instant t, f la fonction d'activation du neurone, ik la valeur de
                 sortie du neurone k,
@@ -127,7 +127,7 @@
             <p>
                 La valeur renvoyée par les neurones de la couche de sortie correspond à :
             </p>
-            <img src="{% static 'hello_world/images/f124.gif' %}" alt="Valeur renvoyée par les neurones de sortie"/>
+            <img class ="alinea" src="{% static 'hello_world/images/f124.gif' %}" alt="Valeur renvoyée par les neurones de sortie"/>
             <p>
                 où Y est la valeur renvoyée, f la fonction d'activation du neurone, ik la valeur de sortie du neurone k,
                 et wk le poids associé
@@ -165,7 +165,7 @@
             <p>Dans cette partie, nous présenterons les applications les plus fréquentes des réseaux de neurones
                 artficiels en finance.</p>
 
-            <h3>a) Analyse et prédiction des séries chronologiques en finance</h3>
+            <h3> 1 - Analyse et prédiction des séries chronologiques en finance</h3>
             <p>
                 Une série chronologique est une suite de variables aléatoires qui ne sont pas nécessairement
                 indépendantes
@@ -188,7 +188,7 @@
             <p>
                 Le modèle ARMA (Auto Regressive Moving Average) s'écrit de la manière suivante :
             </p>
-            <img src="{% static 'hello_world/images/f5.jpg' %}" alt="ARIMA"/>
+            <img class="alinea" src="{% static 'hello_world/images/f5.jpg' %}" alt="ARIMA"/>
             <p>
                 Nous voyons que la valeur d'un élément de la série à un instant t dépend de ses valeurs passées, d'où le
                 terme auto-régressif,
@@ -256,7 +256,7 @@
                 nous nous intéresserons essentiellement qu'à la méthode de Gordon et Shapiro (Dividend Discount Model).
                 Ce modèle est utilisé pour évaluer le prix d'une action et s'écrit de la manière suivante :
             </p>
-            <img src="{% static 'hello_world/images/f6.jpg' %}" alt="Gordon et Shapiro"/>
+            <img class="alinea" src="{% static 'hello_world/images/f6.jpg' %}" alt="Gordon et Shapiro"/>
             <p>
                 Où P0 est la valeur théorique de l'action, D1 le dividende anticipé de la première période, k le taux de
                 rendement attendu par les actionnaires et g le taux de croissance du bénéfice brut par action.
@@ -386,7 +386,7 @@
                 classification classique ont été menés. Ils sont résumés dans le tableau suivant, extrait
                 de An analysis of the applications of neural networks in finance par Adam Fadlalla et Chien-Hua Lin.
             </p>
-            <img src="{% static 'hello_world/images/f7.jpg' %}" alt="Gordon et Shapiro"/>
+            <img class="alinea" src="{% static 'hello_world/images/f7.jpg' %}" alt="Gordon et Shapiro"/>
             <p>
                 Ces différents travaux expérimentaux montrent bien que les réseaux de neurones sont particulièrement
                 adaptés à la détection des entreprises ou des banques en difficulté, en particulier face aux méthodes
@@ -443,9 +443,13 @@
                 sein d'un intervalle compris entre les deux seuils de la fonction d'activation : c'est la normalisation
                 des données. Deux méthodes de normalisation des données sont généralement utilisées. La première
                 consiste à les centrer-réduire, ce qui consiste dans un premier temps à leur soustraire leur moyenne,
-                puis à les diviser par leur écart-type. La deuxième méthode s'effectue selon la formule suivante :
+                puis à les diviser par leur écart-type, comme illustré ci-dessous:
             </p>
-            <img src="{% static 'hello_world/images/f8.gif' %}" alt="Gordon et Shapiro"/>
+            <img class="alinea" src="{% static 'hello_world/images/f8.1.gif' %}" alt="centrée-réduire""/>
+            <p>
+            La deuxième méthode s'effectue selon la formule suivante :
+            </p>
+            <img class="alinea" src="{% static 'hello_world/images/f8.gif' %}" alt="maxmin"/>
             <p>
                 Où zi représente la variable normalisée, xi la variable que l'on souhaite normaliser, min(x) le minimum
                 des variables, et max(x) le maximum des variables.
