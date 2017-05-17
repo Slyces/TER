@@ -161,7 +161,7 @@
 
                 <h4> a) Choix des plateformes de programmation</h4>
                 <p>
-                    Après avoir déterminé les 3 indices boursiers à prédire, nous avons débuté la programmation de nos
+                    Après avoir déterminé les indices boursiers à prédire, nous avons débuté la programmation de nos
                     réseaux de neurones artificiels. Nous avons opté pour une double approche qui consiste à programmer,
                     dans un premier temps, un réseau de neurones artificiels en utilisant les librairies disponibles sur
                     le
@@ -171,7 +171,7 @@
                     comparative.
                 </p>
 
-                <h4> b) Programmation des réseaux de neurones artificiels sur R</h4>
+                <h4> b) Réseau de type feed-forward sur R</h4>
                 <p>
                     Notre objectif principal lors de cette première étape est de programmer un réseau de neurones
                     artificiels sur R, de le visualiser, et d'établir des prédictions quant aux variations d'un indice
@@ -291,13 +291,29 @@
                     raisons de cette démarche seront expliquées dans la partie résultat.
                 </p>
 
-                <h4> c) Programmation des réseaux de neurones artificiels sur Python</h4>
+                <h4> c) Réseau de type feed forward sur Python </h4>
                 <p>
-                    Lors de cette seconde partie notre objectif est de programmer notre propre réseau de neurones
-                    artificiels, plutôt que d'utiliser neuralnet. En effet, ce dernier est un réseau dont nous
-                    pouvons certes faire varier les paramètres, mais qui est déjà préprogrammé. Afin d'atteindre cet
-                    objectif, nous utilisons le langage python ainsi que la librairie TensorFlow, qui est un outil
-                    open source d'apprentissage automatique développé par Google.
+                    Dans cette partie, nous nous sommes inspirés, suite aux conseils de notre tuteur, de
+                    <a style="color: black;" href="https://www.codeproject.com/articles/175777/financial-predictor-via-neural-network">l'article suivant</a>.
+                    Nous avons choisi d'implémenter un réseau sur Python, après l'implémentation R. Si R est le langage
+                    privilégié des statistiques, Python est celui du Machine Learning. Ainsi, c'est sur Python que l'on
+                    trouve les librairies les plus puissantes et les plus complètes, qui se développent d'autant plus en ce
+                    moment.
+                </p>
+                <p>
+                    Nous avons ainsi choisi d'utiliser la librairie Tensorflow pour modéliser un réseau de neurones en feed-forward
+                    inspiré de l'article sus-cité. Cette approche, contrairement à celle de R, offre beaucoup plus de flexibilité
+                    dans la création du réseau, et nous permet de mieux maitriser tous les points qui peuvent varier.
+                </p>
+                <p>
+                    Dans l'article, l'auteur prédit 4 indices en même temps en utilisant les 10 dernières données de chacun de
+                    ces indices. Cela nous donne donc 40 données en entrée, et 4 en sortie. Il choisit de disposer deux hidden-layers
+                    de 41 neurones chacun. Il utilise la fonction tangeante hyperbolique comme fonction d'activation. Il utilise comme
+                    algorithme d'optimisation des poids, c'est à dire comme apprentissage, la méthode appelée &laquo; resilient propagation
+                    training &raquo;. Le concept est très similaire à la méthode de backpropagation expliquée dans les concepts généraux :
+                    il se base sur la différentiabilité de la fonction d'activation, c'est à dire le fait qu'on puisse la dériver. Cette fonction
+                    d'activation étant appliquée sur des vecteurs non réels, sa dérivée est une matrice, appelée le gradient. Ainsi,
+                    la méthode de gradient résilient.
                 </p>
                 <p>
                     Afin de créer un noeud du graphe, nous multiplions les poids de ce noeud avec le résultat de la couche précédente(input dans le cas ed la premiere couche cachée). Au résultat on additionne la matrice des biais
@@ -444,29 +460,6 @@
                     </div>
                 </div>
             {% endfor %}
-
-            <p>zaeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-            </p>
 
             <h2 class="header" align="center">{{ index }}</h2>
 
