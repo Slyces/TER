@@ -11,12 +11,21 @@ $(document)
             });
 
         // Abstract
-        $('.abstract.menu .item').
-            tab(
-                {history:false}
+        $('.abstract.menu  .item').tab(
+            {history: false}
         );
 
-    //     $('.dropdown')
-    //         .dropdown();
+        // Plots
+        $('.indexes.menu  .item').tab(
+            {history: false}
+        );
+
+        $('.lstm.menu  .item').tab(
+            {history: false}
+        );
+
+        $('.plots.menu  .item').tab(
+            {history: false}
+        );
     })
 ;
