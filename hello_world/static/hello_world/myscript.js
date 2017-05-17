@@ -1,8 +1,8 @@
+/**
+ * Created by Slyces on 5/17/17.
+ */
 $(document)
     .ready(function () {
-        // Dropdown
-        $('.ui.dropdown')
-            .dropdown();
 
         // Sticky menu
         $('.main.menu')
@@ -10,7 +10,13 @@ $(document)
                 type: 'fixed'
             });
 
-        // Scroll up
-        // $('#lol').click($('#menu').animatescroll());
+        // Abstract
+        $('.abstract.menu .item').
+            tab(
+                {history:false}
+        );
+
+    //     $('.dropdown')
+    //         .dropdown();
     })
 ;

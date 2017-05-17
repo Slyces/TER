@@ -241,9 +241,9 @@
                  <img src="{% static 'hello_world/images/resultr3.jpg' %}" alt="Résultat" style="width:800px;height:600px;"/>
             </p>
             <p>
-                <img src="{% static 'hello_world/images/resultr4.jpg' %}" alt="Résultat"/></p></br>
-            <div class="legend">Représentation graphique du réseau de neurones artificiels obtenus sur R </div>
+                <img src="{% static 'hello_world/images/resultr4.jpg' %}" alt="Résultat"/>
             </p>
+            <div class="legend">Représentation graphique du réseau de neurones artificiels obtenus sur R </div>
 
             <p>
                 les 3 premiers graphiques représentent les mêmes données avec un degrès de zoom différent. La courbe en bleue
@@ -312,9 +312,14 @@
             </p>
 
             <h3> 2 - Résultats obtenus par les réseaux de neurones artificiels programmés sur Python</h3>
-            <p>
-                A faire
-            </p>
+
+            {% for index in divs %}
+                <div class="ui segment raised">
+                    <h3 class="header" align="center">{{ index }}</h3>
+                    <p> {{ divs|key:index|safe }} </p>
+                </div>
+            {% endfor %}
         </div>
     </div>
+    {{ script|safe }}
 {% endblock %}

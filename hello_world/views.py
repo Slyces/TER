@@ -13,12 +13,12 @@ def MetaChapter(file):
         template_name = 'hello_world/' + file + '.html'
     return Chapter
 
-class ResultsView(generic.base.TemplateView):
-    template_name = 'hello_world/index.html'
+class ApplicationsView(generic.base.TemplateView):
+    template_name = 'hello_world/application.html'
     context_object_name = 'context'
 
     def get_context_data(self, *args, **kwargs):
-        context = super(ResultsView, self).get_context_data(**kwargs)
+        context = super(ApplicationsView, self).get_context_data(**kwargs)
 
         plots = plotting.plot_feedforward('1')
         plots['lstm'] = plotting.plot_lmst()
