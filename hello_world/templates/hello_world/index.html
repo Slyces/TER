@@ -141,53 +141,58 @@
             <br/>
 
             <h1 class="chapter header" align="center">II - Méthodologie </h1>
-            <p>
+            <div>
+                <p>
                 Afin de répondre à la problématique, nous avons vu qu'il était judicieux de la décomposer en deux parties distinctes dans un premier temps, <br/>
                 et d'ensuite réunir les connaissances acquises pour y apporter une réponse pertinente. <br />
                 Nous avons donc commencé par parcourir plusieurs articles financiers relatifs aux dynamiques financières, <br/>
                 pour être en mesure de discerner quelles données pourraient éventuellement être exploitables, et mieux comprendre le fonctionnement de ces dynamiques. <br />
-                <br />
-
+                </p>
+                <p>
                 Par la suite, nous avons exploré plusieurs articles scientifiques expliquant le fonctionnement des réseaux de neurones. <br />
                 Cela nous a permis d'acquérir les bases théoriques nécessaire à une meilleure compréhension globale du sujet. <br/>
                 Une fois la partie théorique relativement maitrisé, nous avons suivi des tutoriels pour nous former sur certaines <br />
                 librairies (tel que TensorFlow sur python), car leur usage facilite grandement la création et modification de réseau de neurones. <br/>
                 Lorsque nous avons terminé de suivre ces tutoriels, nous avons effectué des tests sur les réseaux de neurones en nous basant <br />
                 sur des systèmes minimalistes afin d’en maitriser l’usage empiriquement. <br/>
-                <br/>
-
+                </p>
+                <p>
                 Une fois la partie technique acquise, nous avons pu concevoir des réseaux de neurones artificiels en expérimentant différents modèles <br/>
                 pour essayer d'améliorer les résultats obtenus. <br/>
                 Après avoir comparé les résultats constatés et en ayant une meilleure compréhension globale du sujet, <br/>
                 nous avons alors pu être en mesure d'apporter une conclusion à la problématique. <br/>
-            </p>
+                </p>
+            </div>
 
             <h3 class="chapter header" align="center">III - Généralité sur les réseaux de neurones : </h3>
 
-            <p>
+            <div>
+                <p>
                  Les réseaux de neurones artificiels sont des ensembles d'algorithmes dont le fonctionnement général
                 s'inspire d'un modèle simplifié du fonctionnement des neurones, en se basant sur le paradigme biologique du neurone formel. <br/>
                 De ce fait, ils permettent de reproduire certaines fonctions du cerveau, comme l'apprentissage par l'exemple. <br/>
-                <br/>
+                </p>
+                <p>
                 <span name="souligne">Utilité majeure des réseaux de neurones artificiels : </span><br/>
                 A partir d’observations limitées, tirer des généralisations plausibles via un procédé inductif. <br/>
-                <br/>
+                </p>
+                <p>
                 Un réseau de neurone est composé de plusieurs couches, chacune composées d’un ou plusieurs nœuds
                 (neurones). <br/>
                 Le nombre de ces couches varient suivant le modèle adopté, mais il existe 3 couches principales.
-            <ol>
+                </p>
+                <ol>
                 <li> Les données en entré (input layer)</li>
                 <br/>
                 <li> Les couches cachés (hidden layer x)</li>
                 <br/>
                 <li> Les données de sortie (output layer)</li>
                 <br/>
-            </ol>
-            <img src="{% static 'hello_world/images/neural.jpg' %}" alt="Picture of neural network"
+                </ol>
+                <img src="{% static 'hello_world/images/neural.jpg' %}" alt="Picture of neural network"
                  style="width:750px; height:250px;"/>
-            </p>
-            <br/>
-            <br/>
+
+            </div>
 
             <p>
             <ul>
@@ -211,7 +216,8 @@
 
 
             <h1 class="chapter header" align="center">X - Conclusion </h1>
-            <p>
+            <div>
+                <p>
                 Rappelons que la problématique était la suivante : "Peut-on prévoir efficacement les dynamiques financières à l'aide de réseaux de neurones artificiels?" <br/>
                 Nous avons donc décidé, à la façon de Machiavel <span name="citation">"Divide et impera"</span>, de diviser le problème en sous problème afin de le résoudre de façon plus fluide et pertinente. <br/>
                 Dans la première partie, nous avons appris, suite à l'étude de plusieurs articles financiers, que l'analyse d'un indice financier été <br/>
@@ -228,11 +234,13 @@
                 En gardant cela en tête, nous pouvons dire que nos valeurs prédites étaient très proche des valeurs réelles. <br/>
                 Ainsi, il faut considérer que les prédictions sont à manipuler avec la plus grande des précautions, <br/>
                 mais elle reste tout de même un indicateur fiable de direction. <br/>
-                <br/>
+                </p>
+                <p>
                 Nous pouvons dire que notre modèle de réseaux de neurones artificiel ne donne pas encore des résultats satisfaisant, <br/>
                 au vu des écarts trouvés lors de la dénormalisation des données, mais il reste tout de même plus performant que les <br/>
                 techniques statistiques classique de prédiction. <br/>
-                <br />
+                </p>
+                <p>
                 Si notre modèle ne fournit pas des prédictions satisfaisantes, c'est pour la simple raison qu'il ne contient pas assez de variables explicatives. <br/>
                 En effet, nous nous basons uniquement sur des données historiques, ces données ne permettent pas à elle seules d'expliquer les variations des <br/>
                 indices boursier, car elles ne rendent compte que d'une partie de l'état de santé de cet indice, <br/>
@@ -246,8 +254,8 @@
                 Cette théorie a été vérifiée par les performances du fond d'investissement Medaillon, qui se base sur la prédiction d'évolution <br/>
                 d'indices boursiers, en utilisant des centaines de variables explicatives dans leur modèle, et qui leur permet d'obtenir le titre <br/>
                 de "fond d'investissement  le plus performant de l'histoire". <br/>
-                <br/>
-            </p>
+                </p>
+            </div>
         </div>
     </div>
 {% endblock %}
