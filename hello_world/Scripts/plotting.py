@@ -97,6 +97,11 @@ def plot_lmst():
     x = [i for i in range(len(predicted))]
     axes.line(x, list(predicted), legend="Predictions", line_color='violet', line_join='round')
     axes.line(x, list(historic), legend="Données réelles", line_color='green', line_join='round')
+
+    error = np.square(historic - predicted)
+
+    sum_error_sqrt = np.sqrt(np.array([sum(error[:i]) for i in range(len(error))]))
+    print(sum_error_sqrt)
     return axes
 
 

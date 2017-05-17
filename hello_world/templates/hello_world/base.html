@@ -42,7 +42,7 @@
 
     {# Latex equations #}
     <link rel="stylesheet" href="{% static 'hello_world/jqmath.css' %}">
-    <script src="{% static 'hello_world/jqmath.min.js' %}" charset="utf-8"></script>
+    <script src="{% static 'hello_world/jqmath-etc-0.4.6.min.js' %}" charset="utf-8"></script>
 
     {# Bokeh script #}
     <script src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.4.min.js"></script>
@@ -65,7 +65,7 @@
 </head>
 
 <header>
-    <div>
+    <div style="margin-top: 1ex;">
         <img class="image center main" align="center" src="{% static 'hello_world/images/banner.svg' %}">
     </div>
     <div class="ui borderless main menu top" id="menu" style="background: lightsteelblue;">
@@ -111,7 +111,11 @@
 
 {% block content %}{% endblock %}
 
+</body>
+<footer>
+    Vide !
+</footer>
+
 <script src="{% static 'hello_world/myscriptslate.js' %}"></script>
 
-</body>
 </html>
