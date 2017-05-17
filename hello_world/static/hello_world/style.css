@@ -101,7 +101,11 @@ p {
 }
 
 .equation.upper {
-    margin-top: -3.2ex;
+    margin-top: -3.3ex;
+}
+
+.plt.segment {
+    height: 400px;
 }
 
 .alinea{
