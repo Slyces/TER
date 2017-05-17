@@ -1,0 +1,28 @@
+{% extends 'hello_world/base.html' %}
+{% load extras %}
+{% load staticfiles %}
+
+{% block title %}
+    <title>TER Version 2!</title>
+{% endblock %}
+
+{% block content %}
+
+    <div class="main ui container">
+        <div class="chapter content" id="chapter1">
+
+            <div class="ui segment raised">
+                <h3 class="header" align="center"> LSTM </h3>
+                {{ divs|key:'lstm'|safe }}
+            </div>
+
+            {% for index in divs %}
+                <div class="ui segment raised">
+                    <h3 class="header" align="center">{{ index }}</h3>
+                    {{ divs|key:index|safe }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {{ script_bokeh|safe }}
+{% endblock %}

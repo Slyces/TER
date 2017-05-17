@@ -13,17 +13,17 @@ def MetaChapter(file):
         template_name = 'hello_world/' + file + '.html'
     return Chapter
 
-class IndexView(generic.base.TemplateView):
+class ResultsView(generic.base.TemplateView):
     template_name = 'hello_world/index.html'
     context_object_name = 'context'
 
     def get_context_data(self, *args, **kwargs):
-        context = super(IndexView, self).get_context_data(**kwargs)
+        context = super(ResultsView, self).get_context_data(**kwargs)
 
         plots = plotting.plot_feedforward('1')
+        plots['lstm'] = plotting.plot_lmst()
 
-        context['script_bokeh'], context['divs'] = components(plots)
-
+        context['script'], context['divs'] = components(plots)
         return context
 
 introduction = MetaChapter('introduction')
@@ -32,3 +32,4 @@ finance = MetaChapter('finance')
 application = MetaChapter('application')
 conclusion = MetaChapter('conclusion')
 test = MetaChapter('test')
+index = MetaChapter('index')

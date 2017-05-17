@@ -17,11 +17,5 @@
         </library>
       </libraries>
     </data-source>
-    <data-source source="LOCAL" name="Morgane.db" uuid="a1ec81f7-fe80-4ed7-a39a-9202fafa8805">
-      <driver-ref>sqlite.xerial</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/Morgane.db</jdbc-url>
-    </data-source>
   </component>
 </project>

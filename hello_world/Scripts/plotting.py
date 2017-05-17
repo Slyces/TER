@@ -6,6 +6,10 @@ from bokeh.models import DatetimeTickFormatter
 from math import pi
 from django_world.settings import DATABASE_PATH
 
+width = 800
+height = 350
+
+
 def plot_feedforward(label):
     indexes = 'Nasdaq DowJones SnP500 Rates'.split()
     with sqlite3.connect(DATABASE_PATH) as con:
@@ -38,15 +42,14 @@ def plot_feedforward(label):
     def f(x, extrems):
         return (extrems['max'] - extrems['min']) * x + extrems['min']
 
-
+    historic_unnormalised = historic
+    predicted_unnormalised = predicted
     for i, index in enumerate(indexes):
-        historic[:, i] = f(historic[:, i], extr[index])
-        predicted[:, i] = f(predicted[:, i], extr[index])
+        historic_unnormalised[:, i] = f(historic[:, i], extr[index])
+        predicted_unnormalised[:, i] = f(predicted[:, i], extr[index])
 
     error = np.square(historic - predicted)
 
-    width = 800
-    height = 350
 
     axes = [None for i in range(4)]
     for i in range(4):
@@ -72,8 +75,6 @@ def plot_feedforward(label):
         )
         axes[i].xaxis.major_label_orientation = pi / 4
         axes[i].xaxis.bounds = (dates[0], dates[-1])
-        print((extr[indexes[i]]['min'],
-                                extr[indexes[i]]['max']))
         axes[i].yaxis.bounds = (extr[indexes[i]]['min'],
                                 extr[indexes[i]]['max'])
 
@@ -83,5 +84,23 @@ def plot_feedforward(label):
 
     return dict([(indexes[i], axes[i]) for i in range(4)])
 
+def plot_lmst():
+    TOOLS = 'pan,wheel_zoom,box_zoom,resize,reset'
+    with sqlite3.connect(DATABASE_PATH) as con:
+        cursor = con.cursor()
+        cursor.execute("""SELECT historic FROM lstm_single;""")
+        historic = np.array(cursor.fetchall())
+        cursor = con.cursor()
+        cursor.execute("""SELECT predicted FROM lstm_single;""")
+        predicted = np.array(cursor.fetchall())
+    axes = figure(responsive=True, height=height, width=width, tools=TOOLS)
+    x = [i for i in range(len(predicted))]
+    axes.line(x, list(predicted), legend="Predictions", line_color='violet', line_join='round')
+    axes.line(x, list(historic), legend="Données réelles", line_color='green', line_join='round')
+    return axes
+
+
+
 if __name__ == '__main__':
-    print(plot_feedforward("1"))
+    # print(plot_feedforward("1"))
+    print(plot_lmst())
