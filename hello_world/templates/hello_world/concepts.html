@@ -30,13 +30,14 @@ s
                     Un réseau de neurone est composé de plusieurs couches, chacune composées d’un ou plusieurs nœuds
                     (neurones). <br/>
                     Le nombre de ces couches varient suivant le modèle adopté, mais il existe 3 couches principales:
+                </p>
                 <ol>
                     <li> Les données en entré (input layer)</li>
                     <li> Les couches cachés (hidden layer x)</li>
                     <li> Les données de sortie (output layer)</li>
                 </ol>
                 <img src="{% static 'hello_world/images/reseau.svg' %}" alt="Picture of neural network"
-                     style="width:550px; height:300px; align:left"/>
+                     style="width:550px; height:300px;"/>
                 <ul>
                     <li>La première couche reçoit les données. <br/>
                         Il est très important de bien les choisirs au préalable car elles régissent la qualité de
@@ -51,11 +52,11 @@ s
                         Elle contient tout simplement les données attendues, par exemple la prédiction d'une valeur.
                     </li>
                 </ul>
-                </p>
             </div>
             <div class="ui segment raised" id="qdc">
                 <p>
                     <span class="underlined"> Quelques dates clefs : </span><br/>
+                </p>
                 <ul>
                     <li>1890 : W. James propose une loi de fonctionnemment pour l'apprentissage avec le concept de
                         mémoire associative.
@@ -78,7 +79,6 @@ s
                         rétropropagation du gradient)
                     </li>
                 </ul>
-                </p>
             </div>
 
             <h2 class="chapter header" id="intro">Transition des données inter-neurones</h2>
@@ -135,6 +135,7 @@ s
                     Les fonctions d'activation, aussi appelées fonctions de seuillage ou fonctions de transfert, servent
                     à introduire une non-linéarité dans le fonctionenement des neurones.<br/>
                     En général, les fonctions d'évaluation présentent trois intervalles:
+                </p>
                 <ol>
                     <li>La désactivation. Quand la valeur est en dessous d'un seuil. Le neurone est désactivé et renvoit
                         0 ou -1
@@ -144,7 +145,7 @@ s
                     </li>
                     <li>L'activation. Quand la valeur est au dessus du seuil. Le neurone est activé et renvoit 1.</li>
                 </ol>
-                </p>
+
                 <p>
                     Les deux fonctions d'activation les plus utilisées sont la fonction sigmoïde, et la fonction
                     Heaviside.<br/>
@@ -230,16 +231,17 @@ s
                 <p>
                     Il existe plusieurs types de réseaux de neurones.
                     On peut différencier les types de réseaux suivant plusieurs critères, a savoir :
+                </p>
                 <ol>
                     <li>La topologie des connexions entre les neurones.</li>
                     <li>La fonction d'agrégation utilisé.</li>
                     <li>La fonction d'activation utilisé.</li>
                     <li>L'algorithme d'apprentissage.</li>
                 </ol>
-                </p>
                 <p>
                     Parmis tous les types de réseaux de neurones, on peut en distinguer trois qui sont le plus
-                    couramment utilisé. <br/>
+                    couramment utilisé.
+                </p>
                 <ol>
                     <li>Le perceptron : <br/>
                         Il peut-être vu comme le type de réseau de neurone le plus simple, mais le plus utilisé car
@@ -277,7 +279,6 @@ s
                              style="width:300px; height:200px;"/>
                     </li>
                 </ol>
-                </p>
             </div>
 
             <h2 class="chapter header" id="intro">Les limites des réseaux de neurones</h2>
