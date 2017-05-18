@@ -428,6 +428,54 @@ train_op = f.train.GradientDescentOptimizer(0.001).minimize(cost) # Minimisation
                 </p>
             </div>
 
+            <h4> D) Réseau de type Long/Short Term Memory sur Python </h4>
+
+            <p> Nous avons décidé de faire une autre implémentation sur python, d'un nouveau réseau. Ce réseau est de
+                type réseau récurrent, plus précisément Long/Short Term Memory, c'est à dire un réseau qui réutilise
+                dans ses calculs ses résultats précédents. En somme, ce réseau a la particularité d'être très adaptés
+                aux séquences ordonnées. Notre problème rentre particulièrement bien dans ce cadre. Manquant de temps,
+                nous n'avons cependant pas beaucoup exploité ce réseau.
+            </p>
+            <p>
+                Il a été réalisé avec une librairie qui vient se rajouter au dessus de Tensorflow pour le simplifier :
+                Keras. Ainsi, le fonctionnement est très lié à celui de la librairie avec laquelle nous avons déjà
+                expérimenté.
+            </p>
+            <p>
+                <strong>Le modèle</strong><br/>
+                Ce modèle utilise comme seule donnée les valeurs antérieures du système. Il est déjà évident que cela ne
+                suffira pas à obtenir de bon résultats. Pour avoir quelque chose de plus complet, il faudrait soit
+                coupler plusieurs données des marchés financiers, soit s'intéresser à des données
+                extra-financières.<br/>
+                Le modèle de ce réseau est créé par le code suivant :
+
+            </p>
+            <pre class="prettyprint">
+                def build_model(layers, drop=0.2):
+                model = Sequential()
+
+                model.add(LSTM(
+                    input_dim=layers[0],
+                    output_dim=layers[1],
+                    return_sequences=True))
+                model.add(Dropout(drop))
+
+                model.add(LSTM(
+                    layers[2],
+                    return_sequences=False))
+                model.add(Dropout(drop))
+
+                model.add(Dense(
+                    output_dim=layers[3]))
+                model.add(Activation("linear"))
+
+                start = time.time()
+                model.compile(loss="mse", optimizer="rmsprop")
+                print("Compilation Time : ", time.time() - start)
+                return model
+        </pre>
+
+
             <h2 class="chapter header">Résutats Obtenus</h2>
 
             <div class="ui segment raised">
@@ -535,66 +583,21 @@ train_op = f.train.GradientDescentOptimizer(0.001).minimize(cost) # Minimisation
                 </p>
 
                 <p>
-                    Au vue de cette première expémentation, nous formulons donc l'hypothèse qu'à court terme les réseaus
-                    de
-                    neurones artificiels donnent des prédictions légèrement meilleurs que ceux obtenus de manière
-                    aléatoire,
-                    mais qu'ils perdent rapidement de leur pouvoir prédictif à long terme. Afin de confirmer ou
-                    d'infirmer
-                    cette hypothèse, nous avons décidé de pogrammer un réseau de neurones artificiels en utilisant un
-                    autre
-                    logiciel, python.
+                    Au vu de cette première expémentation, nous formulons donc l'hypothèse qu'à court terme les réseaus
+                    de neurones artificiels donnent des prédictions légèrement meilleurs que ceux obtenus de manière
+                    aléatoire, mais qu'ils perdent rapidement de leur pouvoir prédictif à long terme. Afin de confirmer
+                    ou d'infirmer cette hypothèse, nous avons décidé de pogrammer un réseau de neurones artificiels en
+                    utilisant un autre logiciel, python.
                 </p>
 
                 <h3> 2 - Résultats obtenus par les réseaux de neurones artificiels programmés sur Python</h3>
                 <p>
                     Nos réseaux de neurones programmés en python, contrairement aux réseaux programmés en R, se basent
-                    sur les 10 dernières données historiques passées afin d'établir une prédiction à l'instant t.
-                </p>
-
-                <div class="ui pointing secondary four item indexes menu">
-                    <a class="active blue item" data-tab="Rates">Rates</a>
-                    <a class="blue item" data-tab="DowJones">DowJones</a>
-                    <a class="blue item" data-tab="Nasdaq">Nasdaq</a>
-                    <a class="blue item" data-tab="SnP500">SnP500</a>
-                </div>
-                {% for index in indexes %}
-                    <div class="ui tab {{ index|active }}" data-tab="{{ index }}">
-                        <h1 class="header" align="center" style="margin-top: -1em;">{{ index }}</h1>
-                        <div class="ui three item menu plots">
-                            <a class="active item blue" data-tab="plot {{ index }}">Echelle réelle</a>
-                            <a class="item green" data-tab="normal {{ index }}">Normalisé</a>
-                            <a class="item orange" data-tab="error {{ index }}">Erreur</a>
-                        </div>
-
-                        <div class="ui active tab segment raised plt" data-tab="plot {{ index }}">
-                            <p> {{ plot|key:index|safe }} </p>
-                        </div>
-                        <div class="ui tab segment raised plt" data-tab="error {{ index }}">
-                            <p> {{ error|key:index|safe }} </p>
-                        </div>
-                        <div class="ui tab segment raised plt" data-tab="normal {{ index }}">
-                            <p> {{ normalised|key:index|safe }} </p>
-                        </div>
-                    </div>
-                {% endfor %}
-
-                <h2 class="header" align="center">{{ index }}</h2>
-
-                <div class="ui two item menu lstm">
-                    <a class="active item" data-tab="plt lstm">Echelle réelle</a>
-                    <a class="item" data-tab="err lstm">Erreur</a>
-                </div>
-
-                <div class="ui active tab segment raised plt" data-tab="plt lstm">
-                    <p> {{ plot|key:'lstm'|safe }} </p>
-                </div>
-                <div class="ui tab segment raised plt" data-tab="err lstm">
-                    <p> {{ error|key:'lstm'|safe }} </p>
-                </div>
-                <p>
-                    Nous observons que cette approche donne des résultats satisfaisants pour le réseau de neurones Feed
+                    sur les 10 dernières données historiques passées afin d'établir une prédiction à l'instant t. Nous
+                    observons que cette approche donne des résultats satisfaisants pour le réseau de neurones Feed
                     Forward.
+                </p>
+                <p>
                     En effet, pour les 4 produits financiers, la courbe représentant les données prédites et celle
                     représentant les données historiques sont très proches dans leur allure. De plus, si nous observons
                     les erreurs, qui correspondent à la différence entre les données prédites et les données
@@ -623,6 +626,53 @@ train_op = f.train.GradientDescentOptimizer(0.001).minimize(cost) # Minimisation
                     notre réseau de neurones
                     peut donc être qualifié de court-terme uniquement.
                 </p>
+
+
+                <div id="context1">
+                    <div class="ui pointing secondary four item indexes menu">
+                        <a class="active blue item" data-tab="Rates">Rates</a>
+                        <a class="blue item" data-tab="DowJones">DowJones</a>
+                        <a class="blue item" data-tab="Nasdaq">Nasdaq</a>
+                        <a class="blue item" data-tab="SnP500">SnP500</a>
+                    </div>
+                    {% for index in indexes %}
+                        <div class="ui tab {{ index|active }}" data-tab="{{ index }}">
+                            <h1 class="header" align="center" style="margin-top: -1em;">{{ index }}</h1>
+                            <div class="ui three item menu plots">
+                                <a class="active item blue" data-tab="plot {{ index }}">Echelle réelle</a>
+                                <a class="item green" data-tab="normal {{ index }}">Normalisé</a>
+                                <a class="item orange" data-tab="error {{ index }}">Erreur</a>
+                            </div>
+
+                            <div class="ui active tab segment raised plt" data-tab="plot {{ index }}">
+                                <p> {{ plot|key:index|safe }} </p>
+                            </div>
+                            <div class="ui tab segment raised plt" data-tab="error {{ index }}">
+                                <p> {{ error|key:index|safe }} </p>
+                            </div>
+                            <div class="ui tab segment raised plt" data-tab="normal {{ index }}">
+                                <p> {{ normalised|key:index|safe }} </p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div id="context2">
+                    <h1 class="header" align="center">Long/Short Term Memory</h1>
+
+                    <div class="ui two item menu longshort">
+                        <a class="active item" data-tab="blblbl lstm">Echelle réelle</a>
+                        <a class="item" data-tab="bibibibi lstm">Erreur</a>
+                    </div>
+
+                    <div class="ui active tab segment raised plt" data-tab="blblbl lstm">
+                        <p> {{ plot|key:'lstm'|safe }} </p>
+                    </div>
+                    <div class="ui tab segment raised plt" data-tab="bibibibi lstm">
+                        <p> {{ error|key:'lstm'|safe }} </p>
+                    </div>
+                </div>
+                <img class="image center" src="{% static 'hello_world/images/poly_lstm.png' %}">
             </div>
         </div>
         {{ script|safe }}
