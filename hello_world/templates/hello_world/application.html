@@ -457,17 +457,14 @@ train_op = f.train.GradientDescentOptimizer(0.001).minimize(cost) # Minimisation
                 <pre class="prettyprint">
 def build_model(layers, drop=0.2):
     model = Sequential()
-    model.add(LSTM(
-        input_dim=layers[0], # Ici 1
+    model.add(LSTM( # Premier layer visible
+        input_dim=layers[0], # Ici input = 1
         output_dim=layers[1], # Ici 50
-        return_sequences=True)) # revoie aux autres layers
+        return_sequences=True)) # renvoie aux autres layers
     model.add(Dropout(drop))
-    model.add(LSTM(
-        layers[2], # Ici 100
-        return_sequences=False))
+    model.add(LSTM( layers[2], return_sequences=False))  # Ici 100 neurones pour le seul layer caché
     model.add(Dropout(drop))
-    model.add(Dense(
-        output_dim=layers[3])) # Ici 1
+    model.add(Dense( output_dim=layers[3])) # Ici 1 prédiction pour le layer de sortie
     model.add(Activation("linear"))
     start = time.time()
     model.compile(loss="mse", optimizer="rmsprop")
@@ -475,7 +472,17 @@ def build_model(layers, drop=0.2):
     return model
                 </pre>
                 <p>
-
+                    Ce réseau est composé d'un premier layer visible qui va recevoir une input de taille 1, et stocker
+                    une séquence qui peut aller jusqu'à 50 éléments, qu'il va ensuite transmettre au layer suivant.<br/>
+                    Cependant, du fait du très grand nombre de connexions et pour empêcher une sur-spécialisation, on
+                    choisir un taux de dropout, c'est à dire de perte d'information, qui est par exemple ici fixé à 20%.
+                    Ainsi, 20% des informations ne se transmettront pas et seront perdues. Le layer suivant est un layer
+                    profond composé de 100 neurones ou blocks, qui est directement connecté à un layer visible de sortie
+                    qui lui renverra une seule et unique prédiction.
+                </p>
+                <p>
+                    Le modèle a pour fonction d'activation la fonction linéaire $f(x) = x$, c'est à dire aucune fonction
+                    du tout. L'optimisation fonctionne exactement comme dans tensorflow, avec mse = mean square error.
                 </p>
             </div>
 
