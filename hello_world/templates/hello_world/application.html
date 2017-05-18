@@ -367,14 +367,50 @@
                     dont la structure est figée pour effectuer des calculs et modifier certains paramètres du réseau :
                     les poids. Le code suivant illustre la création des étapes de calcul qui fournissent une prédiction.
                 </p>
-                <div class="segment raised">
-                    <code class="prettyprint">
-                        def model(X, w_h1, w_h2, w_o):
-                            h1 = tf.nn.tanh(tf.matmul(X, w_h1))
-                            h2 = tf.nn.tanh(tf.matmul(h1, w_h2))
-                            return tf.nn.tanh(tf.matmul(h2, w_o))
-                    </code>
-                </div>
+                {#                <div class="ui segment raised">#}
+                <pre class="prettyprint">
+def model(X, w_h1, w_h2, w_o): # Respectivement : données entrantes, poids de la première couche,
+    h1 = tf.nn.tanh(tf.matmul(X, w_h1))          # poids de la seconde couche, poids de la sortie
+    h2 = tf.nn.tanh(tf.matmul(h1, w_h2))
+    return tf.nn.tanh(tf.matmul(h2, w_o))
+                    </pre>
+                {#                </div>#}
+                <p>
+                    Nous avons ici deux couches profondes, h1 et h2 chacune associées à leur poids (weights). Ainsi, h1
+                    par exemple est la fonction d'activation appliquée au résulat de la multiplication matricielle de la
+                    couche précédente, soit X, l'input, avec ses poids associés w_1. De même, la prédiction a des poids
+                    associés (weights_out). Chacune des instructions avec <strong>tf.</strong> créent un noeud dans le
+                    graphe qui effectuera une opération.
+                </p>
+                <p>
+                    Ici, X prendra sera remplacé par les données entrantes, et tous les autres paramètres sont des
+                    matrices variables, c'est à dire que le but de l'apprentissage sera d'adapter leurs valeurs pour
+                    adapter la prédiction.
+                </p>
+                <p>
+                    <strong>Optimisation</strong><br/>
+                    L'optimisation se fait également avec un noeud du graphe :
+                </p>
+                <pre class="prettyprint">
+X = tf.placeholder("float", [None, 40])
+Y = tf.placeholder("float", [None, 4])
+
+w_h = init_weights([40, 41])
+w_h2 = init_weights([41, 41])
+w_o = init_weights([41, 4])
+
+mdl = model(X, w_h, w_h2, w_o) # On construit le modèle avec X l'input externe
+
+cost = tf.reduce_sum(tf.square(mdl - Y)) # Fonction de coût
+train_op = f.train.GradientDescentOptimizer(0.001).minimize(cost) # Minimisation du coût
+                </pre>
+                <p>
+                    Ici, on remarque que <strong>placeholder</strong> montre les emplacement de données externes. On
+                    crée ensuite une fonction de coût, qui doit estimer la réussite de notre modèle. Nous utilisons la
+                    définition classique de l'erreur sur ce premier jet inspiré de l'article. Il suffit ensuite d'une
+                    instruction pour utiliser une descente du gradient de pas d'apprentissage 0.001 qui minimisera
+                    l'erreur.
+                </p>
 
             </div>
 
