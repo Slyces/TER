@@ -12,7 +12,7 @@
 
             {# Grand titre #}
             <h1 class="chapter header">
-                 Applications pratiques
+                Applications pratiques
             </h1>
 
             <h2 class="chapter header">Introduction</h2>
@@ -52,13 +52,14 @@
                     les
                     dynamiques. Après une consultation avec notre tuteur, Olivier Brandouy, nous avons décidé de nous
                     intéresser à 3 indices boursiers : le S&P 500, le NASDAQ Composite et le Dow Jones Industrial
-                    Average ainsi qu'au Federal Funds Rate.
-                    En effet, ces indices disposent tous d'une notoriété internationale, ce qui facilite grandement la
+                    Average. Nous avons par la suite ajouté à cette liste le Federal Funds Rate.
+                    En effet, ce sont des indices qui disposent tous d'une notoriété internationale, ce qui facilite
+                    grandement la
                     collecte des données, et dont la prédiction s'avère par conséquent intéressante pour les
                     investisseurs.
                 </p>
 
-                <h4> a) S&P 500</h4>
+                <h4> A) S&P 500</h4>
                 <p>
                     Le Standard & Poor's 500, connu sous l'abréviation S&P 500, est un indice boursier américain possédé
                     par
@@ -70,8 +71,7 @@
                     le
                     nom de Composite Index et ne regroupe qu'un faible nombre d'actions. L'indice boursier se développe
                     graduellement et atteint son apogée en 1957, où il regroupe les actions de 500 grandes entreprises :
-                    il
-                    prend alors le nom de S&P 500.
+                    il prend alors le nom de S&P 500.
                 </p>
                 <p>
                     Le S&P 500 se calcule selon la formule suivante:
@@ -80,12 +80,12 @@
                     <img class="alinea" src="{% static 'hello_world/images/sp500.gif' %}" alt="S&P 500"/>
                 </p>
                 <p>
-                    Où Pi représente le prix de l'action de l'entreprise i, Qi le nombre d'actions disponibles
+                    Où $P_i$ représente le prix de l'action de l'entreprise $i$, $Q_i$ le nombre d'actions disponibles
                     publiquement,
-                    et Divisor une constante fixé par Standard & Poor's, approximativement égale à 8,9 milliards USD.
+                    et $Divisor$ une constante fixé par Standard & Poor's, approximativement égale à 8,9 milliards USD.
                 </p>
 
-                <h4> b) NASDAQ Composite</h4>
+                <h4> B) NASDAQ Composite</h4>
                 <p>
                     Le National Association of Securities Dealers Automated Quotations ou NASDAQ est le second plus
                     grand
@@ -123,11 +123,12 @@
                     <img class="alinea" src="{% static 'hello_world/images/nasdaq.gif' %}" alt="S&P 500"/>
                 </p>
                 <p>
-                    Où Vi est la valeur de marché de l'entreprise i pondérée, Divisor une constante déterminée par le
-                    NASDAQ
+                    Où $V_i$ est la valeur de marché de l'entreprise $i$ pondérée, $Divisor$ une constante déterminée
+                    par le
+                    NASDAQ.
                 </p>
 
-                <h4> c) Dow Jones Industrial Average</h4>
+                <h4> C) Dow Jones Industrial Average</h4>
                 <p>
                     Le Dow Jones Industrial Average est un des plus vieil indice boursier américain, établi pour la
                     première
@@ -148,18 +149,17 @@
                     <img class="alinea" src="{% static 'hello_world/images/dow.gif' %}" alt="Dow Jones"/>
                 </p>
                 <p>
-                    Où Pi est le prix de l'action de l'entreprise i et Dow Divisor une constante déterminée par le Dow
-                    Jone
-                    Industrial Average.
+                    Où $P_i$ est le prix de l'action de l'entreprise $i$ et $Dow Divisor$ une constante déterminée par
+                    le Dow Jones Industrial Average.
                 </p>
                 <h4> d) Federal Funds Rate</h4>
                 <p>
-                    Finalement, nous nous sommes également intéressés au Federal Funds Rate, qui correpond au taux
+                    Finalement, nous nous sommes également intéressés au Federal Funds Rate, qui correspond au taux
                     d'intérêt auquel les banques américaines prêtent leurs réserves à d'autres institutions financières.
                 </p>
                 <h3> 2 - Programmation des réseaux de neurones artificiels </h3>
 
-                <h4> a) Choix des plateformes de programmation</h4>
+                <h4> A) Choix des plates-formes de programmation</h4>
                 <p>
                     Après avoir déterminé les indices boursiers à prédire, nous avons débuté la programmation de nos
                     réseaux de neurones artificiels. Nous avons opté pour une double approche qui consiste à programmer,
@@ -167,11 +167,11 @@
                     le
                     logiciel R, puis à élaborer notre propre réseau, en utilisant le langage python et les librairies
                     dédiées aux machines learning. Cette double approche se justifie par notre volonté d'expérimenter la
-                    conception des réseaux de neurones sur plusieurs plateformes, afin d'établir une analyse
+                    conception des réseaux de neurones sur plusieurs plates-formes, afin d'établir une analyse
                     comparative.
                 </p>
 
-                <h4> b) Réseau de type feed-forward sur R</h4>
+                <h4> B) Réseau de type feed-forward sur R</h4>
                 <p>
                     Notre objectif principal lors de cette première étape est de programmer un réseau de neurones
                     artificiels sur R, de le visualiser, et d'établir des prédictions quant aux variations d'un indice
@@ -181,7 +181,9 @@
                     La programmation de notre réseau sur le logiciel R s'est faite grâce à l'interface graphique
                     RStudio.
                 </p>
+
                 <img src="{% static 'hello_world/images/R1.jpg' %}" alt="Importation des librairies"/>
+
                 <p>
                     Dans un premier temps, nous avons importé les 4 librairies nécessaires à notre entreprise : tseries,
                     forecast, neuralnet, et Hmisc. Tseries est une librairies permettant entre autres de modéliser une
@@ -200,7 +202,10 @@
                     l'indice S&P 500, entre le 1er janvier 2013 et le 30 décembre 2016, sous format csv, depuis le site
                     https://fr.finance.yahoo.com/. Nous obtenons alors le tableau partiellement représenté ci-dessous :
                 </p>
-                <img src="{% static 'hello_world/images/R6.jpg' %}" alt="S&P 500"/>
+
+                <img class="image center" align="center" src="{% static 'hello_world/images/R6.jpg' %}"
+                     alt="S&P 500"/>
+
                 <p>
                     Nous y trouvons 1008 observations caractérisées par 7 variables : la date, le cours d'ouverture, le
                     cours
@@ -209,118 +214,172 @@
                     volume échangé. Seules la variable cours d'ouverture, Open, nous intéresse. En effet, nous avons
                     arbitrairement décidé de nous baser sur celui-ci lors de nos calculs et de nos prédictions.
                 </p>
+
                 <img src="{% static 'hello_world/images/R2.jpg' %}" alt="Traitement des données"/>
+
                 <p>
-                    Une fois les données importées, nous stockons les 1000 premières observations des cours d'ouverture
-                    dans
-                    une variable nommée X, puis nous les convertissons en type numeric. Nous utilisons ensuite la
-                    fonction
-                    tsclean afin de compléter les données manquantes. Nous stockons ensuite les 1001 à 1008 ème
-                    observations
-                    dans la variable true.pred.X, à laquelle nous appliquons le même traitement que X. Cette variable
-                    représente les données réelles que nous chercherons à prédire grâce au modèle ARIMA et à notre
-                    réseau de
-                    neurones artificiels.
+                    Une fois les données importées, nous stockons les 1000 premières observations des cours d'ouvertur
+                    dan une variable nommée X, puis nous les convertissons en type numeric. Nous utilisons ensuite l
+                    fonctio tsclean afin de compléter les données manquantes. Nous stockons ensuite les 1001 à 1008 èm
+                    observation dans la variable true.pred.X, à laquelle nous appliquons le même traitement que X. Cette
+                    variabl représente les données réelles que nous chercherons à prédire grâce au modèle ARIMA et à
+                    notr réseau d neurones artificiels
                 </p>
+
                 <img src="{% static 'hello_world/images/R3.jpg' %}" alt="Auto.arima"/>
+
                 <p>
                     Par la suite, après le traitement de nos données, nous les modélisons grâce à la fonction auto.arima
-                    et
-                    nous obtenons nos prédictions grâce à la fonction predict.
+                    et nous obtenons nos prédictions grâce à la fonction predict
                 </p>
+
                 <img src="{% static 'hello_world/images/R4.jpg' %}" alt="Normalisation"/>
+
                 <p>
-                    Nous nous attaquons ensuite à la conception de notre réseau de neurones artificiels. Premièrement,
-                    il
+                    Nous nous attaquons ensuite à la conception de notre réseau de neurones artificiels. Premièrement il
                     nous faut procéder à la normalisation de nos données. Pour se faire, nous enlevons à chaque
-                    observation
-                    le minimum de X et nous le divisons par le maximum moins le minimum. Nous stockons les observations
-                    normalisées dans le vecteur Xnorm. Nous séparons ensuite ce vecteur en deux : train, qui représente
-                    l'échantillon sur lequel nous allons entrainé le réseau, et test, qui représente l'échantillon sur
-                    lequel nous allons le tester.
+                    observation le minimum de X et nous le divisons par le maximum moins le minimum. Nous stockons les
+                    observation normalisées dans le vecteur Xnorm. Nous séparons ensuite ce vecteur en deux : train, qui
+                    représente l'échantillon sur lequel nous allons entraîner le réseau, et test, qui représente
+                    l'échantillon su lequel nous allons le tester.
                 </p>
                 <p>
-                    Par la suite, train et test sont convertits en objets ts (time series) et nous créons 2 tableaux
+                    Par la suite, train et test sont convertis en objets ts (time series) et nous créons 2 tableaux
                     datatrain et datatest. Ces tableaux contiennent à la première colonne les vecteurs tests,
-                    respectivement
-                    train, à la seconde colonne les valeurs de test, respectivement train, au jour précédent (t-1), et à
-                    la
-                    troisième colonne les valeurs de test, respectivement train, au jour d'avant (t-2). En effet, nous
-                    avons
-                    choisi 2 paramètres d'entrée, x1 et x2 pour notre réseau de neurones artitificiels : le cours de
-                    l'indice
-                    au jour précédent, l'instant t-1, et le cours au jour d'avant, l'instant t-2. De manière intuitive,
-                    ce
-                    choix s'explique par la volonté d'imiter un modèle ARIMA, en supposant que le cours d'un indice
-                    boursier
-                    au jour j dépend en partie de sa valeur d'hier, j-1, et d'avant hier, j-2, d'où la nécessité de
-                    regrouper ces trois variables dans un même tableau.
+                    respectivement train, à la seconde colonne les valeurs de test, respectivement train, au jour
+                    précédent (t-1), et à la troisième colonne les valeurs de test, respectivement train, au jour
+                    d'avant (t-2). En effet, nous avons choisi 2 paramètres d'entrée, x1 et x2 pour notre réseau de
+                    neurones artificiels : le cours de l'indice au jour précédent, l'instant t-1, et le cours au jour
+                    d'avant, l'instant t-2. De manière intuitive, ce choix s'explique par la volonté d'imiter un modèle
+                    ARIMA, en supposant que le cours d'un indice boursier au jour j dépend en partie de sa valeur
+                    d'hier, j-1, et d'avant hier, j-2, d'où la nécessité de regrouper ces trois variables dans un même
+                    tableau.
                 </p>
                 <p>
                     Nous établissons ensuite la formule sur laquelle va travailler notre réseau de neurone :
-                    Xnorm~x1+x2.
-                    Le réseau va donc chercher à expliquer la valeur de Xnorm à l'instant t en fonction de Xnorm à
-                    l'instant
-                    t-1 (x1) et Xnorm à l'instant t-2 (x2). Cette formule est stockée dans la variable f.
+                    Xnorm~x1+x2. Le réseau va donc chercher à expliquer la valeur de Xnorm à l'instant t en fonction de
+                    Xnorm à l'instant t-1 (x1) et Xnorm à l'instant t-2 (x2). Cette formule est stockée dans la variable
+                    f.
                 </p>
                 <p>
                     Par la suite, nous procédons à la création du réseau, noté rn, grâce à la fonction neuralnet qui
-                    permet
-                    de créer un réseau de neurones artificiels et de l'entrainer. Cette fonction prend comme paramètres
-                    la
-                    formule f, notre échantillon d'entrainement, datatrain, et le nombre de couches cachées, ici une
-                    couche
-                    de 50 neurones. Notre réseau est donc, dans ce cas de figure, un réseau de type Feed Forward à une couche.
+                    permet de créer un réseau de neurones artificiels et de l'entrainer. Cette fonction prend comme
+                    paramètres la formule f, notre échantillon d'entrainement, datatrain, et le nombre de couches
+                    cachées, ici une couche de 50 neurones. Notre réseau est donc, dans ce cas de figure, un réseau de
+                    type Feed Forward à une couche.
                 </p>
                 <p>
                     Nous procédons ensuite à la phase de prédiction, grâce à la fonction compute, qui prend en entrée
-                    notre
-                    réseau de
-                    neurones entrainé, rn, ainsi que les colonnes x1 et x2 de notre echantillon test, datatest. Les
-                    données
-                    prédites sont stockées dans le vecteur Xpred que nous dénormalisons pour finalement obtenir le
-                    vecteur
-                    Xpreddenorm.
+                    notre réseau de neurones entrainé, rn, ainsi que les colonnes x1 et x2 de notre echantillon test,
+                    datatest. Les données prédites sont stockées dans le vecteur Xpred que nous dénormalisons pour
+                    finalement obtenir le vecteur Xpreddenorm.
                 </p>
+
                 <img src="{% static 'hello_world/images/R5.jpg' %}" alt="Traitement des données"/>
+
                 <p>
                     Finalement, pour comparer notre réseau au modèle ARIMA, nous effectuons une prédiction sur les 8
                     prochains jours, à partir du 1000ème jour, en alimentant les x1 et les x2 du réseau non plus par les
                     valeurs réelles de x1 et x2, mais par les valeurs prédites par le réseau aux instants t-1 et t-2.
-                    Les
-                    raisons de cette démarche seront expliquées dans la partie résultat.
+                    Les raisons de cette démarche seront expliquées dans la partie résultat.
                 </p>
 
-                <h4> c) Réseau de type feed forward sur Python </h4>
+                <h4> C) Réseau de type feed forward sur Python </h4>
+
                 <p>
-                    Dans cette partie, nous nous sommes inspirés, suite aux conseils de notre tuteur, de
-                    <a style="color: black;" href="https://www.codeproject.com/articles/175777/financial-predictor-via-neural-network">l'article suivant</a>.
-                    Nous avons choisi d'implémenter un réseau sur Python, après l'implémentation R. Si R est le langage
-                    privilégié des statistiques, Python est celui du Machine Learning. Ainsi, c'est sur Python que l'on
-                    trouve les librairies les plus puissantes et les plus complètes, qui se développent d'autant plus en ce
-                    moment.
+                    Dans cette partie, nous nous sommes inspirés, suite aux conseils de notre tuteur, de <a
+                        style="color: black;"
+                        href="https://www.codeproject.com/articles/175777/financial-predictor-via-neural-network">l'article
+                    suivant</a>. Nous avons choisi d'implémenter un réseau sur Python, après l'implémentation R. Si R
+                    est le langage privilégié des statistiques, Python est celui du Machine Learning. Ainsi, c'est sur
+                    Python que l'on trouve les librairies les plus puissantes et les plus complètes, qui se développent
+                    d'autant plus en ce moment.
                 </p>
                 <p>
-                    Nous avons ainsi choisi d'utiliser la librairie Tensorflow pour modéliser un réseau de neurones en feed-forward
-                    inspiré de l'article sus-cité. Cette approche, contrairement à celle de R, offre beaucoup plus de flexibilité
-                    dans la création du réseau, et nous permet de mieux maitriser tous les points qui peuvent varier.
+                    Nous avons ainsi choisi d'utiliser la librairie Tensorflow créée et entretenue par google, l'un des
+                    acteurs majeurs du machine learning, pour modéliser un réseau de neurones en
+                    feed-forward inspiré de l'article sus-cité. Cette approche, contrairement à celle de R, offre
+                    beaucoup plus de flexibilité dans la création du réseau, et nous permet de mieux maitriser tous les
+                    points qui peuvent varier.
                 </p>
                 <p>
-                    Dans l'article, l'auteur prédit 4 indices en même temps en utilisant les 10 dernières données de chacun de
-                    ces indices. Cela nous donne donc 40 données en entrée, et 4 en sortie. Il choisit de disposer deux hidden-layers
-                    de 41 neurones chacun. Il utilise la fonction tangeante hyperbolique comme fonction d'activation. Il utilise comme
-                    algorithme d'optimisation des poids, c'est à dire comme apprentissage, la méthode appelée &laquo; resilient propagation
-                    training &raquo;. Le concept est très similaire à la méthode de backpropagation expliquée dans les concepts généraux :
-                    il se base sur la différentiabilité de la fonction d'activation, c'est à dire le fait qu'on puisse la dériver. Cette fonction
-                    d'activation étant appliquée sur des vecteurs non réels, sa dérivée est une matrice, appelée le gradient. Ainsi,
-                    la méthode de gradient résilient.
+                    Le réseau proposé dans l'article se résume par les informations suivantes :
+                </p>
+
+                <ol class="ui list">
+                    <li value="*">
+                        Objectif : prédire le S&P500, le Nasdaq, le DowJones et les Taux d'intêrets, soit $4$ variables
+                        en
+                        sortie.
+                    </li>
+                    <li value="*">Prédictions : basées sur les 10 derniers jours, soit $4 &times; 10 = 40$ données</li>
+                    <li value="*">Structure : [40 x 41 x 41 x 4] c'est à dire deux hidden-layers de 41 neurones.</li>
+                    <li value="*">Fonction d'activation : tangente hyperbolique</li>
+                    <li value="*">Algorithme d'apprentissage : resilient propagation training</li>
+                    <li value="*">Normalisation : Soit $X$ l'ensemble des valeurs d'une variable, $∀ x ∈ X, f(x) = (x -
+                        min(X)) / (max(x) - min(x))$
+                    </li>
+                </ol>
+
+                <p>
+                    Revenons sur certains points ci-dessus :
                 </p>
                 <p>
-                    Afin de créer un noeud du graphe, nous multiplions les poids de ce noeud avec le résultat de la couche précédente(input dans le cas ed la premiere couche cachée). Au résultat on additionne la matrice des biais
+                    <strong> Prédictions </strong><br/>
+                    Nous avons décidé de suivre la méthode de prédiction, et pour cela nous avons téléchargé les données
+                    fournies dans l'article (écrit dans un langage de programation que nous ne connaissons pas). Ces
+                    données, 4 fichiers distincts au format csv, ressemblent à ceci :
                 </p>
+
+                <img align="center" src="{% static 'hello_world/images/nasdaq_excel.png' %}" alt="Nasdag datas">
+
+                <p>
+                    Nous nous sommes vite rendu compte de petites incohérences dans les données, tel que la présence de
+                    différent champs pouvant être utilisés, des nombre différents de données et la non-homogénéité des
+                    dates . Nous avons donc commencé par harmoniser ces données, les re-disposer dans l'ordre
+                    chronologique, ne conserver que les dates présentes dans les 4 fichiers en même temps et finalement
+                    les normaliser.
+                </p>
+                <p>
+                    <strong>Normalisation et fonction d'activation</strong><br/>
+                    La normalisation est dans l'intervalle [0, 1]. La fonction d'activation tangente hyperbolique est
+                    dans [0, 1] pour tout donnée entrante positive. Or nos données normalisées sont dans [0, 1], où 0
+                    est le minimum de la variable sur la période et 1 est le maximum. Par récurrence, on voit très bien
+                    que le réseau restera dans [0, 1].
+                </p>
+                <p>
+                    <strong>Algorithme d'apprentissage</strong><br/>
+                    Le resilient propagation training est un algorithme de backpropagation, ou rétropropagation, qui
+                    ressemble beaucoup à l'algorithme de
+                    descente du gradient. La différence ici est qu'au lieu d'avoir un pas
+                    d'apprentissage qui décide de l'ampleur de la correction effectuée sur les poids en fonction de la
+                    valeur du gradient, nous n'utilisons que la direction du gradient et pas sa valeur.<br/>
+                    Cependant, l'algorithme en question n'était pas disponible dans Tensorflow, nous avons utilisé un
+                    algorithme de descente du gradient classique.
+                </p>
+                <p>
+                    <strong>Construction du réseau</strong><br/>
+                    Contrairement à la librairie utilisée dans R, Tensorflow est une librairie qui se veut beaucoup plus
+                    générale. Elle est donc très puissante et flexible, mais demande un certain nombre d'instructions
+                    pour créer un modèle fonctionnel. Nous allons donc passer assez vite sur le code, en introduisant
+                    quelques concepts simples. La première étape est de construire le graphe computationel, c'est à dire
+                    un graphe des calculs à effectuer. La seconde étape, strictement séparée, sera d'utiliser ce graphe
+                    dont la structure est figée pour effectuer des calculs et modifier certains paramètres du réseau :
+                    les poids. Le code suivant illustre la création des étapes de calcul qui fournissent une prédiction.
+                </p>
+                <div class="segment raised">
+                    <code class="prettyprint">
+                        def model(X, w_h1, w_h2, w_o):
+                            h1 = tf.nn.tanh(tf.matmul(X, w_h1))
+                            h2 = tf.nn.tanh(tf.matmul(h1, w_h2))
+                            return tf.nn.tanh(tf.matmul(h2, w_o))
+                    </code>
+                </div>
+
             </div>
 
             <h2 class="chapter header">Résutats Obtenus</h2>
+
             <div class="ui segment raised">
                 <h3> 1 - Résultats obtenus par les réseaux de neurones artificiels programmés sur R</h3>
                 <p>
@@ -406,17 +465,24 @@
                     éloignons dans le temps, plus la prédiction faite par le réseau est éloignée des données réelles.
                 </p>
 
-            <p>
-                En conclusion, sur cette application pratique, le modèle ARIMA donne de meilleurs prédictions que notre
-                réseau de neurones artificiels. Nous avons expérimentés plusieurs types de réseaux, en faisant varier le
-                nombre de couches cachées et le nombre de neurones les composant, mais nous n'avons pas obtenus de
-                résultats significativement différents. Le réseau de neurones artificiels semble donc présenter, dans le
-                cas considéré, un certain intérêt pour les prédictions à court terme, d'un jour sur l'autre par exemple,
-                mais perd rapidement son pouvoir prédictif à long terme, contrairement au modèle ARIMA. Toutefois, cette
-                conclusion ne fait pas office de généralisation. En effet, notre réseau de neurones artificiels reste
-                relativement simple dans son architecture, et nous l'avons testé sur un seul échantillon de 1008 données.
-                De plus, il n'est pas exclu que nous ayons commis des erreurs de paramétrages du réseau.
-            </p>
+                <p>
+                    En conclusion, sur cette application pratique, le modèle ARIMA donne de meilleurs prédictions que
+                    notre
+                    réseau de neurones artificiels. Nous avons expérimentés plusieurs types de réseaux, en faisant
+                    varier le
+                    nombre de couches cachées et le nombre de neurones les composant, mais nous n'avons pas obtenus de
+                    résultats significativement différents. Le réseau de neurones artificiels semble donc présenter,
+                    dans le
+                    cas considéré, un certain intérêt pour les prédictions à court terme, d'un jour sur l'autre par
+                    exemple,
+                    mais perd rapidement son pouvoir prédictif à long terme, contrairement au modèle ARIMA. Toutefois,
+                    cette
+                    conclusion ne fait pas office de généralisation. En effet, notre réseau de neurones artificiels
+                    reste
+                    relativement simple dans son architecture, et nous l'avons testé sur un seul échantillon de 1008
+                    données.
+                    De plus, il n'est pas exclu que nous ayons commis des erreurs de paramétrages du réseau.
+                </p>
 
                 <p>
                     Au vue de cette première expémentation, nous formulons donc l'hypothèse qu'à court terme les réseaus
@@ -434,48 +500,48 @@
                 <p>
 
 
-            <div class="ui pointing secondary four item indexes menu">
-                <a class="active blue item" data-tab="Rates">Rates</a>
-                <a class="blue item" data-tab="DowJones">DowJones</a>
-                <a class="blue item" data-tab="Nasdaq">Nasdaq</a>
-                <a class="blue item" data-tab="SnP500">SnP500</a>
-            </div>
-            {% for index in indexes %}
-                <div class="ui tab {{ index|active }}" data-tab="{{ index }}">
-                    <h1 class="header" align="center" style="margin-top: -1em;">{{ index }}</h1>
-                    <div class="ui three item menu plots">
-                        <a class="active item blue" data-tab="plot {{ index }}">Echelle réelle</a>
-                        <a class="item green" data-tab="normal {{ index }}">Normalisé</a>
-                        <a class="item orange" data-tab="error {{ index }}">Erreur</a>
-                    </div>
-
-                    <div class="ui active tab segment raised plt" data-tab="plot {{ index }}">
-                        <p> {{ plot|key:index|safe }} </p>
-                    </div>
-                    <div class="ui tab segment raised plt" data-tab="error {{ index }}">
-                        <p> {{ error|key:index|safe }} </p>
-                    </div>
-                    <div class="ui tab segment raised plt" data-tab="normal {{ index }}">
-                        <p> {{ normalised|key:index|safe }} </p>
-                    </div>
+                <div class="ui pointing secondary four item indexes menu">
+                    <a class="active blue item" data-tab="Rates">Rates</a>
+                    <a class="blue item" data-tab="DowJones">DowJones</a>
+                    <a class="blue item" data-tab="Nasdaq">Nasdaq</a>
+                    <a class="blue item" data-tab="SnP500">SnP500</a>
                 </div>
-            {% endfor %}
+                {% for index in indexes %}
+                    <div class="ui tab {{ index|active }}" data-tab="{{ index }}">
+                        <h1 class="header" align="center" style="margin-top: -1em;">{{ index }}</h1>
+                        <div class="ui three item menu plots">
+                            <a class="active item blue" data-tab="plot {{ index }}">Echelle réelle</a>
+                            <a class="item green" data-tab="normal {{ index }}">Normalisé</a>
+                            <a class="item orange" data-tab="error {{ index }}">Erreur</a>
+                        </div>
 
-            <h2 class="header" align="center">{{ index }}</h2>
+                        <div class="ui active tab segment raised plt" data-tab="plot {{ index }}">
+                            <p> {{ plot|key:index|safe }} </p>
+                        </div>
+                        <div class="ui tab segment raised plt" data-tab="error {{ index }}">
+                            <p> {{ error|key:index|safe }} </p>
+                        </div>
+                        <div class="ui tab segment raised plt" data-tab="normal {{ index }}">
+                            <p> {{ normalised|key:index|safe }} </p>
+                        </div>
+                    </div>
+                {% endfor %}
 
-            <div class="ui two item menu lstm">
-                <a class="active item" data-tab="plt lstm">Echelle réelle</a>
-                <a class="item" data-tab="err lstm">Erreur</a>
-            </div>
+                <h2 class="header" align="center">{{ index }}</h2>
 
-            <div class="ui active tab segment raised plt" data-tab="plt lstm">
-                <p> {{ plot|key:'lstm'|safe }} </p>
-            </div>
-            <div class="ui tab segment raised plt" data-tab="err lstm">
-                <p> {{ error|key:'lstm'|safe }} </p>
+                <div class="ui two item menu lstm">
+                    <a class="active item" data-tab="plt lstm">Echelle réelle</a>
+                    <a class="item" data-tab="err lstm">Erreur</a>
+                </div>
+
+                <div class="ui active tab segment raised plt" data-tab="plt lstm">
+                    <p> {{ plot|key:'lstm'|safe }} </p>
+                </div>
+                <div class="ui tab segment raised plt" data-tab="err lstm">
+                    <p> {{ error|key:'lstm'|safe }} </p>
+                </div>
             </div>
         </div>
+        {{ script|safe }}
     </div>
-    {{ script|safe }}
-</div>
 {% endblock %}

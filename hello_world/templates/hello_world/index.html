@@ -32,8 +32,7 @@
                     market variations using artificial neural networks.
                     To achieve this goal, we used a model of artificial neural network to generate predicted values,
                     which we then compared to real values.
-                    We found out that the normalized predicted values were relatively close to the normalized real
-                    ones, with some exceptions when real values instantly drop or rise instantly.
+                    We found out that the predictions can give us relevant information about the short term future.
                     These results suggest that we can predict at least the direction in which the financial products
                     are going to vary.
                     However, these predictions are not completely reliable and must be considered with caution
@@ -44,78 +43,61 @@
                 <h3>Abstract : </h3>
 
                 <p>
-                    Beaucoup d'économistes et de traders s'accordent à dire que le marché financier est instable et
-                    que
-                    ses
-                    variations sont aléatoires.
-                    De plus, même en considérant que de telles prédictions soient possible, il serait trop complexe
-                    de
-                    les
-                    prédire à cause du nombre de variables devant être pris en compte.
-                    Pourtant, certaines banques ou fonds d'investissement ont développé des algorithmes leur
-                    permettant
-                    de
-                    prédire les variations
-                    du marché financier de façon assez satisfaisante pour en tirer profit.
-                    Le but de ce projet était de déterminer s'il était possible de prédire l'évolution du marché
-                    financier
-                    en
-                    utilisant des réseaux de neurones artificiels.
-                    Pour arriver à achever les objectifs, nous avons utilisé un modèle de réseau de neurones
-                    artificiels
-                    pour
-                    générer des valeurs prédites,
-                    que nous avons ensuite comparé aux valeurs réelles.
-                    Nous avons trouvé que les valeurs prédites normalisées étaient relativement proche des valeurs
-                    normalisées
-                    réelles,
-                    avec quelques exceptions quand les valeurs réelles augmentées ou diminuées instantanément.
-                    Ces résultats suggèrent que nous pouvons prédire au moins la direction vers laquelle les
-                    produits financiers vont varier.
-                    Cependant, ces prédictions ne sont pas complètement fiables et doivent être prise en
-                    considération avec prudence.
+                    Beaucoup d'économistes et de traders s'accordent à dire que le marché financier est instable et que ses variations sont aléatoires. De plus, même en considérant que de telles prédictions soient possibles, il serait trop complexe de les prédire à cause du nombre de variables devant être pris en compte. Pourtant, certaines banques ou fonds d'investissement ont développé des algorithmes leur permettant de prédire les variations du marché financier de façon assez satisfaisante pour en tirer profit. Le but de ce projet était de déterminer s'il était possible de prédire l'évolution du marché financier en utilisant des réseaux de neurones artificiels. Pour atteindre cet objectif, nous avons utilisé un modèle de réseau de neurones artificiels pour générer des prédictions que nous avons ensuite comparées aux valeurs réelles. Nous avons trouvé des résultats proche,  Ces résultats suggèrent que nous pouvons prédire au moins la direction vers laquelle les produits financiers vont varier. Cependant, ces prédictions ne sont pas complètement fiables et doivent être prise en considération avec prudence.
                 </p>
             </div>
 
 
-             <div class="ui segment raised">
-                 <h3 style="padding-left: 4ex">Plan du site :</h3>
-                 <ul>
-                     <li><a href="{% url 'hello_world:Introduction' %}">Introduction générale : </a>
-                         <ul>
-                             <li><a href="{% url 'hello_world:Introduction' %}/#lapb">Problématique </a></li>
-                             <li><a href="{% url 'hello_world:Introduction' %}/#ldf">Les dynamiques financières</a></li>
-                             <li><a href="{% url 'hello_world:Introduction' %}/#lrdna">Les réseaux de neurones artificiels</a></li>
-                             <li><a href="{% url 'hello_world:Introduction' %}/#lrdnaaalf">Les réseaux de neurones articiciels appliqués à la finance</a></li>
-                             <li><a href="{% url 'hello_world:Introduction' %}/#lsdd">La selection des données</a></li>
-                             <li><a href="{% url 'hello_world:Introduction' %}/#lm">La méthodologie</a></li>
-                         </ul>
-                     </li>
-                     <li><a href="{% url 'hello_world:Concepts' %}">Introduction aux réseaux de neurones : </a>
-                         <ul>
-                             <li><a href="{% url 'hello_world:Concepts' %}/#g">Généralité</a></li>
-                             <li><a href="{% url 'hello_world:Concepts' %}/#qdc">Dates clefs</a></li>
-                             <li><a href="{% url 'hello_world:Concepts' %}/#tddin"> Transition des données inter-neurones </a></li>
-                             <li><a href="{% url 'hello_world:Concepts' %}/#lfa">Les fonctions d'activation</a></li>
-                             <li><a href="{% url 'hello_world:Concepts' %}/#l">L'apprentissage</a></li>
-                             <li><a href="{% url 'hello_world:Concepts' %}/#ldtdrdna">Les différents types de réseaux de neurones artificiels</a></li>
-                             <li><a href="{% url 'hello_world:Concepts' %}/#lldrdn">Les limites des réseaux de neurones artificiels</a></li>
-                         </ul>
-                     </li>
-                     <li><a href="{% url 'hello_world:Finance' %}">Etat de l'art dans la finance :</a>
-                         <ul>
-                             <li><a href="{% url 'hello_world:Finance' %}/#intro">Introduction</a></li>
-                             <li><a href="{% url 'hello_world:Finance' %}/#adrdnauef">Architecture des réseaux de neurones artificiels utilisés en finance</a></li>
-                             <li><a href="{% url 'hello_world:Finance' %}/#aef">Application en finance</a></li>
-                             <li><a href="{% url 'hello_world:Finance' %}/#leslim">Les limites des réseaux de neurones artificiels utilisés en finance</li>
-                         </ul>
-                     </li>
-                     <li><a href="{% url 'hello_world:Application' %}">Application pratique : </a>
-                     </li>
-                     <li><a href="{% url 'hello_world:Conclusion' %}">Conclusion</a></li>
-                 </ul>
+            <div class="ui segment raised">
+                <h3 style="padding-left: 4ex">Plan du site :</h3>
+                <ul>
+                    <li><a href="{% url 'hello_world:Introduction' %}">Introduction générale : </a>
+                        <ul>
+                            <li><a href="{% url 'hello_world:Introduction' %}/#lapb">Problématique </a></li>
+                            <li><a href="{% url 'hello_world:Introduction' %}/#ldf">Les dynamiques financières</a></li>
+                            <li><a href="{% url 'hello_world:Introduction' %}/#lrdna">Les réseaux de neurones
+                                artificiels</a></li>
+                            <li><a href="{% url 'hello_world:Introduction' %}/#lrdnaaalf">Les réseaux de neurones
+                                articiciels appliqués à la finance</a></li>
+                            <li><a href="{% url 'hello_world:Introduction' %}/#lsdd">La selection des données</a></li>
+                            <li><a href="{% url 'hello_world:Introduction' %}/#lm">La méthodologie</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{% url 'hello_world:Concepts' %}">Introduction aux réseaux de neurones : </a>
+                        <ul>
+                            <li><a href="{% url 'hello_world:Concepts' %}/#g">Généralité</a></li>
+                            <li><a href="{% url 'hello_world:Concepts' %}/#qdc">Dates clefs</a></li>
+                            <li><a href="{% url 'hello_world:Concepts' %}/#tddin"> Transition des données
+                                inter-neurones </a></li>
+                            <li><a href="{% url 'hello_world:Concepts' %}/#lfa">Les fonctions d'activation</a></li>
+                            <li><a href="{% url 'hello_world:Concepts' %}/#l">L'apprentissage</a></li>
+                            <li><a href="{% url 'hello_world:Concepts' %}/#ldtdrdna">Les différents types de réseaux de
+                                neurones artificiels</a></li>
+                            <li><a href="{% url 'hello_world:Concepts' %}/#lldrdn">Les limites des réseaux de neurones
+                                artificiels</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{% url 'hello_world:Finance' %}">Etat de l'art dans la finance :</a>
+                        <ul>
+                            <li><a href="{% url 'hello_world:Finance' %}/#intro">Introduction</a></li>
+                            <li><a href="{% url 'hello_world:Finance' %}/#adrdnauef">Architecture des réseaux de
+                                neurones artificiels utilisés en finance</a></li>
+                            <li><a href="{% url 'hello_world:Finance' %}/#aef">Application en finance</a></li>
+                            <li><a href="{% url 'hello_world:Finance' %}/#leslim">Les limites des réseaux de neurones
+                                artificiels utilisés en finance</li>
+                        </ul>
+                    </li>
+                    <li><a href="{% url 'hello_world:Application' %}">Application pratique : </a>
+                    </li>
+                    <li><a href="{% url 'hello_world:Conclusion' %}">Conclusion</a></li>
+                </ul>
 
-             </div>
+            </div>
+
+            <p>
+                Petite note : la page des applications contient des graphes assez lourds à charger, ne vous inquiètez
+                pas si le chargement est lent.
+            </p>
         </div>
     </div>
 {% endblock %}
