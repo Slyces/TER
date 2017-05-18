@@ -118,6 +118,7 @@ a {
     margin-left: 20px;
 }
 
+
 .item.icon {
     height: 70px;
     width: 70px;
@@ -125,17 +126,16 @@ a {
     margin-bottom: -12px;
 }
 
-.overlay {
-    float: left;
-    margin: 3em 0em 0em 1.5em;
-}
+/*.overlay {*/
+    /*float: left;*/
+    /*margin: 3em 0em 0em 1.5em;*/
+/*}*/
 
-.overlay .menu {
-    position: relative;
-    left: 0;
-    transition: left 0.5s ease;
-}
+/*.overlay .menu {*/
+    /*left: 0;*/
+    /*transition: left 0.5s ease;*/
+/*}*/
 
-.overlay.fixed .menu {
-    left: 1242px;
-}
+/*.overlay.fixed .menu {*/
+    /*right: 0;*/
+/*}*/
