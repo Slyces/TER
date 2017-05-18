@@ -16,16 +16,17 @@ $(document)
         );
 
         // Plots
-        $('.indexes.menu  .item').tab(
-            {history: false}
-        );
+        $('#context1  .indexes.menu  .item').tab({
+            context: $('#context1')
+        });
 
-        $('.lstm.menu  .item').tab(
-            {history: false}
-        );
 
         $('.plots.menu  .item').tab(
             {history: false}
         );
+
+        $('#context2 .longshort.menu  .item').tab({
+            context: $('#context2')
+        });
     })
 ;
