@@ -105,9 +105,34 @@
 
 {% block content %}{% endblock %}
 
-<footer style="background-color: lightsteelblue; margin-top: 2ex; height: 6ex">
-    <p style="text-align: center; font-size: large; font-family: monospace; padding-top: 1ex">Seze Thomas || Lassourreuille Simon || Kalla Nayil</p>
-    
+<footer>
+    <div class="ui segment footer" style="background-color: steelblue;">
+        <div style="margin-top: -3em;margin-bottom: -3em;" class="ui center aligned container">
+            <div class="ui divided grid">
+                <div class="five wide column">
+                    <h4 class="ui inverted header center aligned">Travaux d'Etudes et de Recherches</h4>
+                </div>
+                <div class="five wide column">
+                    <h4 class="ui inverted header center aligned">Licence 3 parcours mixtes</h4>
+                </div>
+                <div class="five wide column">
+                    <h4 class="ui inverted header center aligned">
+                        <a style="color:white;" href="http://math-interactions.u-bordeaux.fr/Formations/Licence-MIASHS/Informations">
+                            Université de Bordeaux
+                        </a>
+                        <img style="margin-left:2ex;" src="{% static 'hello_world/images/univ.png' %}">
+                    </h4>
+                </div>
+            </div>
+            <div class="ui section divider"></div>
+            <div class="ui horizontal inverted small divided list">
+                <a class="item" href="#">Kalla Mohammad</a>
+                <a class="item" href="#">Lassourreuille Simon</a>
+                <a class="item" href="#">Seze Thomas</a>
+            </div>
+        </div>
+    </div>
+
 </footer>
 
 <script src="{% static 'hello_world/myscriptslate.js' %}"></script>
