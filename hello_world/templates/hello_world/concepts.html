@@ -9,22 +9,25 @@ s
 {% block content %}
  <div class="main ui container">
         <div class="chapter content" id="Concepts">
-            <h1 class="chapter header" align="center" id="g">I - Généralité</h1>
+            <h1 class="chapter header">
+                 Introduction aux réseaux de neurones artificiels
+            </h1>
+            <h2 class="chapter header" id="intro">Généralité</h2>
             <div class="ui segment raised">
             <p>
                 Les réseaux de neuronnes artificiels sont des ensembles d'algorithmes dont le fonctionnement général
-                s'inspire d'un modèle simplifié du fonctionnement des neurones, en se basant sur le paradigme biologique du neurone formel. <br/>
-                De ce fait, ils permetent de reproduire certaines fonctions du cerveau, comme l'apprentissage par l'exemple. <br/>
+                s'inspire d'un modèle simplifié du fonctionnement des neurones, en se basant sur le paradigme biologique du neurone formel.
+                De ce fait, ils permetent de reproduire certaines fonctions du cerveau, comme l'apprentissage par l'exemple.
             </p>
             <p>
                 Utilité des réseaux de neurones artificiels : <br/>
-                A partir d’observations limitées, tirer des généralisations plausibles via un procédé inductif. <br/>
+                A partir d’observations limitées, tirer des généralisations plausibles via un procédé inductif.
             </p>
             <p>
                 <span class="underlined"> Composition : </span><br >
                 Un réseau de neurone est composé de plusieurs couches, chacune composées d’un ou plusieurs nœuds
                 (neurones). <br/>
-                Le nombre de ces couches varient suivant le modèle adopté, mais il existe 3 couches principales.
+                Le nombre de ces couches varient suivant le modèle adopté, mais il existe 3 couches principales:
             <ol>
                 <li> Les données en entré (input layer)</li>
                 <li> Les couches cachés (hidden layer x)</li>
@@ -63,33 +66,30 @@ s
             </p>
             </div>
 
-
-            <h1 class="chapter header" align="center" id="tddin">II - Transition des données inter-neurones : </h1>
-
+            <h2 class="chapter header" id="intro">Transition des données inter-neurones</h2>
             <div class="ui segment raised">
             <p>
-                Un neurone formel est conçu comme un automate doté d'une fonction de transfert qui transforme ses entrées en sortie selon des règles précises. <br/>
-                Un neurone somme ses entrées, compare la somme résultante à une valeur seuil, et répond en émettant un signal si cette somme est supérieure ou égale à ce seuil,<br />
+                Un neurone formel est conçu comme un automate doté d'une fonction de transfert qui transforme ses entrées en sortie selon des règles précises.
+                Un neurone somme ses entrées, compare la somme résultante à une valeur seuil, et répond en émettant un signal si cette somme est supérieure ou égale à ce seuil,
                 C'est la repoduction simplifiée du phénomène d'activation d'un neurone biologique.
-                <br/>
+            </p>
 
-
+            <p>
                 <img src="{% static 'hello_world/images/neuroModel.png' %}" alt="Picture of neural network"
                      style="width:750px; height:250px;"/> <br/>
                 <br/>
-                Chaque nœud contient une valeur, qui sera multipliée par un poids lors du passage au nœud suivant. <br/>
+                Chaque nœud contient une valeur, qui sera multipliée par un poids lors du passage au nœud suivant.
                 Un poid reflète la plasticité synaptique présente dans les neurones bilogiques. Lorsque l'action effectuée à
-                permit de faire progresser par rapport à un but, <br/>
+                permit de faire progresser par rapport à un but,
                 cette plasticité se renforce (le poid augmente), si elle fait regrésser, la plasticité s'affaiblie (le
-                poid diminue). <br/>
+                poid diminue). <
                 La variation de ces poids peuvent être modulés par des règles d'apprentissage.
             </p>
             <p>
-                <br/>
-                Les valeurs des nœuds internes seront ainsi calculées par une fonction d'agrégation.<br />
-                La plus utilisée est une fonction de combinaison linéaire. <br/>
+                Les valeurs des nœuds internes seront ainsi calculées par une fonction d'agrégation.
+                La plus utilisée est une fonction de combinaison linéaire.
                 Les valeurs seront donc constitués de la somme des valeurs des nœuds précédents
-                multipliés par les poids associés. <br/>
+                multipliés par les poids associés.
                 Les valeurs peuvent être représentées par l’équation suivante : <br/>
                 <img src="{% static 'hello_world/images/Function.png' %}" alt="Picture of neural network"
                      style="width:125px; height:75px;"/> <br/>
@@ -99,16 +99,15 @@ s
             <p>
 
                 Une fois les nouvelles valeurs calculées, la fonction d’activation est lancée afin de vérifier la
-                qualité des informations. <br/>
+                qualité des informations.
                 Cette fonction doit renvoyer un entier proche de 1 si l’information semble correcte, et proche de zéro ou -1
-                dans le cas inverse (intervalle [-1,1]). <br/>
+                dans le cas inverse (intervalle [-1,1]).
                 Par exemple, si les fonctions d'activations sont linéaires, le réseau est alors l'équivalent d'une
                 régression multilinéaire.
             </p>
             </div>
 
-
-            <h1 class="chapter header" align="center" id="lfd">III - Les fonctions d'activation : </h1>
+            <h2 class="chapter header" id="intro">Les fonctions d'activation</h2>
             <div class="ui segment raised">
             <p>
                 Les fonctions d'activation, aussi appelées fonctions de seuillage ou fonctions de transfert, servent à introduire une non-linéarité dans le fonctionenement des neurones.<br/>
@@ -145,48 +144,46 @@ s
             </p>
             </div>
 
-
-            <h1 class="chapter header" align="center" id="l">IV - L'apprentissage : </h1>
+            <h2 class="chapter header" id="intro">L'apprentissage</h2>
             <div class="ui segment raised">
 
             <p>
-                Les réseaux de neurones possèdent donc un algorithme spécialisé dans l'entrainement. Le but de celui-ci est de <br/>
-                modifier les poids synaptique en fonction du jeu de donnée en entrée du réseau. <br/>
-                Cet entrainement permet au réseau d'apprendre à partir des exemples donnés. <br/>
-                Plus l'entrainement sera correctement réalisé, plus le réseau sera en mesure de faire émerger des résultats précis.<br/>
+                Les réseaux de neurones possèdent donc un algorithme spécialisé dans l'entrainement. Le but de celui-ci est de
+                modifier les poids synaptique en fonction du jeu de donnée en entrée du réseau.
+                Cet entrainement permet au réseau d'apprendre à partir des exemples donnés.
+                Plus l'entrainement sera correctement réalisé, plus le réseau sera en mesure de faire émerger des résultats précis.
             </p>
             <p>
-                Rappelons que l'intérêt principal d'un réseau de neurone réside dans sa capacité à généraliser. Il faut donc faire attention à ne pas <br/>
-                surrentrainer le réseau, ce qui aurait comme conséquence que celui-ci serait "spécialisé", c'est à dire plus performant mais dépendant des mêmes données en entrées,<br/>
-                et perdrait dans ce cas une partie de son aventage.<br/>
-                Il arrive souvent que les exemples de la base d'apprentissage comportent des valeurs approximatives ou bruitées. Si on oblige le réseau à répondre de façon quasi <br/>
-                parfaite en fonction à ces exemples, on peut obtenir un réseau qui est biaisé par des valeurs erronées.<br/>
+                Rappelons que l'intérêt principal d'un réseau de neurone réside dans sa capacité à généraliser. Il faut donc faire attention à ne pas
+                surrentrainer le réseau, ce qui aurait comme conséquence que celui-ci serait "spécialisé", c'est à dire plus performant mais dépendant des mêmes données en entrées,
+                et perdrait dans ce cas une partie de son aventage.
+                Il arrive souvent que les exemples de la base d'apprentissage comportent des valeurs approximatives ou bruitées. Si on oblige le réseau à répondre de façon quasi
+                parfaite en fonction à ces exemples, on peut obtenir un réseau qui est biaisé par des valeurs erronées.
             </p>
             <p>
-                Une méthode simple pour éviter le surraprentissage est de diviser en deux parties la base d'exemples. <br/>
-                La première partie servira à l'apprentissage et la seconde à l'évaluation de l'apprentissage.<br/>
-                Tant que l'erreur obtenue sur la seconde partie diminue, on peut continuer l'apprentissage, dans le cas contraire, on arrête, <br/>
-                car toutes itérations supplémentaire sera considéré comme de la spécialisation.<br/>
+                Une méthode simple pour éviter le surraprentissage est de diviser en deux parties la base d'exemples.
+                La première partie servira à l'apprentissage et la seconde à l'évaluation de l'apprentissage.
+                Tant que l'erreur obtenue sur la seconde partie diminue, on peut continuer l'apprentissage, dans le cas contraire, on arrête,
+                car toutes itérations supplémentaire sera considéré comme de la spécialisation.
             </p>
 
             <p>
-                Il y a deux types d'apprentissage, l'apprentissage supervisé et son inverse.<br/>
-                Lors d'un apprentissage supervisé, le réseau est forcé à converger vers un état final précis, par exemple une valeur de référence. <br/>
-                Quand l'apprentissage se fait de façon non supervisé, le résseau est laissé libre de converger vers n'importe quel état final.<br/>
+                Il y a deux types d'apprentissage, l'apprentissage supervisé et son inverse.
+                Lors d'un apprentissage supervisé, le réseau est forcé à converger vers un état final précis, par exemple une valeur de référence.
+                Quand l'apprentissage se fait de façon non supervisé, le résseau est laissé libre de converger vers n'importe quel état final.
             </p>
             <p>
-                La rétropropagation consiste à rétropropager l'erreur commise par un neurone à ses synapses et aux neurones qui y sont reliés. <br/>
-                Pour les réseaux de neurones, on utilise habituellement la rétropropagation du gradient de l'erreur, qui consiste à corriger <br/>
-                les erreurs selon l'importance des éléments qui ont justement participé à la réalisation de ces erreurs : les poids synaptiques qui <br />
-                contribuent à engendrer une erreur importante se verront modifiés de manière plus significative que les poids qui ont engendré une erreur marginale.<br/>
+                La rétropropagation consiste à rétropropager l'erreur commise par un neurone à ses synapses et aux neurones qui y sont reliés.
+                Pour les réseaux de neurones, on utilise habituellement la rétropropagation du gradient de l'erreur, qui consiste à corriger
+                les erreurs selon l'importance des éléments qui ont justement participé à la réalisation de ces erreurs : les poids synaptiques qui
+                contribuent à engendrer une erreur importante se verront modifiés de manière plus significative que les poids qui ont engendré une erreur marginale.
             </p>
             </div>
 
-
-            <h1 class="chapter header" align="center" id="ldtdrdn">V - Les différents types de réseaux de neurones: </h1>
+            <h2 class="chapter header" id="intro">Les différents types de réseaux de neurones</h2>
             <div class="ui segment raised">
             <p>
-                Il existe plusieurs types de réseaux de neurones.<br/>
+                Il existe plusieurs types de réseaux de neurones.
                 On peut différencier les types de réseaux suivant plusieurs critères, a savoir :
                 <ol>
                     <li>La topologie des connexions entre les neurones.</li>
@@ -207,19 +204,19 @@ s
                      style="width:300px; height:200px;"/>
                 </li>
                 <li>Le réseau Kohonen : <br />
-                    Ce réseau, aussi appelé carte auto adaptative, est un type de réseau basé sur des méthodes d'apprentissages non-supervisées. <br/>
-                    C'est un type de réseau considéré comme dynamique, car la taille du réseau varie en fonction des itérations, <br/>
-                    des neurones peuvent être créés ou suprimés. <br />
-                    Il est souvent représenté comme une grille rectangulaire allant de 1 à 4 dimmensions. <br/>
+                    Ce réseau, aussi appelé carte auto adaptative, est un type de réseau basé sur des méthodes d'apprentissages non-supervisées.
+                    C'est un type de réseau considéré comme dynamique, car la taille du réseau varie en fonction des itérations,
+                    des neurones peuvent être créés ou suprimés.
+                    Il est souvent représenté comme une grille rectangulaire allant de 1 à 4 dimmensions.
                     Ce type de réseau est principalement utilisé pour cartographier un espace réel (pour étudier la répartition de donnée dans un espace à grande dimmension <br/>
                     <br/>
                     <img src="{% static 'hello_world/images/kohonen.gif' %}" alt="Picture of a Kohonen neural network"
                      style="width:300px; height:200px;"/>
                 </li>
                 <li>Le réseau de Hopfield : <br/>
-                    Le réseau de neurone de Hopfield représente un réseau de neurone sans structure de couche ni sens de propagation. <br />
-                    De ce fait, il se rapproche plus du fonctionenement du cerveau humain. <br />
-                    Ce genre de réseau est particulièrement adapté pour des problèmes d'associativité (exemple determiner le meilleur couple poids/taille). <br/>
+                    Le réseau de neurone de Hopfield représente un réseau de neurone sans structure de couche ni sens de propagation.
+                    De ce fait, il se rapproche plus du fonctionenement du cerveau humain.
+                    Ce genre de réseau est particulièrement adapté pour des problèmes d'associativité (exemple determiner le meilleur couple poids/taille).
                     <img src="{% static 'hello_world/images/hopfield.png' %}" alt="Picture of a Hopfield neural network"
                      style="width:300px; height:200px;"/>
                 </li>
@@ -227,26 +224,26 @@ s
             </p>
             </div>
 
-            <h1 class="chapter header" align="center" id="lldrdn">VI - Les limites des réseaux de neurones : </h1>
+            <h2 class="chapter header" id="intro">Les limites des réseaux de neurones</h2>
             <div class="ui segment raised">
             <p>
-                Les réseaux de neurones artificiels ont besoin de cas réels servant d’exemples pour leur apprentissage. <br/>
-                Plus le problème est complexe, plus les réseaux de neurones auront besoin d'exmple pour pouvoir fournir des résultats satisfaisant. <br/>
-                Cela constitu déjà une première limite. <br />
+                Les réseaux de neurones artificiels ont besoin de cas réels servant d’exemples pour leur apprentissage.
+                Plus le problème est complexe, plus les réseaux de neurones auront besoin d'exmple pour pouvoir fournir des résultats satisfaisant.
+                Cela constitue déjà une première limite.
             </p>
             <p>
-                Les réseaux de neurones traitent mieux l'information implémentée sous forme simple. Il est facile de traiter des variables étant des nombres (exemple : le poids d'une personne), <br/>
-                mais il est devient beaucoup plus difficile de traiter des variables complexe (exemple : la stratégie d'une entreprise). <br />
-                Il est donc necessaire au préalable de faire une analyse des variables composant le problème et d'essayer de les décomposer en variables faciles à traiter<br/>
-                par le réseau.<br/>
-                Cela constitu une seconde limite, qui n'est pas des moindres.<br/>
+                Les réseaux de neurones traitent mieux l'information implémentée sous forme simple. Il est facile de traiter des variables étant des nombres (exemple : le poids d'une personne),
+                mais il est devient beaucoup plus difficile de traiter des variables complexe (exemple : la stratégie d'une entreprise).
+                Il est donc necessaire au préalable de faire une analyse des variables composant le problème et d'essayer de les décomposer en variables faciles à traiter
+                par le réseau.
+                Cela constitu une seconde limite, qui n'est pas des moindres.
             </p>
             <p>
-                Une troisième limite soulignable est le temps de résolution du problème.<br/>
-                Les problèmes complexes necessitent donc une grande quantité de donnée sur lesquels le réseau va baser son apprentissage, <br/>
-                L'apprentissage d'un jeu simple comme les premier Mario, avec un nombre d'action très limités (avancer / sauter)<br/>
-                et un but très simple (avancer jusqu'à finir le niveau), prend déjà des dizaines d'heures.<br/>
-                Ainsi, la résolution de problème en temps réèl est exclu.<br/>
+                Une troisième limite soulignable est le temps de résolution du problème.
+                Les problèmes complexes necessitent donc une grande quantité de donnée sur lesquels le réseau va baser son apprentissage,
+                L'apprentissage d'un jeu simple comme les premier Mario, avec un nombre d'action très limités (avancer / sauter)
+                et un but très simple (avancer jusqu'à finir le niveau), prend déjà des dizaines d'heures.
+                Ainsi, la résolution de problème en temps réèl est exclu.
             </p>
             </div>
         </div>

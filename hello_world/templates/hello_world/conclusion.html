@@ -19,40 +19,39 @@
             <div class="ui segment raised">
                 <p>
                     Rappelons que la problématique était la suivante : "Peut-on prévoir efficacement les dynamiques
-                    financières à l'aide de réseaux de neurones artificiels?". Nous avons donc décidé, à la façon de
+                    financières à l'aide des réseaux de neurones artificiels?". Nous avons donc décidé, à la façon de
                     Machiavel <span name="citation">"Divide et impera"</span>, de diviser le problème en sous problème
-                    afin
-                    de le résoudre de façon plus fluide et pertinente.
+                    afin de le résoudre de façon plus fluide et pertinente.
                 </p>
                 <p>
                     Dans la première partie, nous avons appris, suite à l'étude de plusieurs articles financiers, que
-                    l'analyse d'un indice financier était extrêmement complexe. En effet, l'évolution de ces indices
-                    boursiers seraient à la fois lié à l'état des finances réelles, mais aussi à la psychologie des
-                    investisseurs.
+                    l'analyse d'un indice boursier était extrêmement complexe. En effet, leur évolution seraient à la
+                    fois lié à l'état des finances réelles, mais aussi à la psychologie des investisseurs.
                 </p>
                 <p>
                     Dans la seconde partie, nous nous sommes appropriés les bases tant théoriques que pratiques des
                     réseaux
-                    de neurones artificiels. Après avoir implémenté nos réseaux de neurones, et amélioré ceux-ci par à
-                    l'aide d'un savoir empirique, nous avons pu comparer les résultats prédits finaux (à l'aide du
-                    réseau de
-                    neurones le plus performant) avec les valeurs réelles de l'indice boursier.
+                    de neurones artificiels. Après avoir implémenté nos réseaux de neurones, et amélioré ceux-ci à
+                    l'aide d'un savoir empirique, nous avons pu comparer les résultats prédits finaux par nos différents réseaux
+                    avec les valeurs réelles de l'indice boursier.
                 </p>
                 <p>
-                    Nous pouvons dire que notre réseau de neurones artificiel ne donnent pas encore des résultats
-                    satisfaisant, au vu des écarts trouvés lors de la dénormalisation des données.
+                    De ces résultats, nous avons conclu que notre meilleur réseau était le Feed Forward programmé en
+                    python. En effet, pour 3 indices boursiers, les données qu'il a prédites présentent au plus 1% d'écart avec
+                    les données réelles. Néanmoins, ce réseau n'est efficace qu'à court terme, se basant sur les 10 derniers
+                    jours passés pour prédire le cours de l'indice.
                 </p>
                 <p>
-                    Si notre modèle ne fournit pas des prédictions satisfaisantes, c'est pour la simple raison qu'il ne
-                    contient pas suffisament de variables explicatives. En effet, nous nous basons uniquement sur des
-                    données historiques, qui ne permettent pas à elle seules d'expliquer les variations des indices
-                    boursier.
+                    Une des raison qui pourrait expliquer le manque de performance de notre réseau à long terme est le
+                    fait qu'il ne se base que sur des variables quantitatives. En effet, nous nous basons uniquement sur des
+                    données historiques, qui ne permettent pas à elles seules d'expliquer les variations des indices
+                    boursiers.
                     En effet, elles ne se limitent qu'à l'aspect quantitatif de l'indice boursier, sans prendre en
                     compte
                     les multiples variables qualitatives qui l'influencent. Pour améliorer les performances de notre
                     réseau
                     de neurones artificiels, il serait intéressant de lui fournir d'autre données en entrées, capable de
-                    modéliser l'état de santé des entreprises (bilan financier, stratégies) et la psychologique des
+                    modéliser l'état de santé des entreprises (bilan financier, stratégies adoptées) et la psychologique des
                     investisseurs. Les nouvelles impactant fortement la psychologie de ces derniers, il serait surement
                     intéressant de développer un second réseau de neurones, dont le but serait d'analyser les nouvelles
                     liées
