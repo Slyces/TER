@@ -103,15 +103,15 @@
 
 <body>
 
-<div class="overlay">
-    <div class="ui vertical menu" style="width:64px;">
-        <a href="{% url 'hello_world:Introduction' %}/#menu" class="item icon image center"><img src="{% static 'hello_world/images/icon.png' %}"></a>
-        <a href="{% url 'hello_world:Concepts' %}/#menu" class="item icon image center"><img src="{% static 'hello_world/images/introduction_icon.png' %}"></a>
-        <a href="{% url 'hello_world:Finance' %}/#menu" class="item icon image center"><img src="{% static 'hello_world/images/finance_icon.png' %}"></a>
-        <a href="{% url 'hello_world:Application' %}/#menu" class="item icon image center"><img src="{% static 'hello_world/images/application_icon.png' %}"></a>
-        <a href="{% url 'hello_world:Conclusion' %}/#menu" class="item icon image center"><img src="{% static 'hello_world/images/feather.png' %}"></a>
-    </div>
-</div>
+{#<div class="overlay">#}
+{#    <div class="ui vertical menu" style="width:64px;">#}
+{#        <a href="{% url 'hello_world:Introduction' %}/#menu" class="item icon image center"><img src="{% static 'hello_world/images/icon.png' %}"></a>#}
+{#        <a href="{% url 'hello_world:Concepts' %}/#menu" class="item icon image center"><img src="{% static 'hello_world/images/introduction_icon.png' %}"></a>#}
+{#        <a href="{% url 'hello_world:Finance' %}/#menu" class="item icon image center"><img src="{% static 'hello_world/images/finance_icon.png' %}"></a>#}
+{#        <a href="{% url 'hello_world:Application' %}/#menu" class="item icon image center"><img src="{% static 'hello_world/images/application_icon.png' %}"></a>#}
+{#        <a href="{% url 'hello_world:Conclusion' %}/#menu" class="item icon image center"><img src="{% static 'hello_world/images/feather.png' %}"></a>#}
+{#    </div>#}
+{#</div>#}
 
 {% block content %}{% endblock %}
 
