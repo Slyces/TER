@@ -597,40 +597,8 @@ def build_model(layers, drop=0.2):
                 <h3> 2 - Résultats obtenus par les réseaux de neurones artificiels programmés sur Python</h3>
                 <p>
                     Nos réseaux de neurones programmés en python, contrairement aux réseaux programmés en R, se basent
-                    sur les 10 dernières données historiques passées afin d'établir une prédiction à l'instant t. Nous
-                    observons que cette approche donne des résultats satisfaisants pour le réseau de neurones Feed
-                    Forward.
+                    sur les 10 dernières données historiques passées afin d'établir une prédiction à l'instant t.
                 </p>
-                <p>
-                    En effet, pour les 4 produits financiers, la courbe représentant les données prédites et celle
-                    représentant les données historiques sont très proches dans leur allure. De plus, si nous observons
-                    les erreurs, qui correspondent à la différence entre les données prédites et les données
-                    historiques,
-                    nous remarquons que pour les 3 indices boursiers, S&P 500, NASDAQ Composite et Dow Jones
-                    Industrial, elles sont infèrieures ou égales à 1%, ce qui atteste de la qualité de notre
-                    modélisation. Néanmoins,
-                    pour le Rates, la modélisation est beaucoup moins bonne. En effet, nous observons des erreurs allant
-                    jusqu'à
-                    25%. Pour les 3 indices boursiers, nous pouvons donc prédire à court terme avec relativement de
-                    précision.
-                </p>
-                <p>
-                    Toutefois, ces résultats satisfaisants s'expliquent par le fait que nous prédisons point par point,
-                    en nous basant
-                    uniquement sur les données réelles. Ainsi, chaque erreur commise lors d'une prédiction à l'instant
-                    t n'est pas prise en compte lors de la prédiction suivante à l'instant t+1, puisqu'elle se base
-                    uniquement sur
-                    les données historiques. Il existe donc un mécanisme d'auto-correction des erreurs. Afin de tester
-                    le réel
-                    pouvoir prédictif de notre réseau sur le long terme, il aurait fallu effectuer des prédictions sur
-                    sur une plage de
-                    donnée, en alimentant notre modèle non plus par des données historiques mais par les données passées
-                    qu'il aurait prédit.
-                    Cependant, faute de temps, nous n'avons pas pu mener cette approche en Python. A l'heure actuelle,
-                    notre réseau de neurones
-                    peut donc être qualifié de court-terme uniquement.
-                </p>
-
 
                 <div id="context1">
                     <div class="ui pointing secondary four item indexes menu">
@@ -660,6 +628,38 @@ def build_model(layers, drop=0.2):
                         </div>
                     {% endfor %}
                 </div>
+                <p>
+                    Nous
+                    observons que cette approche donne des résultats satisfaisants pour le réseau de neurones Feed
+                    Forward.
+                    En effet, pour les 4 produits financiers, la courbe représentant les données prédites et celle
+                    représentant les données historiques sont très proches dans leur allure. De plus, si nous observons
+                    les erreurs, qui correspondent à la différence entre les données prédites et les données
+                    historiques,
+                    nous remarquons que pour les 3 indices boursiers, S&P 500, NASDAQ Composite et Dow Jones
+                    Industrial, elles sont infèrieures ou égales à 1%, ce qui atteste de la qualité de notre
+                    modélisation. Néanmoins,
+                    pour le Rates, la modélisation est beaucoup moins bonne. En effet, nous observons des erreurs allant
+                    jusqu'à
+                    25%. Pour les 3 indices boursiers, nous pouvons donc prédire à court terme avec relativement de
+                    précision.
+                </p>
+                <p>
+                    Toutefois, ces résultats satisfaisants s'expliquent par le fait que nous prédisons point par point,
+                    en nous basant
+                    uniquement sur les données réelles. Ainsi, chaque erreur commise lors d'une prédiction à l'instant
+                    t n'est pas prise en compte lors de la prédiction suivante à l'instant t+1, puisqu'elle se base
+                    uniquement sur
+                    les données historiques. Il existe donc un mécanisme d'auto-correction des erreurs. Afin de tester
+                    le réel
+                    pouvoir prédictif de notre réseau sur le long terme, il aurait fallu effectuer des prédictions sur
+                    sur une plage de
+                    donnée, en alimentant notre modèle non plus par des données historiques mais par les données passées
+                    qu'il aurait prédit.
+                    Cependant, faute de temps, nous n'avons pas pu mener cette approche en Python. A l'heure actuelle,
+                    notre réseau de neurones Feed Forward
+                    peut donc être qualifié de court-terme uniquement.
+                </p>
 
                 <div id="context2">
                     <h1 class="header" align="center">Long/Short Term Memory</h1>
