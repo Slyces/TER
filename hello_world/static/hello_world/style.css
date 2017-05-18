@@ -69,7 +69,7 @@ h1 {
 
 h2 {
     color: #5a5a5a;
-    margin-top:-0.8ex;
+    margin-top: -0.8ex;
     margin-bottom: -0.8ex;
     text-align: left;
     font: small-caps 240%/240% fantasy;
@@ -114,6 +114,28 @@ a {
     height: 400px;
 }
 
-.alinea{
-    margin-left:20px;
+.alinea {
+    margin-left: 20px;
+}
+
+.item.icon {
+    height: 70px;
+    width: 70px;
+    margin-left: -4px;
+    margin-bottom: -12px;
+}
+
+.overlay {
+    float: left;
+    margin: 3em 0em 0em 1.5em;
+}
+
+.overlay .menu {
+    position: relative;
+    left: 0;
+    transition: left 0.5s ease;
+}
+
+.overlay.fixed .menu {
+    left: 1242px;
 }

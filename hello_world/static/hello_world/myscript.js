@@ -10,6 +10,12 @@ $(document)
                 type: 'fixed'
             });
 
+
+        $('.overlay').visibility({
+            type: 'fixed',
+            offset: 80
+        });
+
         // Abstract
         $('.abstract.menu  .item').tab(
             {history: false}
