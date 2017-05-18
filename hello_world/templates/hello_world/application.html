@@ -458,43 +458,46 @@ train_op = f.train.GradientDescentOptimizer(0.001).minimize(cost) # Minimisation
 def build_model(layers, drop=0.2):
     model = Sequential()
     model.add(LSTM(
-        input_dim=layers[0],
-        output_dim=layers[1],
-        return_sequences=True))
+        input_dim=layers[0], # Ici 1
+        output_dim=layers[1], # Ici 50
+        return_sequences=True)) # revoie aux autres layers
     model.add(Dropout(drop))
     model.add(LSTM(
-        layers[2],
+        layers[2], # Ici 100
         return_sequences=False))
     model.add(Dropout(drop))
     model.add(Dense(
-        output_dim=layers[3]))
+        output_dim=layers[3])) # Ici 1
     model.add(Activation("linear"))
     start = time.time()
     model.compile(loss="mse", optimizer="rmsprop")
     print("Compilation Time : ", time.time() - start)
     return model
                 </pre>
+                <p>
+                    Ce modèle fonctionne comme suit :<br/>
+                    Le premier layer reçoit une unique donnée en entrée. Elle
+                </p>
             </div>
-
 
             <h2 class="chapter header">Résutats Obtenus</h2>
 
             <div class="ui segment raised">
                 <h3> 1 - Résultats obtenus par les réseaux de neurones artificiels programmés sur R</h3>
                 <p>
-                    <img src="{% static 'hello_world/images/resultr1.jpg' %}" alt="Résultat"
+                    <img class="image center" src="{% static 'hello_world/images/resultr1.jpg' %}" alt="Résultat"
                          style="width:800px;height:600px;"/>
                 </p>
                 <p>
-                    <img src="{% static 'hello_world/images/resultr2.jpg' %}" alt="Résultat"
+                    <img class="image center" src="{% static 'hello_world/images/resultr2.jpg' %}" alt="Résultat"
                          style="width:800px;height:600px;"/>
                 </p>
                 <p>
-                    <img src="{% static 'hello_world/images/resultr3.jpg' %}" alt="Résultat"
+                    <img class="image center" src="{% static 'hello_world/images/resultr3.jpg' %}" alt="Résultat"
                          style="width:800px;height:600px;"/>
                 </p>
                 <p>
-                    <img src="{% static 'hello_world/images/resultr4.jpg' %}" alt="Résultat"/>
+                    <img class="image center" src="{% static 'hello_world/images/resultr4.jpg' %}" alt="Résultat"/>
                 </p>
                 <div class="legend">Représentation graphique du réseau de neurones artificiels obtenus sur R</div>
 
