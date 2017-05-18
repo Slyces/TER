@@ -411,7 +411,16 @@ train_op = f.train.GradientDescentOptimizer(0.001).minimize(cost) # Minimisation
                     instruction pour utiliser une descente du gradient de pas d'apprentissage 0.001 qui minimisera
                     l'erreur.
                 </p>
-
+                <p>
+                    <strong>Entraînement du réseau</strong><br/>
+                    Pour entraîner le réseau, il suffit d'effectuer le calcul du noeud d'optimisation avec comme entrées
+                    pour X et Y les données d'entraînement. La prédiction sera faite tout aussi simplement en exécutant
+                    le noeud créé par la fonction build_model avec comme X les données de test.
+                </p>
+                <p>
+                    Nous avons ensuite beaucoup expérimenté sur ce modèle, en essayant diverses fonctions
+                    d'optimisations, d'activation, tailles de réseaux et valeurs du pas d'apprentissage.
+                </p>
             </div>
 
             <h2 class="chapter header">Résutats Obtenus</h2>
