@@ -69,6 +69,8 @@ h1 {
 
 h2 {
     color: #5a5a5a;
+    margin-top:-0.8ex;
+    margin-bottom: -0.8ex;
     text-align: left;
     font: small-caps 240%/240% fantasy;
 }
@@ -98,6 +100,10 @@ p {
 .underlined {
     text-decoration: none;
     border-bottom: 1px solid black;
+}
+
+a {
+    color: black;
 }
 
 .equation.upper {
