@@ -426,54 +426,55 @@ train_op = f.train.GradientDescentOptimizer(0.001).minimize(cost) # Minimisation
                     Nous avons essayé d'approfondir un peu l'utilisation de ce modèle en essayant de créer une structure
                     pour sauvegarder ses paramètres d'une utilisation à l'autre.
                 </p>
+
+                <h4> D) Réseau de type Long/Short Term Memory sur Python </h4>
+
+                <p> Nous avons décidé de faire une autre implémentation sur python, d'un nouveau réseau. Ce réseau est
+                    de
+                    type réseau récurrent, plus précisément Long/Short Term Memory, c'est à dire un réseau qui réutilise
+                    dans ses calculs ses résultats précédents. En somme, ce réseau a la particularité d'être très
+                    adaptés
+                    aux séquences ordonnées. Notre problème rentre particulièrement bien dans ce cadre. Manquant de
+                    temps,
+                    nous n'avons cependant pas beaucoup exploité ce réseau.
+                </p>
+                <p>
+                    Il a été réalisé avec une librairie qui vient se rajouter au dessus de Tensorflow pour le simplifier
+                    :
+                    Keras. Ainsi, le fonctionnement est très lié à celui de la librairie avec laquelle nous avons déjà
+                    expérimenté.
+                </p>
+                <p>
+                    <strong>Le modèle</strong><br/>
+                    Ce modèle utilise comme seule donnée les valeurs antérieures du système. Il est déjà évident que
+                    cela ne
+                    suffira pas à obtenir de bon résultats. Pour avoir quelque chose de plus complet, il faudrait soit
+                    coupler plusieurs données des marchés financiers, soit s'intéresser à des données
+                    extra-financières.<br/>
+                    Le modèle de ce réseau est créé par le code suivant :
+
+                </p>
+                <pre class="prettyprint">
+def build_model(layers, drop=0.2):
+    model = Sequential()
+    model.add(LSTM(
+        input_dim=layers[0],
+        output_dim=layers[1],
+        return_sequences=True))
+    model.add(Dropout(drop))
+    model.add(LSTM(
+        layers[2],
+        return_sequences=False))
+    model.add(Dropout(drop))
+    model.add(Dense(
+        output_dim=layers[3]))
+    model.add(Activation("linear"))
+    start = time.time()
+    model.compile(loss="mse", optimizer="rmsprop")
+    print("Compilation Time : ", time.time() - start)
+    return model
+                </pre>
             </div>
-
-            <h4> D) Réseau de type Long/Short Term Memory sur Python </h4>
-
-            <p> Nous avons décidé de faire une autre implémentation sur python, d'un nouveau réseau. Ce réseau est de
-                type réseau récurrent, plus précisément Long/Short Term Memory, c'est à dire un réseau qui réutilise
-                dans ses calculs ses résultats précédents. En somme, ce réseau a la particularité d'être très adaptés
-                aux séquences ordonnées. Notre problème rentre particulièrement bien dans ce cadre. Manquant de temps,
-                nous n'avons cependant pas beaucoup exploité ce réseau.
-            </p>
-            <p>
-                Il a été réalisé avec une librairie qui vient se rajouter au dessus de Tensorflow pour le simplifier :
-                Keras. Ainsi, le fonctionnement est très lié à celui de la librairie avec laquelle nous avons déjà
-                expérimenté.
-            </p>
-            <p>
-                <strong>Le modèle</strong><br/>
-                Ce modèle utilise comme seule donnée les valeurs antérieures du système. Il est déjà évident que cela ne
-                suffira pas à obtenir de bon résultats. Pour avoir quelque chose de plus complet, il faudrait soit
-                coupler plusieurs données des marchés financiers, soit s'intéresser à des données
-                extra-financières.<br/>
-                Le modèle de ce réseau est créé par le code suivant :
-
-            </p>
-            <pre class="prettyprint">
-                def build_model(layers, drop=0.2):
-                model = Sequential()
-
-                model.add(LSTM(
-                    input_dim=layers[0],
-                    output_dim=layers[1],
-                    return_sequences=True))
-                model.add(Dropout(drop))
-
-                model.add(LSTM(
-                    layers[2],
-                    return_sequences=False))
-                model.add(Dropout(drop))
-
-                model.add(Dense(
-                    output_dim=layers[3]))
-                model.add(Activation("linear"))
-
-                start = time.time()
-                model.compile(loss="mse", optimizer="rmsprop")
-                print("Compilation Time : ", time.time() - start)
-                return model
-        </pre>
 
 
             <h2 class="chapter header">Résutats Obtenus</h2>
@@ -672,6 +673,8 @@ train_op = f.train.GradientDescentOptimizer(0.001).minimize(cost) # Minimisation
                         <p> {{ error|key:'lstm'|safe }} </p>
                     </div>
                 </div>
+            </div>
+            <div class="ui segment raised">
                 <img class="image center" src="{% static 'hello_world/images/poly_lstm.png' %}">
             </div>
         </div>
