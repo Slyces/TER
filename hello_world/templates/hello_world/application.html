@@ -684,33 +684,46 @@ def build_model(layers, drop=0.2):
                 </div>
                 <p>
                     En ce qui concerne notre réseau LSTM, nous l'avons appliqué à l'indice S&P 500, en prenant comme
-                    variables d'entrée les 50 données passées du cours pour établir une prédiction. Nous observons, graphiquement,
-                    que la qualité de la prédiction à court terme est moins bonne que celle obtenue grâce au réseau Feed Forward. En effet,
-                    les courbes présentent une allure similaire mais avec des décallages importants. Aussi, nous observons
-                    des écarts conséquents entre les données prédites et les données historiques, allant parfois jusqu'à 250.
+                    variables d'entrée les 50 données passées du cours pour établir une prédiction. Nous observons,
+                    graphiquement,
+                    que la qualité de la prédiction à court terme est moins bonne que celle obtenue grâce au réseau Feed
+                    Forward. En effet,
+                    les courbes présentent une allure similaire mais avec des décallages importants. Aussi, nous
+                    observons
+                    des écarts conséquents entre les données prédites et les données historiques, allant parfois jusqu'à
+                    250.
                 </p>
                 <p>
-                    Ce résultat est surprenant, puisque en théorie, d'après les multiples exemples que nous avons consulté,
-                    les réseaux LSTM devraient donner de meilleurs résultats que les réseaux Feed Forward. Dans notre cas, cette contre
-                    performance s'explique par le fait que n'avons pas disposé de suffisament de temps pour paramétrer correctement notre
+                    Ce résultat est surprenant, puisque en théorie, d'après les multiples exemples que nous avons
+                    consulté,
+                    les réseaux LSTM devraient donner de meilleurs résultats que les réseaux Feed Forward. Dans notre
+                    cas, cette contre
+                    performance s'explique par le fait que n'avons pas disposé de suffisament de temps pour paramétrer
+                    correctement notre
                     réseau LSTM.
                 </p>
+                <img class="image center" src="{% static 'hello_world/images/poly_lstm.png' %}">
                 <p>
                     Cependant, malgrès des performances médiocres à court terme, nous avons décidé de tester notre
                     réseau LSTM à long terme, en effectuant des prédictions sur une plage de données. Nous observons que
-                    ces prédictions sont très loin des valeurs des données historiques, mais semblent être des indicateurs
+                    ces prédictions sont très loin des valeurs des données historiques, mais semblent être des
+                    indicateurs
                     décents du sens de variation du cours. En effet, nous observons que les 4 premières prédictions sont
-                    décroissantes, tout comme le cours réel. Au contraire, la 5ème prédiction est croissante, ce qui correspond
-                    précisément à une remontée du cours. Globalement, lorsque nos prédictions sont décroissantes, le cours baisse,
-                    et lorsqu'elles croissent, le cours augmente. Les prédictions du réseau LSTM semblent donc être de bons indicateurs
+                    décroissantes, tout comme le cours réel. Au contraire, la 5ème prédiction est croissante, ce qui
+                    correspond
+                    précisément à une remontée du cours. Globalement, lorsque nos prédictions sont décroissantes, le
+                    cours baisse,
+                    et lorsqu'elles croissent, le cours augmente. Les prédictions du réseau LSTM semblent donc être de
+                    bons indicateurs
                     du sens de variation du cours sur le long terme.
                 </p>
                 <p>
-                    Toutefois, ces résultats doivent être considérés avec une grande prudence. En effet, l'échantillon teste est
-                    d'une taille réduite, nous avons testé le réseau sur un seul indice, et avons également pu simplement bénéficier d'un
+                    Toutefois, ces résultats doivent être considérés avec une grande prudence. En effet, l'échantillon
+                    teste est
+                    d'une taille réduite, nous avons testé le réseau sur un seul indice, et avons également pu
+                    simplement bénéficier d'un
                     coup de chance.
                 </p>
-                <img class="image center" src="{% static 'hello_world/images/poly_lstm.png' %}">
             </div>
         </div>
         {{ script|safe }}
